@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"d:\\\\backpack\" -Force)",
+      "Bash(npx tsc *)",
+      "Bash(cd /d/backpack/platform && npx tsc --noEmit --skipLibCheck 2>&1 | head -60)",
+      "Read(//d/backpack/platform/**)",
+      "Read(//d/backpack/server/**)",
+      "WebFetch(domain:backpack.exchange)",
+      "WebSearch",
+      "WebFetch(domain:www.fxempire.com)",
+      "WebFetch(domain:learn.backpack.exchange)",
+      "Bash(dir \"D:\\\\backpack\\\\platform\\\\src\\\\view\\\\pages\" /b)",
+      "Bash(xargs grep -l \"bottom-nav\\\\|BottomNav\\\\|bottomNav\")"
+    ]
+  }
+}

@@ -11,7 +11,9 @@
       "WebFetch(domain:www.fxempire.com)",
       "WebFetch(domain:learn.backpack.exchange)",
       "Bash(dir \"D:\\\\backpack\\\\platform\\\\src\\\\view\\\\pages\" /b)",
-      "Bash(xargs grep -l \"bottom-nav\\\\|BottomNav\\\\|bottomNav\")"
+      "Bash(xargs grep -l \"bottom-nav\\\\|BottomNav\\\\|bottomNav\")",
+      "Bash(xargs grep -l \"btn-action\\\\|spot-list\")",
+      "Bash(xargs grep -l \"btn-action\")"
     ]
   }
 }

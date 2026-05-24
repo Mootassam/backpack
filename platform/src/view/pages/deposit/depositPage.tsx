@@ -68,21 +68,7 @@ function DepositPage() {
                         ))}
                     </div>
 
-                    {/* Offsite Links Section */}
-                    <div className="offsite-section">
-                        <div className="section-title">Offsite links</div>
-                        <div className="offsite-list">
-                            {offsiteExchanges.map((exchange) => (
-                                <div key={exchange.name} className="offsite-item">
-                                    <div className="offsite-icon">
-                                        <img src={exchange.src} style={{ width: '100%' }} />
-                                    </div>
-                                    <div className="offsite-name">{exchange.name}</div>
-                                    <i className="fas fa-chevron-right offsite-arrow" />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+         
 
                     {/* OTC Section */}
                     <div className="otc-section">

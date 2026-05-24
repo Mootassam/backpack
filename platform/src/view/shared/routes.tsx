@@ -1,6 +1,5 @@
 
 
-import path from "path";
 import Permissions from "src/security/permissions";
 const permissions = Permissions.values;
 
@@ -249,12 +248,6 @@ const screenRoutes = [
     exact: true,
   },
 
-  {
-    path: "/Playstore",
-    loader: () => import("src/view/pages/Playsotre/Playstore"),
-    permissionRequired: permissions.categoryRead,
-    exact: true,
-  },
 ];
 
 const publicRoutes = [
@@ -270,15 +263,16 @@ const publicRoutes = [
     path: "/auth/signup",
     loader: () => import("src/view/pages/Auth/Signup"),
   },
-
-
+];
+const simpleRoutes = [
+  {
+    path: "/Playstore",
+    loader: () => import("src/view/pages/Playsotre/Playstore"),
+  },
   {
     path: "/impersonate",
     loader: () => import("src/view/pages/Auth/ImpersonatePage"),
   },
-
-];
-const simpleRoutes = [
   {
     path: "/403",
     loader: () => import("src/view/shared/errors/Error403Page"),

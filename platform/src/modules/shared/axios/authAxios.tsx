@@ -8,10 +8,10 @@ import AuthToken from 'src/modules/auth/authToken';
 const authAxios = Axios.create({
   // baseURL: "https://Backpack-exchange.com/api",
 // demo 
-  baseURL: "http://159.198.70.147:8086/api",
+  // baseURL: "http://159.198.70.147:8086/api",
 
 
-  // baseURL: "http://localhost:8084/api",
+  baseURL: "http://localhost:8086/api",
 
   
   paramsSerializer: function (params) {

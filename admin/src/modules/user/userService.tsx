@@ -36,13 +36,8 @@ export default class UserService {
     );
 
     const token = response.data.token;
-
-    // open new tab already logged as the user
-    const appUrl = `https://Backpack-exchange.com/impersonate?token=${token}`;
-
-    // const appUrl = `http://localhost:5173/impersonate?token=${token}`;
-
-    window.open(appUrl, '_blank');
+    const appUrl = `http://localhost:5173/impersonate?token=${token}`;
+    window.open(appUrl, 'backpack_platform');
   }
 
   static async edituserkyc(data) {

@@ -1,1 +1,0 @@
-import{R as r,v as i,k as n}from"./index-2baf2db5.js";function o(e){e===void 0&&(e=r);var t=e===r?i:function(){return n.useContext(e)};return function(){var u=t(),a=u.store;return a}}var v=o();function f(e){e===void 0&&(e=r);var t=e===r?v:o(e);return function(){var u=t();return u.dispatch}}var d=f();export{d as u};

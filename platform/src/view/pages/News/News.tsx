@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SubHeader from "src/view/shared/Header/SubHeader";
+import { useHistory } from "react-router-dom"; // added for back navigation
 import productListSelectors from "src/modules/product/list/productListSelectors";
 import productListActions from "src/modules/product/list/productListActions";
 import selector from "src/modules/product/list/productListSelectors";
@@ -37,6 +37,7 @@ const NewsPlaceholder = () => (
 
 function News() {
   const dispatch = useDispatch();
+  const history = useHistory(); // for back navigation
   const [newselected, setNewSelected] = useState("news");
 
   // Select data from Redux store
@@ -74,10 +75,18 @@ function News() {
     fetchCoins();
   }, [fetchCoins]);
 
+  const goBack = () => history.goBack();
+
   return (
-    <div className="container">
-      {/* Header Section */}
-      <SubHeader title="Crypto News" />
+    <div className="news-page">
+      {/* Back Arrow Header – matching Profile's top-header */}
+      <div className="top-header">
+        <div className="back-button" onClick={goBack}>
+          <i className="fas fa-arrow-left"></i>
+        </div>
+        <h1 className="page-title">Crypto News</h1>
+        <div className="header-placeholder"></div>
+      </div>
 
       {/* News Filters */}
       <div className="news-filters">
@@ -105,73 +114,135 @@ function News() {
       </div>
 
       <style>{`
-        /* Shimmer animation for loading placeholders */
-        @keyframes shimmer {
-          0% {
-            background-position: -468px 0;
-          }
-          100% {
-            background-position: 468px 0;
-          }
+        /* ===== GLOBAL ===== */
+        .news-page {
+          min-height: 100vh;
+          background-color: #0e0f14;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
         }
-        
-        .shimmer {
-          animation-duration: 1.5s;
-          animation-fill-mode: forwards;
-          animation-iteration-count: infinite;
-          animation-name: shimmer;
-          animation-timing-function: linear;
-          background: #2A2A2A;
-          background: #2A2A2A
-          background-size: 800px 104px;
-          position: relative;
+
+        /* ===== TOP HEADER ===== */
+        .top-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px 20px 12px;
+          background-color: #0e0f14;
         }
-        
+        .back-button {
+          color: #ffffff;
+          font-size: 18px;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+        .back-button:hover {
+          background-color: rgba(253, 75, 78, 0.15);
+        }
+        .page-title {
+          color: #ffffff;
+          font-size: 20px;
+          font-weight: 700;
+          margin: 0;
+          text-align: center;
+          flex: 1;
+        }
+        .header-placeholder {
+          width: 32px;
+        }
+
+        /* ===== FILTERS ===== */
+        .news-filters {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          gap: 8px;
+          padding: 12px 15px;
+          margin-bottom: 8px;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none; /* Firefox */
+        }
+        .news-filters::-webkit-scrollbar {
+          display: none; /* Chrome/Safari */
+        }
+        .filter-button {
+          flex-shrink: 0;
+          background-color: #15161c;
+          border: none;
+          border-radius: 20px;
+          padding: 8px 16px;
+          font-size: 13px;
+          font-weight: 500;
+          color: #aaaaaa;
+          cursor: pointer;
+          transition: all 0.2s;
+          white-space: nowrap;
+        }
+        .filter-button.active {
+          background-color: #fd4b4e;
+          color: #ffffff;
+        }
+        .filter-button:hover:not(.active) {
+          background-color: rgba(253, 75, 78, 0.15);
+          color: #ffffff;
+        }
+
+        /* ===== NEWS LIST ===== */
+        .news-list {
+          padding: 0 15px;
+        }
+        .news-section-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 12px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid #2a2a2e;
+        }
+
+        /* ===== PLACEHOLDERS ===== */
         .news-placeholder {
-          margin-top: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
         }
-        
         .news-item-placeholder {
           display: flex;
-          margin-bottom: 20px;
-          padding: 16px;
-          background: #1A1A1A;
-          border-radius: 8px;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+          gap: 12px;
+          background-color: #15161c;
+          border-radius: 12px;
+          padding: 12px;
         }
-        
         .placeholder-image {
           width: 80px;
           height: 80px;
-          border-radius: 8px;
-          margin-right: 16px;
+          border-radius: 10px;
+          background-color: #2a2a2e;
           flex-shrink: 0;
         }
-        
         .placeholder-content {
           flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: center;
         }
-        
         .placeholder-line {
+          background-color: #2a2a2e;
           border-radius: 4px;
-          margin-bottom: 8px;
         }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-          .news-item-placeholder {
-            flex-direction: column;
-          }
-          
-          .placeholder-image {
-            width: 100%;
-            height: 160px;
-            margin-right: 0;
-            margin-bottom: 12px;
-          }
+        .shimmer {
+          background: linear-gradient(90deg, #2a2a2e 25%, #3a3a3e 50%, #2a2a2e 75%);
+          background-size: 200% 100%;
+          animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
         }
       `}</style>
     </div>

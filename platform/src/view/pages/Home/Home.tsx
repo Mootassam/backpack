@@ -1,819 +1,614 @@
-import { useState, useEffect, useRef, useCallback, useReducer, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import productListSelectors from "src/modules/product/list/productListSelectors";
 import productListActions from "src/modules/product/list/productListActions";
+import selector from "src/modules/product/list/productListSelectors";
 import News from "./News";
+import Header from "src/view/shared/Header/Header";
+import { i18n } from "../../../i18n";
 
-/* ─────────────────────────── Types ─────────────────────────── */
-interface TickerData {
-  s: string; // symbol  e.g. "BTCUSDT"
-  c: string; // last price
-  P: string; // 24h change %
-  v: string; // base volume
-  h: string; // 24h high
-  l: string; // 24h low
-}
-
-interface CryptoMeta {
+// Add interface for cryptocurrency data
+interface CryptoData {
   symbol: string;
-  base: string;
+  name: string;
+  price: string;
+  change: string;
+  changePercent: string;
+  volume: string;
+  volumeFormatted: string;
+  isPositive: boolean;
 }
 
-/* ─────────────────────────── Constants ─────────────────────────── */
-const TOP_CRYPTOS: CryptoMeta[] = [
-  { symbol: "BTCUSDT", base: "BTC" },
-  { symbol: "ETHUSDT", base: "ETH" },
-  { symbol: "BNBUSDT", base: "BNB" },
-  { symbol: "SOLUSDT", base: "SOL" },
-];
-
-const SLIDER_IMAGES = ["/images/1.png", "/images/2.png", "/images/3.png"];
-
-const QUICK_ACTIONS = [
-  { path: "/deposit",    icon: "fas fa-download",      name: "Deposit",  color: "#26a17b" },
-  { path: "/Withdraw",   icon: "fas fa-upload",         name: "Withdraw", color: "#fd4b4e" },
-  { path: "/trade",      icon: "fas fa-chart-line",     name: "Trade",    color: "#2196f3" },
-  { path: "/futures",    icon: "fas fa-chart-bar",      name: "Futures",  color: "#9c27b0" },
-  { path: "/profile", icon: "fas fa-user",   name: "Profile",  color: "#ff9800" },
-];
-
-
-
-/* ─────────────────────────── Reducer ─────────────────────────── */
-type TickersState = Record<string, TickerData>;
-type TickersAction = { type: "UPDATE"; payload: TickerData };
-
-function tickersReducer(state: TickersState, action: TickersAction): TickersState {
-  return { ...state, [action.payload.s]: action.payload };
+interface QuickActionItem {
+  path: string;
+  icon: string;
+  name: string;
 }
 
-/* ─────────────────────────── Helpers ─────────────────────────── */
-function fmtVol(n: number): string {
-  if (n >= 1e9) return (n / 1e9).toFixed(1) + "B";
-  if (n >= 1e6) return (n / 1e6).toFixed(1) + "M";
-  if (n >= 1e3) return (n / 1e3).toFixed(1) + "K";
-  return n.toFixed(0);
-}
-
-function fmtPrice(p: number): string {
-  return p.toLocaleString(undefined, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: p < 1 ? 4 : 2,
-  });
-}
-
-/* ═══════════════════════════ Component ═══════════════════════════ */
 function Home() {
   const dispatch = useDispatch();
-  const selectNews       = useSelector(productListSelectors.selectNews);
+  const [coincategory, setCoinCategory] = useState("");
+  const [response, setResponse] = useState([]);
+  const record = useSelector(selector.selectRows);
+  const loading = useSelector(selector.selectLoading);
+  const [coins, setCoins] = useState();
+  const selectNews = useSelector(productListSelectors.selectNews);
   const selectloadingNews = useSelector(productListSelectors.selectloadingNews);
 
-  const [tickers, dispatchTicker] = useReducer(tickersReducer, {});
-  const [isMarketReady, setIsMarketReady]   = useState(false);
-  const [currentSlide, setCurrentSlide]     = useState(0);
-  const [iconErrors, setIconErrors]         = useState<Record<string, boolean>>({});
+  // State for real-time crypto data
+  const [cryptoData, setCryptoData] = useState<{ [key: string]: CryptoData }>(
+    {}
+  );
+  const ws = useRef<WebSocket | null>(null);
 
-  const ws              = useRef<WebSocket | null>(null);
-  const lastUpdateRef   = useRef(0);
-  const reconnectTimer  = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const attemptRef      = useRef(0);
-  const isReadyRef      = useRef(false);
+  // State for image slider
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderImages = [
+    "/images/1.png",
+    "/images/2.png",
+    "/images/3.png",
+  ];
 
-  /* fetch news */
+  // Sample notifications data
+  const notifications = [
+    {
+      id: 1,
+      title: i18n("pages.home.notifications.btcAlert"),
+      message: i18n("pages.home.notifications.btcReached"),
+      time: i18n("pages.home.notifications.fiveMinAgo"),
+      unread: true,
+    },
+    {
+      id: 2,
+      title: i18n("pages.home.notifications.depositSuccess"),
+      message: i18n("pages.home.notifications.depositConfirmed"),
+      time: i18n("pages.home.notifications.oneHourAgo"),
+      unread: true,
+    },
+    {
+      id: 3,
+      title: i18n("pages.home.notifications.securityUpdate"),
+      message: i18n("pages.home.notifications.newSecurityFeatures"),
+      time: i18n("pages.home.notifications.twoHoursAgo"),
+      unread: false,
+    },
+    {
+      id: 4,
+      title: i18n("pages.home.notifications.marketNews"),
+      message: i18n("pages.home.notifications.ethUpgrade"),
+      time: i18n("pages.home.notifications.fiveHoursAgo"),
+      unread: false,
+    },
+  ];
+
   useEffect(() => {
-    dispatch(productListActions.doFindNews({ id: 1, page: 1, size: 5 }));
-  }, [dispatch]);
-
-  /* slider auto-advance */
-  useEffect(() => {
-    const id = setInterval(() => setCurrentSlide((p) => (p + 1) % SLIDER_IMAGES.length), 4500);
-    return () => clearInterval(id);
+    const data = {
+      id: 1,
+      page: 1,
+      size: 5,
+    };
+    dispatch(productListActions.doFindNews(data));
   }, []);
 
-  /* WebSocket — 4 targeted streams only */
+  // Auto-advance slides every 5 seconds
   useEffect(() => {
-    let isMounted = true;
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % sliderImages.length);
+    }, 5000);
 
-    const connect = () => {
-      if (!isMounted) return;
-      if (ws.current) { ws.current.onclose = null; ws.current.close(); ws.current = null; }
+    return () => clearInterval(interval);
+  }, [sliderImages.length]);
 
-      const streams = TOP_CRYPTOS.map((c) => `${c.symbol.toLowerCase()}@ticker`).join("/");
-      const socket  = new WebSocket(`wss://stream.binance.com:9443/stream?streams=${streams}`);
-      ws.current    = socket;
+  // WebSocket connection for real-time data
+  useEffect(() => {
+    // Top 4 cryptocurrencies by market cap
+    const topSymbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT"];
 
-      socket.onmessage = (event) => {
-        if (!isMounted) return;
-        const now = Date.now();
-        if (now - lastUpdateRef.current < 250) return;
-        lastUpdateRef.current = now;
-        try {
-          const msg = JSON.parse(event.data);
-          const t: TickerData = msg.data ?? msg;
-          if (t?.s) {
-            dispatchTicker({ type: "UPDATE", payload: t });
-            if (!isReadyRef.current) { isReadyRef.current = true; setIsMarketReady(true); }
+    // Setup WebSocket for real-time updates
+    const streams = topSymbols
+      .map((symbol) => `${symbol.toLowerCase()}@ticker`)
+      .join("/");
+    ws.current = new WebSocket(
+      `wss://stream.binance.com:9443/stream?streams=${streams}`
+    );
+
+    ws.current.onopen = () => {
+    };
+
+    ws.current.onmessage = (event: MessageEvent) => {
+      try {
+        const response = JSON.parse(event.data);
+        const data = response.data;
+
+        if (data && data.s) {
+          const symbol = data.s;
+          const isPositive = !data.P.startsWith("-");
+          const changePercent = Math.abs(Number(data.P)).toFixed(2);
+
+          // Format volume
+          const volumeNum = Number(data.v);
+          let volumeFormatted = volumeNum.toFixed(0);
+          if (volumeNum >= 1000000000) {
+            volumeFormatted = (volumeNum / 1000000000).toFixed(1) + "B";
+          } else if (volumeNum >= 1000000) {
+            volumeFormatted = (volumeNum / 1000000).toFixed(1) + "M";
           }
-        } catch { /* ignore */ }
-      };
 
-      socket.onerror = () => {
-        if (isMounted && !isReadyRef.current) { isReadyRef.current = true; setIsMarketReady(true); }
-      };
-
-      socket.onclose = () => {
-        if (!isMounted) return;
-        const delay = Math.min(30000, 3000 * Math.pow(1.5, attemptRef.current));
-        attemptRef.current += 1;
-        reconnectTimer.current = setTimeout(connect, delay);
-      };
+          setCryptoData((prev) => ({
+            ...prev,
+            [symbol]: {
+              symbol,
+              name: `${symbol.replace("USDT", "")}/USDT`,
+              price: Number(data.c).toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: Number(data.c) < 1 ? 6 : 4,
+              }),
+              change: data.p,
+              changePercent: changePercent,
+              volume: data.v,
+              volumeFormatted: volumeFormatted,
+              isPositive: isPositive,
+            },
+          }));
+        }
+      } catch (error) {
+        console.error("Error parsing WebSocket message:", error);
+      }
     };
 
-    connect();
+    ws.current.onerror = (error: Event) => {
+      console.error("Home WebSocket error:", error);
+    };
+
+    ws.current.onclose = () => {
+      // Try to reconnect after a delay
+      setTimeout(() => {
+        if (ws.current === null) {
+          // Reconnect logic if needed
+        }
+      }, 5000);
+    };
+
     return () => {
-      isMounted = false;
-      if (reconnectTimer.current) clearTimeout(reconnectTimer.current);
-      if (ws.current) { ws.current.onclose = null; ws.current.close(); ws.current = null; }
+      if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+        ws.current.close();
+      }
     };
   }, []);
 
-  const handleIconError = useCallback((base: string) => {
-    setIconErrors((prev) => ({ ...prev, [base]: true }));
-  }, []);
+  const [activeItem, setActiveItem] = useState<string>("/security-tips");
 
-  /* duplicate items for seamless ticker loop */
-  const tickerItems = useMemo(() => {
-    const items = TOP_CRYPTOS.map((c) => {
-      const t = tickers[c.symbol];
-      const price  = t ? parseFloat(t.c) : null;
-      const change = t ? parseFloat(t.P) : null;
-      return { base: c.base, price, change };
-    });
-    return [...items, ...items]; // doubled for seamless CSS loop
-  }, [tickers]);
+  const handleItemClick = (path: string) => {
+    setActiveItem(path);
+  };
 
-  /* ─── JSX ─── */
+  // New Quick Access data
+  const quickAccessItems = [
+    {
+      path: "/security-tips",
+      icon: "fas fa-shield-alt",
+      name: i18n("pages.home.quickAccess.security"),
+    },
+    {
+      path: "/faq-center",
+      icon: "fas fa-question-circle",
+      name: i18n("pages.home.quickAccess.faqCenter"),
+    },
+    {
+      icon: "fas fa-gift",
+      path: "/invitation",
+      name: i18n("pages.home.quickAccess.invitation"),
+    },
+    {
+      path: "/stacking",
+      icon: "fas fa-coins ",
+      name: i18n("pages.home.quickAccess.staking"),
+    },
+  ];
+
+  // Define the top 4 cryptocurrencies we want to display
+  const topCryptos = [
+    {
+      symbol: "BTCUSDT",
+      icon: "fab fa-btc",
+      color: "#000",
+      bgColor: "#F3BA2F",
+    },
+    {
+      symbol: "ETHUSDT",
+      icon: "fab fa-ethereum",
+      color: "#fff",
+      bgColor: "#627EEA",
+    },
+    {
+      symbol: "BNBUSDT",
+      icon: "fas fa-coins",
+      color: "#000",
+      bgColor: "#F3BA2F",
+    },
+    {
+      symbol: "SOLUSDT",
+      icon: "fas fa-sun",
+      color: "#000",
+      bgColor: "#00FFA3",
+    },
+  ];
+
   return (
-    <div className="hp-root">
+    <div className="container home-page">
+      {/* Header Section */}
+      <Header />
 
-      {/* ══════════ TICKER STRIP ══════════ */}
-      <div className="hp-ticker-bar">
-        <div className="hp-ticker-track">
-          {tickerItems.map((item, i) => (
-            <span className="hp-ticker-item" key={i}>
-              <span className="hp-t-sym">{item.base}</span>
-              {item.price !== null ? (
-                <>
-                  <span className="hp-t-price">${fmtPrice(item.price)}</span>
-                  <span className={`hp-t-chg ${item.change! >= 0 ? "up" : "dn"}`}>
-                    {item.change! >= 0 ? "▲" : "▼"}{Math.abs(item.change!).toFixed(2)}%
-                  </span>
-                </>
-              ) : (
-                <span className="hp-t-price" style={{ color: "#333" }}>—</span>
-              )}
-              <span className="hp-t-dot">·</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ══════════ HERO ══════════ */}
-      <div className="hp-hero">
-        <div className="hp-hero-glow" />
-
-
-
-        {/* Tagline */}
-        <div className="hp-tagline">
-          <div className="hp-live-pill">
-            <span className="hp-live-dot" />
-            Live Market
-          </div>
-          <h1 className="hp-h1">
-            Your Gateway to<br />
-            <span className="hp-accent">Crypto Markets</span>
-          </h1>
-          <p className="hp-sub">
-            Spot · Futures · P2P · Staking &nbsp;|&nbsp; 0.02% maker fee
-          </p>
-        </div>
-
-        {/* Mini price row */}
-        <div className="hp-mini-prices">
-          {TOP_CRYPTOS.map((c) => {
-            const t = tickers[c.symbol];
-            const price  = t ? parseFloat(t.c) : null;
-            const change = t ? parseFloat(t.P) : null;
-            const up     = change !== null ? change >= 0 : true;
-            return (
-              <Link to={`/market/detail/${c.symbol}`} className="hp-mini-card remove_blue" key={c.symbol}>
-                <div className="hp-mini-icon">
-                  {iconErrors[c.base] ? (
-                    <span className="hp-fallback">{c.base.slice(0, 2)}</span>
-                  ) : (
-                    <img
-                      src={`https://images.weserv.nl/?url=https://bin.bnbstatic.com/static/assets/logos/${c.base}.png`}
-                      width={20} height={20} loading="lazy" alt={c.base}
-                      onError={() => handleIconError(c.base)}
-                    />
-                  )}
-                </div>
-                <span className="hp-mini-sym">{c.base}</span>
-                {price !== null ? (
-                  <span className={`hp-mini-chg ${up ? "up" : "dn"}`}>
-                    {up ? "+" : ""}{change!.toFixed(2)}%
-                  </span>
-                ) : (
-                  <span className="hp-mini-chg" style={{ color: "#444" }}>—</span>
-                )}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* ══════════ BODY ══════════ */}
-      <div className="hp-body">
-
-        {/* ── Quick Actions ── */}
-        <div className="hp-actions-card">
-          {QUICK_ACTIONS.map((a) => (
-            <Link to={a.path} className="hp-action remove_blue" key={a.path}>
-              <div className="hp-action-ring">
-                <i className={a.icon} style={{ color: a.color }} />
+      {/* Image Slider Section */}
+      <div className="slider-container card-style">
+        <div className="slider">
+          <div
+            className="slides-container"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {sliderImages.map((image, index) => (
+              <div key={index} className="slide">
+                <img src={image} alt={`Slide ${index + 1}`} />
               </div>
-              <span className="hp-action-lbl">{a.name}</span>
+            ))}
+          </div>
+
+          {/* Indicators */}
+          <div className="slider-indicators">
+            {sliderImages.map((_, index) => (
+              <div
+                key={index}
+                className={`slider-indicator ${index === currentSlide ? "active" : ""}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Access Section */}
+      <div className="quick-access card-style">
+        <div className="section-header">
+          <h2 className="section-title">{i18n("pages.home.quickAccess.title")}</h2>
+          <Link to="/deposit" className="deposit-header-button remove_blue">
+            <div className="deposit-header-icon">
+              <i className="fas fa-wallet" />
+            </div>
+            <span className="deposit-header-text">{i18n("pages.home.quickAccess.deposit")}</span>
+          </Link>
+        </div>
+        <div className="access-grid">
+          {quickAccessItems.map((item) => (
+            <Link
+              to={item.path}
+              key={item.path}
+              className="access-card remove_blue"
+            >
+              <div className="access-icon">
+                <i className={item.icon} />
+              </div>
+              <span className="access-text">{item.name}</span>
             </Link>
           ))}
         </div>
-
-        {/* ── Live Market ── */}
-        <div className="hp-row-hdr">
-          <span className="hp-row-title">Live Market</span>
-          <Link to="/market" className="hp-see-all remove_blue">See All →</Link>
-        </div>
-
-        <div className="hp-mkt-grid">
-          {TOP_CRYPTOS.map((c) => {
-            const t       = tickers[c.symbol];
-            const price   = t ? parseFloat(t.c) : 0;
-            const change  = t ? parseFloat(t.P) : 0;
-            const up      = change >= 0;
-            const vol     = t ? parseFloat(t.v) : 0;
-
-            return (
-              <Link to={`/market/detail/${c.symbol}`} className="hp-mkt-card remove_blue" key={c.symbol}>
-                <div className="hp-mkt-top">
-                  <div className="hp-mkt-icon">
-                    {iconErrors[c.base] ? (
-                      <span className="hp-fallback">{c.base.slice(0, 2)}</span>
-                    ) : (
-                      <img
-                        src={`https://images.weserv.nl/?url=https://bin.bnbstatic.com/static/assets/logos/${c.base}.png`}
-                        width={28} height={28} loading="lazy" alt={c.base}
-                        onError={() => handleIconError(c.base)}
-                      />
-                    )}
-                  </div>
-                  <div className="hp-mkt-names">
-                    <span className="hp-mkt-sym">{c.base}</span>
-                    <span className="hp-mkt-usdt">/USDT</span>
-                  </div>
-                  <div className={`hp-mkt-pill ${up ? "up" : "dn"}`}>
-                    {up ? "▲" : "▼"} {Math.abs(change).toFixed(2)}%
-                  </div>
-                </div>
-
-                {isMarketReady && t ? (
-                  <>
-                    <div className="hp-mkt-price">${fmtPrice(price)}</div>
-                    <div className="hp-mkt-vol">Vol {fmtVol(vol)}</div>
-                  </>
-                ) : (
-                  <>
-                    <div className="hp-sk" style={{ width: "88px", height: "18px", marginBottom: "5px" }} />
-                    <div className="hp-sk" style={{ width: "56px", height: "11px" }} />
-                  </>
-                )}
-              </Link>
-            );
-          })}
-        </div>
-
-    
-
-        {/* ── Why Backpack ── */}
-        <div className="hp-row-hdr">
-          <span className="hp-row-title">Why Choose Us</span>
-        </div>
-
-        <div className="hp-why-list">
-          {[
-            { icon: "fas fa-shield-alt",  color: "#26a17b", title: "Bank-Grade Security",  desc: "Cold storage + 2FA + withdrawal whitelist protection" },
-            { icon: "fas fa-bolt",        color: "#f0b90b", title: "Lightning Fast",        desc: "Millisecond execution with real-time order books" },
-            { icon: "fas fa-percentage",  color: "#2196f3", title: "Lowest Fees",           desc: "0.02% maker / 0.05% taker — some of the best in the industry" },
-            { icon: "fas fa-globe",       color: "#9c27b0", title: "Multi-Chain Support",   desc: "Solana, Ethereum, Bitcoin and more in one platform" },
-          ].map((f) => (
-            <div className="hp-why-card" key={f.title}>
-              <div className="hp-why-icon" style={{ background: `${f.color}18`, borderColor: `${f.color}30` }}>
-                <i className={f.icon} style={{ color: f.color }} />
-              </div>
-              <div>
-                <div className="hp-why-title">{f.title}</div>
-                <div className="hp-why-desc">{f.desc}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Start Trading Banner ── */}
-        <Link to="/trade" className="hp-cta-banner remove_blue">
-          <div className="hp-cta-glow" />
-          <div>
-            <div className="hp-cta-title">Start Trading Now</div>
-            <div className="hp-cta-sub">Access 200+ crypto pairs · Zero deposit fees</div>
-          </div>
-          <div className="hp-cta-arrow">
-            <i className="fas fa-arrow-right" />
-          </div>
-        </Link>
-
-        {/* ── Crypto News ── */}
-        <News topic={selectNews} loading={selectloadingNews} />
-
-        <div style={{ height: "32px" }} />
       </div>
 
-      {/* ════════════════════ STYLES ════════════════════ */}
+      {/* Favorites Section */}
+      <div className="favorites-header card-style">
+        <div className="favorites-title">{i18n("pages.home.popularCryptos")}</div>
+        <Link to="/market" className="see-all remove_blue">
+          {i18n("pages.home.seeAll")} →
+        </Link>
+      </div>
+
+      {/* Market List with Real-time Data */}
+      <div className="market-list" style={{ padding: "0 15px" }}>
+        {topCryptos.map((crypto) => {
+          const data = cryptoData[crypto.symbol];
+          const displayName = crypto.symbol.replace("USDT", "/USDT");
+
+          return (
+            <Link
+              to={`/market/detail/${crypto.symbol}`}
+              key={crypto.symbol}
+              className="market-item remove_blue"
+            >
+              <div className="crypto-info">
+                <div
+                  className="crypto-icon"
+                  style={{ backgroundColor: crypto.bgColor }}
+                >
+                  <img
+                    src={`https://images.weserv.nl/?url=https://bin.bnbstatic.com/static/assets/logos/${displayName?.split("/")[0]}.png`}
+                    className={crypto.icon}
+                    style={{ width: 40 }}
+                  />
+                </div>
+                <div>
+                  <div className="crypto-name">{displayName}</div>
+                  <div className="crypto-volume">
+                    {i18n("pages.home.volume")}: {data ? data.volumeFormatted : i18n("pages.home.loading")}
+                  </div>
+                </div>
+              </div>
+              <div className="price-info">
+                <div className="price">
+                  {data ? `$${data.price}` : i18n("pages.home.loading")}
+                </div>
+                <div
+                  className={`change ${data ? (data.isPositive ? "positive" : "negative") : ""}`}
+                >
+                  {data
+                    ? `${data.isPositive ? "+" : ""}${data.changePercent}%`
+                    : i18n("pages.home.loading")}
+                </div>
+              </div>
+              <div className="chart">
+                <i
+                  className="fas fa-chart-line"
+                  style={{
+                    color: data
+                      ? data.isPositive
+                        ? "#4caf50"
+                        : "#fd4b4e"
+                      : "#aaaaaa",
+                  }}
+                />
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* News Section */}
+      <News topic={selectNews} loading={selectloadingNews} />
+
+      {/* Unified CSS – consistent with Profile page style */}
       <style>{`
-        /* ── Reset / Base ── */
-        .hp-root {
+        /* ===== GLOBAL RESET & BASE ===== */
+        .home-page {
           min-height: 100vh;
-          background: #0e0f14;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          color: #fff;
+          background-color: #0e0f14;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
         }
-        a.remove_blue { text-decoration: none; color: inherit; }
 
-        /* ── Ticker ── */
-        .hp-ticker-bar {
-          background: #0a0b0f;
-          border-bottom: 1px solid #1a1b22;
-          height: 30px;
+        a.remove_blue {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        /* ===== CARDS (matching profile's content-card) ===== */
+        .card-style {
+          background-color: #15161c;
+          border-radius: 24px;
+          padding: 20px;
+          margin: 16px 15px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== SLIDER ===== */
+        .slider-container.card-style {
+          padding: 0;
           overflow: hidden;
-          display: flex;
-          align-items: center;
         }
-        .hp-ticker-track {
-          display: inline-flex;
-          align-items: center;
-          white-space: nowrap;
-          animation: hpScroll 22s linear infinite;
-        }
-        @keyframes hpScroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .hp-ticker-item {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-          padding: 0 18px;
-          font-size: 11px;
-        }
-        .hp-t-sym   { color: #666; font-weight: 700; }
-        .hp-t-price { color: #bbb; font-weight: 500; }
-        .hp-t-chg.up { color: #26a17b; }
-        .hp-t-chg.dn { color: #fd4b4e; }
-        .hp-t-dot    { color: #222; margin-left: 10px; }
-
-        /* ── Hero ── */
-        .hp-hero {
+        .slider {
           position: relative;
-          background: linear-gradient(170deg, #12131b 0%, #0e0f14 55%, #180a0b 100%);
-          padding: 0 0 20px;
-          overflow: hidden;
-          max-width: 400px;
-          margin: 0 auto;
+          width: 100%;
         }
-        .hp-hero-glow {
-          position: absolute;
-          top: -80px; right: -80px;
-          width: 260px; height: 260px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(253,75,78,0.14) 0%, transparent 65%);
-          pointer-events: none;
-        }
-
-        /* Slider */
-        .hp-slider {
-          position: relative;
-          overflow: hidden;
-        }
-        .hp-slides {
+        .slides-container {
           display: flex;
-          transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
-          will-change: transform;
+          transition: transform 0.5s ease-in-out;
+          height: auto;
         }
-        .hp-slide { min-width: 100%; }
-        .hp-slide img { width: 100%; display: block; object-fit: cover; }
-        .hp-dots {
+        .slide {
+          min-width: 100%;
+        }
+        .slide img {
+          width: 100%;
+          object-fit: contain;
+          border-radius: 24px 24px 0 0;
+        }
+        .slider-indicators {
           position: absolute;
-          bottom: 10px; left: 50%;
+          bottom: 15px;
+          left: 50%;
           transform: translateX(-50%);
-          display: flex; gap: 6px; z-index: 2;
-        }
-        .hp-dot {
-          width: 7px; height: 7px;
-          border-radius: 50%;
-          background: rgba(255,255,255,0.3);
-          border: none; cursor: pointer; padding: 0;
-          transition: all 0.3s;
-        }
-        .hp-dot.on { width: 20px; border-radius: 4px; background: #fd4b4e; }
-
-        /* Tagline */
-        .hp-tagline {
-          padding: 18px 18px 0;
-        }
-        .hp-live-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: rgba(38,161,123,0.12);
-          border: 1px solid rgba(38,161,123,0.3);
-          border-radius: 20px;
-          padding: 4px 12px;
-          font-size: 11px;
-          color: #26a17b;
-          font-weight: 700;
-          margin-bottom: 12px;
-          letter-spacing: 0.4px;
-        }
-        .hp-live-dot {
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: #26a17b;
-          animation: hpBlink 2s infinite;
-        }
-        @keyframes hpBlink {
-          0%,100% { opacity: 1; transform: scale(1); }
-          50%      { opacity: 0.4; transform: scale(1.4); }
-        }
-        .hp-h1 {
-          font-size: 27px;
-          font-weight: 800;
-          line-height: 1.2;
-          margin: 0 0 8px;
-          letter-spacing: -0.5px;
-        }
-        .hp-accent {
-          background: linear-gradient(90deg, #fd4b4e 0%, #ff8a6e 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .hp-sub {
-          color: #666;
-          font-size: 12.5px;
-          margin: 0 0 16px;
-          letter-spacing: 0.2px;
-        }
-
-        /* Mini price row */
-        .hp-mini-prices {
           display: flex;
           gap: 8px;
-          padding: 0 18px;
-          overflow-x: auto;
-          scrollbar-width: none;
+          z-index: 10;
         }
-        .hp-mini-prices::-webkit-scrollbar { display: none; }
-        .hp-mini-card {
-          flex: 0 0 auto;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid #1e1f26;
-          border-radius: 10px;
-          padding: 7px 12px;
-          transition: border-color 0.2s;
+        .slider-indicator {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.4);
+          transition: background-color 0.3s ease;
         }
-        .hp-mini-card:hover { border-color: #fd4b4e33; }
-        .hp-mini-icon {
-          width: 22px; height: 22px;
-          display: flex; align-items: center; justify-content: center;
-          overflow: hidden; border-radius: 50%;
-        }
-        .hp-mini-sym  { color: #ccc; font-size: 12px; font-weight: 700; }
-        .hp-mini-chg  { font-size: 11px; font-weight: 700; }
-        .hp-mini-chg.up { color: #26a17b; }
-        .hp-mini-chg.dn { color: #fd4b4e; }
-
-        /* ── Body ── */
-        .hp-body {
-          max-width: 400px;
-          margin: 0 auto;
-          padding: 16px 14px 0;
-          box-sizing: border-box;
+        .slider-indicator.active {
+          background-color: #fd4b4e;
+          width: 20px;
+          border-radius: 4px;
         }
 
-        /* ── Quick Actions ── */
-        .hp-actions-card {
+        /* ===== QUICK ACCESS ===== */
+        .section-header {
           display: flex;
           justify-content: space-between;
-          background: #15161c;
-          border: 1px solid #1e1f26;
-          border-radius: 16px;
-          padding: 16px 6px;
-          margin-bottom: 22px;
+          align-items: center;
+          margin-bottom: 15px;
         }
-        .hp-action {
+        .section-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #ffffff;
+          margin: 0;
+          padding-bottom: 8px;
+          border-bottom: 1px solid #2a2a2e;
+          width: fit-content;
+        }
+        .access-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+        }
+        .access-card {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 6px;
-          flex: 1;
-          min-width: 0;
-        }
-        .hp-action-ring {
-          width: 46px; height: 46px;
-          border-radius: 50%;
-          background: #0e0f14;
-          border: 1px solid #2a2a2e;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 17px;
-          transition: background 0.2s, border-color 0.2s;
-        }
-        .hp-action:hover .hp-action-ring {
-          background: #1a1b23;
-          border-color: #3a3a42;
-        }
-        .hp-action-lbl {
-          font-size: 10.5px;
-          color: #888;
-          font-weight: 600;
+          background-color: #0e0f14;
+          border-radius: 12px;
+          padding: 14px 8px;
+          transition: transform 0.2s, background-color 0.2s;
           text-align: center;
         }
-
-        /* ── Section header row ── */
-        .hp-row-hdr {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 12px;
+        .access-card:hover {
+          transform: translateY(-3px);
+          background-color: rgba(253, 75, 78, 0.08);
         }
-        .hp-row-title { color: #fff; font-size: 15px; font-weight: 700; }
-        .hp-see-all   { color: #fd4b4e; font-size: 12.5px; font-weight: 600; }
-
-        /* ── Market Grid ── */
-        .hp-mkt-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
-          margin-bottom: 24px;
-        }
-        .hp-mkt-card {
-          background: #15161c;
-          border: 1px solid #1e1f26;
-          border-radius: 14px;
-          padding: 14px 12px;
-          display: block;
-          transition: border-color 0.2s, background 0.2s;
-        }
-        .hp-mkt-card:hover { background: #1a1b24; border-color: #2a2a35; }
-        .hp-mkt-top {
-          display: flex;
-          align-items: center;
-          gap: 7px;
-          margin-bottom: 10px;
-        }
-        .hp-mkt-icon {
-          width: 32px; height: 32px;
-          border-radius: 50%;
-          background: #0e0f14;
-          display: flex; align-items: center; justify-content: center;
-          overflow: hidden; flex-shrink: 0;
-        }
-        .hp-mkt-names { flex: 1; min-width: 0; }
-        .hp-mkt-sym   { color: #fff; font-size: 13px; font-weight: 700; display: block; line-height: 1.2; }
-        .hp-mkt-usdt  { color: #444; font-size: 10px; }
-        .hp-mkt-pill  {
-          flex-shrink: 0;
-          font-size: 10px;
-          font-weight: 700;
-          padding: 3px 6px;
-          border-radius: 6px;
-        }
-        .hp-mkt-pill.up { background: rgba(38,161,123,0.15); color: #26a17b; }
-        .hp-mkt-pill.dn { background: rgba(253,75,78,0.12);  color: #fd4b4e; }
-        .hp-mkt-price { color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-        .hp-mkt-vol   { color: #444; font-size: 11px; }
-
-        /* ── Trading Products ── */
-        .hp-prod-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
-          margin-bottom: 24px;
-        }
-        .hp-prod-card {
-          background: #15161c;
-          border: 1px solid #1e1f26;
-          border-radius: 14px;
-          padding: 14px 12px;
-          display: block;
-          transition: border-color 0.2s, background 0.2s;
-        }
-        .hp-prod-card:hover { background: #1a1b24; border-color: #2a2a35; }
-        .hp-prod-top {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 10px;
-        }
-        .hp-prod-icon {
-          width: 38px; height: 38px;
-          border-radius: 10px;
-          background: rgba(253,75,78,0.1);
-          border: 1px solid rgba(253,75,78,0.2);
-          display: flex; align-items: center; justify-content: center;
-          color: #fd4b4e; font-size: 16px;
-        }
-        .hp-prod-badge {
-          font-size: 9px;
-          font-weight: 800;
-          background: rgba(253,75,78,0.15);
+        .access-icon {
+          font-size: 22px;
           color: #fd4b4e;
-          padding: 2px 7px;
-          border-radius: 6px;
-          letter-spacing: 0.3px;
-          border: 1px solid rgba(253,75,78,0.2);
+          margin-bottom: 8px;
         }
-        .hp-prod-label { color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-        .hp-prod-desc  { color: #555; font-size: 11px; line-height: 1.5; }
+        .access-text {
+          font-size: 12px;
+          font-weight: 500;
+          color: #ffffff;
+          line-height: 1.3;
+        }
 
-        /* ── Why section ── */
-        .hp-why-list {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          margin-bottom: 22px;
-        }
-        .hp-why-card {
-          display: flex;
-          align-items: flex-start;
-          gap: 13px;
-          background: #15161c;
-          border: 1px solid #1e1f26;
-          border-radius: 14px;
-          padding: 14px 14px;
-        }
-        .hp-why-icon {
-          width: 40px; height: 40px; flex-shrink: 0;
-          border-radius: 10px;
-          border: 1px solid;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 16px;
-        }
-        .hp-why-title { color: #fff; font-size: 13.5px; font-weight: 700; margin-bottom: 3px; }
-        .hp-why-desc  { color: #555; font-size: 11.5px; line-height: 1.5; }
-
-        /* ── CTA Banner ── */
-        .hp-cta-banner {
-          position: relative;
+        /* Deposit button */
+        .deposit-header-button {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          background: linear-gradient(135deg, #1d0708 0%, #2a0b0c 100%);
-          border: 1px solid rgba(253,75,78,0.3);
-          border-radius: 16px;
-          padding: 18px 16px;
-          margin-bottom: 24px;
-          overflow: hidden;
-          gap: 12px;
-        }
-        .hp-cta-glow {
-          position: absolute;
-          left: -40px; top: -40px;
-          width: 120px; height: 120px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(253,75,78,0.2) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        .hp-cta-title { color: #fff; font-size: 15px; font-weight: 800; margin-bottom: 3px; }
-        .hp-cta-sub   { color: #888; font-size: 11.5px; }
-        .hp-cta-arrow {
-          flex-shrink: 0;
-          width: 38px; height: 38px;
-          border-radius: 50%;
           background: #fd4b4e;
-          display: flex; align-items: center; justify-content: center;
-          color: #fff; font-size: 14px;
+          border-radius: 10px;
+          padding: 8px 16px;
+          transition: background-color 0.2s;
+          box-shadow: 0 2px 8px rgba(253, 75, 78, 0.3);
+        }
+        .deposit-header-button:hover {
+          background-color: #e04345;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(253, 75, 78, 0.4);
+        }
+        .deposit-header-icon {
+          font-size: 14px;
+          color: #ffffff;
+          margin-right: 6px;
+        }
+        .deposit-header-text {
+          font-size: 14px;
+          font-weight: 600;
+          color: #ffffff;
         }
 
-        /* ── Shimmer skeleton ── */
-        .hp-sk {
-          display: block;
-          border-radius: 4px;
-          animation: hpShimmer 1.5s infinite linear;
-          background: linear-gradient(to right, #2a2a2e 8%, #323236 18%, #2a2a2e 33%);
-          background-size: 800px 104px;
-        }
-        @keyframes hpShimmer {
-          0%   { background-position: -468px 0; }
-          100% { background-position:  468px 0; }
-        }
-
-        /* ── Fallback icon ── */
-        .hp-fallback {
-          font-size: 9px; font-weight: 800; color: #fd4b4e;
-        }
-
-        /* ══════════════════ NEWS STYLES ══════════════════ */
-        .crypto-news-container {
-          max-width: 400px;
-          margin: 0 auto;
-        }
-        .news-section-header {
+        /* ===== FAVORITES HEADER ===== */
+        .favorites-header.card-style {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 14px;
+          padding: 14px 20px;
         }
-        .news-sections-title {
-          color: #fff;
-          font-size: 15px;
-          font-weight: 700;
-        }
-        .news-see-all {
-          color: #fd4b4e;
-          font-size: 12.5px;
+        .favorites-title {
+          font-size: 16px;
           font-weight: 600;
-          text-decoration: none;
+          color: #ffffff;
         }
-        .news-item-card {
-          display: flex;
-          gap: 12px;
-          align-items: flex-start;
-          background: #15161c;
-          border-radius: 14px;
-          padding: 12px 12px;
-          border: 1px solid #1e1f26;
-          margin-bottom: 10px;
-          cursor: pointer;
-          transition: background 0.2s, border-color 0.2s;
-          overflow: hidden;
-        }
-        .news-item-card:hover {
-          background: #1a1b24;
-          border-color: #2a2a35;
-        }
-        .news-image-placeholder {
-          width: 76px;
-          height: 68px;
-          object-fit: cover;
-          border-radius: 10px;
-          flex-shrink: 0;
-          background: #2a2a2e;
-          display: block;
-        }
-        .news-content-wrapper {
-          flex: 1;
-          min-width: 0;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-        .news-headline {
-          color: #e8e8e8;
+        .see-all {
           font-size: 13px;
+          color: #fd4b4e;
+          font-weight: 500;
+        }
+
+        /* ===== MARKET LIST ===== */
+        .market-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background-color: #15161c;
+          border-radius: 12px;
+          padding: 14px 16px;
+          margin-bottom: 10px;
+          transition: background-color 0.2s;
+        }
+        .market-item:hover {
+          background-color: rgba(253, 75, 78, 0.05);
+        }
+        .crypto-info {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .crypto-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        .crypto-name {
+          color: #ffffff;
+          font-size: 15px;
           font-weight: 600;
-          line-height: 1.45;
-          margin-bottom: 5px;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
         }
-        .news-summary {
-          color: #555;
-          font-size: 11.5px;
-          line-height: 1.5;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
+        .crypto-volume {
+          color: #aaaaaa;
+          font-size: 12px;
+          margin-top: 2px;
         }
-        .news-meta-info {
-          color: #3a3a42;
-          font-size: 10.5px;
-          margin-top: 6px;
+        .price-info {
+          text-align: right;
+        }
+        .price {
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .change {
+          font-size: 12px;
+          margin-top: 2px;
+        }
+        .change.positive {
+          color: #4caf50;
+        }
+        .change.negative {
+          color: #fd4b4e;
+        }
+        .chart i {
+          font-size: 18px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 480px) {
+          .access-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+          }
+          .access-card {
+            padding: 10px 5px;
+          }
+          .access-icon {
+            font-size: 20px;
+          }
+          .access-text {
+            font-size: 11px;
+          }
+          .card-style {
+            margin: 12px 10px;
+            padding: 16px;
+          }
+          .market-item {
+            padding: 12px 14px;
+          }
+        }
+
+        @media (max-width: 350px) {
+          .access-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
       `}</style>
     </div>

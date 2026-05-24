@@ -5,12 +5,12 @@ import useNotifications from "../notifications/useNotifications";
 import notificationListSelectors from "src/modules/notification/list/notificationListSelectors";
 import authSelectors from "src/modules/auth/authSelectors";
 
-// Extracted CSS to separate constant to prevent re-creation on every render
+// Extracted CSS to separate constant – now matching the app's dark theme
 const HEADER_STYLES = `
   .app-header {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background-color: #0e0f14;
     padding: 10px 0;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #2a2a2e;
     margin: auto;
     max-width: 400px;
     margin-bottom: 10px;
@@ -21,7 +21,6 @@ const HEADER_STYLES = `
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
   }
@@ -50,7 +49,7 @@ const HEADER_STYLES = `
   
   .notification-btn {
     position: relative;
-    background: #333;
+    background: #15161c;
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -59,12 +58,12 @@ const HEADER_STYLES = `
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
-    color: #F3BA2F;
+    transition: all 0.2s ease;
+    color: #fd4b4e;
   }
   
   .notification-btn:hover {
-    background: #444;
+    background: rgba(253, 75, 78, 0.15);
     transform: scale(1.1);
   }
   
@@ -72,7 +71,7 @@ const HEADER_STYLES = `
     position: absolute;
     top: -5px;
     right: -5px;
-    background: #FF4444;
+    background: #fd4b4e;
     color: white;
     border-radius: 50%;
     width: 18px;
@@ -101,17 +100,17 @@ const HEADER_STYLES = `
   .profile-avatars {
     width: 40px;
     height: 40px;
-    background: #333;
+    background: #15161c;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #F3BA2F;
-    transition: all 0.3s ease;
+    color: #fd4b4e;
+    transition: all 0.2s ease;
   }
   
   .profile-avatars:hover {
-    background: #444;
+    background: rgba(253, 75, 78, 0.15);
     transform: scale(1.1);
   }
 `;
@@ -144,9 +143,9 @@ function Header() {
   const logoSection = useMemo(() => (
     <div className="logo-section">
       <img 
-        src="/icons/Backpack.png" 
+        src="/playsotre/logo.png" 
         alt="App Logo" 
-        style={{ height: 35 }}
+        style={{ height: 25 }}
         loading="lazy" // Improve loading performance
       />
     </div>

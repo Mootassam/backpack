@@ -282,43 +282,85 @@ const Faq: React.FC = () => {
   const managingAccountFaqs = filteredFaqs.filter(item => item.category === 'managing-account');
 
   return (
-    <div className="container">
-      {/* Header Section */}
-      <div className="headerq">
-        <div className="header-content">
-          <div className="back-button" onClick={handleBackClick}>
-            <i className="fas fa-arrow-left" />
+    <div className="faq-page">
+      {/* Header Section – consistent top-header style */}
+      <div className="top-header">
+        <div className="back-button" onClick={handleBackClick}>
+          <i className="fas fa-arrow-left" />
+        </div>
+        <h1 className="page-title">{i18n('pages.faq.title')}</h1>
+        <div className="header-placeholder"></div>
+      </div>
+
+      {/* Main content card */}
+      <div className="content-card">
+        {/* Hero Section */}
+        <div className="hero-section">
+          <div className="hero-title">{i18n('pages.faq.hero.title')}</div>
+          <div className="hero-subtitle">
+            {i18n('pages.faq.hero.subtitle')}
           </div>
-          <div className="page-title">{i18n('pages.faq.title')}</div>
-          <div className="placeholder"></div>
         </div>
-      </div>
 
-      {/* Hero Section */}
-      <div className="hero-section">
-        <div className="hero-title">{i18n('pages.faq.hero.title')}</div>
-        <div className="hero-subtitle">
-          {i18n('pages.faq.hero.subtitle')}
+        {/* Search Bar */}
+        <div className="search-container">
+          <input
+            type="text"
+            className="search-bar"
+            placeholder={i18n('pages.faq.search.placeholder')}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
-      </div>
 
-      {/* Search Bar */}
-      <div className="search-container">
-        <input
-          type="text"
-          className="search-bar"
-          placeholder={i18n('pages.faq.search.placeholder')}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
+        {/* Getting Started Section */}
+        {gettingStartedFaqs.length > 0 && (
+          <div className="faq-section">
+            <div className="section-title">{i18n('pages.faq.categories.gettingStarted')}</div>
+            <div className="faq-category">
+              {gettingStartedFaqs.map((faq) => (
+                <div key={faq.id} className="faq-item">
+                  <div className="faq-question">
+                    <i className={`fas ${faq.icon} faq-icon`} />
+                    {faq.question}
+                  </div>
+                  <div className="faq-answer">
+                    {faq.answer}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
-      {/* Getting Started Section */}
-      {gettingStartedFaqs.length > 0 && (
-        <div className="faq-section">
-          <div className="section-title">{i18n('pages.faq.categories.gettingStarted')}</div>
-          <div className="faq-category">
-            {gettingStartedFaqs.map((faq) => (
+        {/* Managing Your Account Section */}
+        {managingAccountFaqs.length > 0 && (
+          <div className="faq-section">
+            <div className="section-title">{i18n('pages.faq.categories.managingAccount')}</div>
+            <div className="faq-category">
+              {managingAccountFaqs.map((faq) => (
+                <div key={faq.id} className="faq-item">
+                  <div className="faq-question">
+                    <i className={`fas ${faq.icon} faq-icon`} />
+                    {faq.question}
+                  </div>
+                  <div className="faq-answer">
+                    {faq.answer}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Futures Trading Section */}
+        {filteredFutures.length > 0 && (
+          <div className="futures-section">
+            <div className="futures-title">
+              <i className="fas fa-chart-bar" />
+              {i18n('pages.faq.futures.title')}
+            </div>
+            {filteredFutures.map((faq) => (
               <div key={faq.id} className="faq-item">
                 <div className="faq-question">
                   <i className={`fas ${faq.icon} faq-icon`} />
@@ -330,112 +372,49 @@ const Faq: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Managing Your Account Section */}
-      {managingAccountFaqs.length > 0 && (
-        <div className="faq-section">
-          <div className="section-title">{i18n('pages.faq.categories.managingAccount')}</div>
-          <div className="faq-category">
-            {managingAccountFaqs.map((faq) => (
-              <div key={faq.id} className="faq-item">
-                <div className="faq-question">
-                  <i className={`fas ${faq.icon} faq-icon`} />
-                  {faq.question}
-                </div>
-                <div className="faq-answer">
-                  {faq.answer}
-                </div>
-              </div>
-            ))}
+        {/* Benefits Section */}
+        <div className="benefits-section">
+          <div className="benefits-title">
+            <i className="fas fa-star" />
+            {i18n('pages.faq.benefits.title')}
           </div>
-        </div>
-      )}
-
-      {/* Futures Trading Section */}
-      {filteredFutures.length > 0 && (
-        <div className="futures-section">
-          <div className="futures-title">
-            <i className="fas fa-chart-bar" />
-            {i18n('pages.faq.futures.title')}
-          </div>
-          {filteredFutures.map((faq) => (
-            <div key={faq.id} className="faq-item">
-              <div className="faq-question">
-                <i className={`fas ${faq.icon} faq-icon`} />
-                {faq.question}
+          <ul className="benefits-list">
+            <li className="benefit-item">
+              <i className="fas fa-shield-alt benefit-icon" />
+              <div className="benefit-content">
+                <div className="benefit-text">{i18n('pages.faq.benefits.hedge')}</div>
               </div>
-              <div className="faq-answer">
-                {faq.answer}
+            </li>
+            <li className="benefit-item">
+              <i className="fas fa-rocket benefit-icon" />
+              <div className="benefit-content">
+                <div className="benefit-text">{i18n('pages.faq.benefits.multiplyProfits')}</div>
               </div>
-            </div>
-          ))}
+            </li>
+            <li className="benefit-item">
+              <i className="fas fa-arrows-alt-v benefit-icon" />
+              <div className="benefit-content">
+                <div className="benefit-text">{i18n('pages.faq.benefits.tradeBothMarkets')}</div>
+              </div>
+            </li>
+            <li className="benefit-item">
+              <i className="fas fa-chess benefit-icon" />
+              <div className="benefit-content">
+                <div className="benefit-text">{i18n('pages.faq.benefits.advancedStrategies')}</div>
+              </div>
+            </li>
+          </ul>
         </div>
-      )}
 
-      {/* Benefits Section */}
-      <div className="benefits-section">
-        <div className="benefits-title">
-          <i className="fas fa-star" />
-          {i18n('pages.faq.benefits.title')}
+ 
+
+        {/* Footer */}
+        <div className="footer">
+          <br />
+   
         </div>
-        <ul className="benefits-list">
-          <li className="benefit-item">
-            <i className="fas fa-shield-alt benefit-icon" />
-            <div className="benefit-content">
-              <div className="benefit-text">{i18n('pages.faq.benefits.hedge')}</div>
-            </div>
-          </li>
-          <li className="benefit-item">
-            <i className="fas fa-rocket benefit-icon" />
-            <div className="benefit-content">
-              <div className="benefit-text">{i18n('pages.faq.benefits.multiplyProfits')}</div>
-            </div>
-          </li>
-          <li className="benefit-item">
-            <i className="fas fa-arrows-alt-v benefit-icon" />
-            <div className="benefit-content">
-              <div className="benefit-text">{i18n('pages.faq.benefits.tradeBothMarkets')}</div>
-            </div>
-          </li>
-          <li className="benefit-item">
-            <i className="fas fa-chess benefit-icon" />
-            <div className="benefit-content">
-              <div className="benefit-text">{i18n('pages.faq.benefits.advancedStrategies')}</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      {/* Action Cards */}
-      <div className="action-cards">
-        {actionCards.map((card) => (
-          <a
-            key={card.id}
-            className="action-card remove_blue"
-            href={card.link || '#'}
-            target={card.isExternal ? '_blank' : '_self'}
-            rel={card.isExternal ? 'noopener noreferrer' : ''}
-            onClick={(e) => {
-              if (!card.link) {
-                e.preventDefault();
-              }
-              handleActionCardClick(card);
-            }}
-          >
-            <i className={`fas ${card.icon} action-icon`} />
-            <div className="action-title">{card.title}</div>
-            <div className="action-description">{card.description}</div>
-          </a>
-        ))}
-      </div>
-
-      {/* Footer */}
-      <div className="footer">
-        {i18n('pages.faq.footer.copyright')}
-        <br />
-        {i18n('pages.faq.footer.needHelp')}
       </div>
 
       {/* Notification Element */}
@@ -446,330 +425,296 @@ const Faq: React.FC = () => {
         {notificationMessage}
       </div>
 
-
-
       <style>{`
+        /* ===== GLOBAL PAGE ===== */
+        .faq-page {
+          min-height: 100vh;
+          background-color: #0e0f14;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
 
+        /* ===== TOP HEADER (identical to Profile/News/Security) ===== */
+        .top-header {
+          width: 100%;
+          max-width: 400px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px 20px 12px;
+          background-color: #0e0f14;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
+        .back-button {
+          color: #ffffff;
+          font-size: 18px;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+        .back-button:hover {
+          background-color: rgba(253, 75, 78, 0.15);
+        }
+        .page-title {
+          color: #ffffff;
+          font-size: 20px;
+          font-weight: 700;
+          margin: 0;
+          text-align: center;
+          flex: 1;
+        }
+        .header-placeholder {
+          width: 32px;
+        }
 
+        /* ===== CONTENT CARD ===== */
+        .content-card {
+          width: 100%;
+          max-width: 400px;
+          background-color: #15161c;
+          border-top-left-radius: 24px;
+          border-top-right-radius: 24px;
+          padding: 24px 20px 24px;
+          box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+          flex: 1;
+        }
 
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        .hero-title {
+          font-size: 22px;
+          font-weight: 700;
+          color: #ffffff;
+          margin-bottom: 8px;
+        }
+        .hero-subtitle {
+          font-size: 14px;
+          color: #aaaaaa;
+          line-height: 1.4;
+        }
 
+        /* ===== SEARCH BAR ===== */
+        .search-container {
+          margin-bottom: 20px;
+        }
+        .search-bar {
+          width: 100%;
+          padding: 12px 16px;
+          background-color: #0e0f14;
+          border: 1px solid #2a2a2e;
+          border-radius: 12px;
+          color: #ffffff;
+          font-size: 14px;
+          outline: none;
+          transition: border-color 0.2s;
+        }
+        .search-bar::placeholder {
+          color: #888888;
+        }
+        .search-bar:focus {
+          border-color: #fd4b4e;
+        }
 
-.faq-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  padding-bottom: 80px;
-  background-color: #000000;
-  min-height: 100vh;
-}
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 12px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid #2a2a2e;
+        }
 
-/* Header Section */
-.headerq {
-  background-color: #000000;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+        /* ===== FAQ ITEMS ===== */
+        .faq-item {
+          background-color: #0e0f14;
+          border-radius: 10px;
+          padding: 14px;
+          margin-bottom: 10px;
+        }
+        .faq-question {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #ffffff;
+          font-size: 15px;
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+        .faq-icon {
+          color: #fd4b4e;
+          font-size: 16px;
+          width: 20px;
+          text-align: center;
+        }
+        .faq-answer {
+          color: #aaaaaa;
+          font-size: 14px;
+          line-height: 1.5;
+          padding-left: 30px;
+        }
 
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        /* Step list inside answers */
+        .step-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .step-items {
+          display: flex;
+          align-items: baseline;
+          gap: 8px;
+          color: #ffffff;
+          font-size: 14px;
+        }
+        .step-arrow {
+          color: #fd4b4e;
+          font-size: 12px;
+          margin-top: 3px;
+        }
 
-.back-button {
-  color: #FFFFFF;
-  font-size: 20px;
-  cursor: pointer;
-  width: 20px;
-}
+        /* ===== FUTURES SECTION ===== */
+        .futures-section {
+          margin-top: 20px;
+        }
+        .futures-title {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 12px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid #2a2a2e;
+        }
+        .futures-title i {
+          color: #fd4b4e;
+        }
 
-.page-title {
-  font-size: 20px;
-  font-weight: bold;
-}
+        /* ===== BENEFITS SECTION ===== */
+        .benefits-section {
+          margin-top: 20px;
+        }
+        .benefits-title {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 12px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid #2a2a2e;
+        }
+        .benefits-title i {
+          color: #fd4b4e;
+        }
+        .benefits-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .benefit-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 0;
+          border-bottom: 1px solid #2a2a2e;
+        }
+        .benefit-item:last-child {
+          border-bottom: none;
+        }
+        .benefit-icon {
+          color: #4caf50;
+          font-size: 16px;
+          width: 24px;
+          text-align: center;
+        }
+        .benefit-text {
+          color: #ffffff;
+          font-size: 14px;
+        }
 
-.placeholder {
-  width: 20px;
-}
+        /* ===== ACTION CARDS ===== */
+        .action-cards {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+          margin-top: 20px;
+        }
+        .action-card {
+          background-color: #0e0f14;
+          border-radius: 12px;
+          padding: 16px;
+          text-align: center;
+          text-decoration: none;
+          transition: background-color 0.2s;
+          display: block;
+        }
+        .action-card:hover {
+          background-color: rgba(253, 75, 78, 0.08);
+        }
+        .action-icon {
+          color: #fd4b4e;
+          font-size: 24px;
+          margin-bottom: 8px;
+        }
+        .action-title {
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+        .action-description {
+          color: #aaaaaa;
+          font-size: 12px;
+          line-height: 1.3;
+        }
+        a.remove_blue {
+          text-decoration: none;
+          color: inherit;
+        }
 
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(145deg, #1A1A1A, #2A2A2A);
-  border-radius: 12px;
-  padding: 25px;
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-}
+        /* ===== FOOTER ===== */
+        .footer {
+          margin-top: 30px;
+          text-align: center;
+          font-size: 12px;
+          color: #aaaaaa;
+          line-height: 1.5;
+        }
 
-.hero-title {
-  font-size: 22px;
-  font-weight: bold;
-  color: #F3BA2F;
-  margin-bottom: 10px;
-}
-
-.hero-subtitle {
-  font-size: 16px;
-  color: #AAAAAA;
-  line-height: 1.5;
-}
-
-/* FAQ Sections */
-.faq-section {
-  margin-bottom: 20px;
-}
-
-.section-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #F3BA2F;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #2A2A2A;
-}
-
-.faq-category {
-  margin-bottom: 25px;
-}
-
-.category-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #F3BA2F;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.category-icon {
-  font-size: 18px;
-}
-
-.faq-item {
-  background-color: #1A1A1A;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 12px;
-}
-
-.faq-question {
-  font-weight: 600;
-  margin-bottom: 8px;
-  font-size: 15px;
-  color: #FFFFFF;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.faq-icon {
-  color: #00C076;
-  font-size: 16px;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.faq-answer {
-  font-size: 14px;
-  color: #AAAAAA;
-  line-height: 1.5;
-  margin-left: 26px;
-}
-
-.step-list {
-  margin-left: 26px;
-  margin-top: 8px;
-}
-
-.step-items {
-  font-size: 14px;
-  color: #AAAAAA;
-  line-height: 1.5;
-  margin-bottom: 5px;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.step-arrow {
-  color: #F3BA2F;
-  font-size: 12px;
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-
-/* Futures Section */
-.futures-section {
-  background-color: #1A1A1A;
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 20px;
-  border-left: 4px solid #FF6838;
-}
-
-.futures-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #FF6838;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.futures-content {
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* Benefits Section */
-.benefits-section {
-  background-color: #1A1A1A;
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 20px;
-  border-left: 4px solid #00C076;
-}
-
-.benefits-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #00C076;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.benefits-list {
-  list-style-type: none;
-}
-
-.benefit-item {
-  padding: 10px 0;
-  border-bottom: 1px solid #2A2A2A;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.benefit-item:last-child {
-  border-bottom: none;
-}
-
-.benefit-icon {
-  color: #00C076;
-  font-size: 16px;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.benefit-content {
-  flex: 1;
-}
-
-.benefit-text {
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* Action Cards */
-.action-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-bottom: 25px;
-}
-
-.action-card {
-  background-color: #1A1A1A;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s;
-  cursor: pointer;
-}
-
-.action-card:hover {
-  transform: translateY(-3px);
-}
-
-.action-icon {
-  font-size: 30px;
-  color: #F3BA2F;
-  margin-bottom: 12px;
-}
-
-.action-title {
-  font-weight: 600;
-  margin-bottom: 8px;
-  font-size: 15px;
-}
-
-.action-description {
-  font-size: 13px;
-  color: #AAAAAA;
-}
-
-/* Search Bar */
-.search-container {
-  margin-bottom: 20px;
-}
-
-.search-bar {
-  width: 100%;
-  padding: 15px;
-  background-color: #1A1A1A;
-  border: 1px solid #2A2A2A;
-  border-radius: 10px;
-  color: #FFFFFF;
-  font-size: 14px;
-}
-
-.search-bar::placeholder {
-  color: #AAAAAA;
-}
-
-.search-bar:focus {
-  outline: none;
-  border-color: #F3BA2F;
-}
-
-/* Notification */
-.notification {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #00C076;
-  color: #000000;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.notification.show {
-  opacity: 1;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 20px 0;
-  color: #AAAAAA;
-  font-size: 12px;
-  border-top: 1px solid #2A2A2A;
-  margin-top: 20px;
-}
+        /* ===== NOTIFICATION ===== */
+        .notification {
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: #fd4b4e;
+          color: #ffffff;
+          padding: 10px 24px;
+          border-radius: 8px;
+          font-size: 14px;
+          opacity: 0;
+          transition: opacity 0.3s;
+          z-index: 200;
+        }
+        .notification.show {
+          opacity: 1;
+        }
       `}</style>
     </div>
   );

@@ -281,6 +281,11 @@ const simpleRoutes = [
     path: "/500",
     loader: () => import("src/view/shared/errors/Error500Page"),
   },
+ {
+    path: "/online-service",
+    loader: () => import("src/view/pages/LiveChat/LiveChat"),
+  },
+
   {
     path: "**",
     loader: () => import("src/view/shared/errors/Error404Page"),

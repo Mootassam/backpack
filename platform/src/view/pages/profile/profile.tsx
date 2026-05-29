@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useCallback } from "react";
+import { useMemo, useEffect, useCallback, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "src/modules/auth/authActions";
@@ -6,6 +6,11 @@ import authSelectors from "src/modules/auth/authSelectors";
 import kycSelectors from "src/modules/kyc/list/kycListSelectors";
 import actions from "src/modules/kyc/list/kycListActions";
 import { i18n } from "../../../i18n";
+import FileUploader from "src/modules/shared/fileUpload/fileUploader";
+import Storage from "src/security/storage";
+import Errors from "src/modules/shared/error/errors";
+import Message from "src/view/shared/message";
+import AuthService from "src/modules/auth/authService";
 
 const MENU_ITEMS = [
   {
@@ -87,6 +92,9 @@ function Profile() {
   const currentUser = useSelector(authSelectors.selectCurrentUser);
   const selectRows = useSelector(kycSelectors.selectRows);
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [avatarLoading, setAvatarLoading] = useState(false);
+
   const kycStatus = useMemo(() => {
     if (selectRows[0]?.status === VERIFICATION_STATUS.PENDING) {
       return VERIFICATION_STATUS.PENDING;
@@ -105,6 +113,38 @@ function Profile() {
   const handleSignout = useCallback(() => {
     dispatch(authActions.doSignout());
   }, [dispatch]);
+
+  const handleAvatarClick = useCallback(() => {
+    if (!avatarLoading) fileInputRef.current?.click();
+  }, [avatarLoading]);
+
+  const handleAvatarChange = useCallback(
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      if (fileInputRef.current) fileInputRef.current.value = "";
+
+      try {
+        setAvatarLoading(true);
+        FileUploader.validate(file, {
+          storage: Storage.values.userAvatarsProfiles,
+          image: true,
+        });
+        const uploaded = await FileUploader.upload(file, {
+          storage: Storage.values.userAvatarsProfiles,
+          image: true,
+        });
+        await AuthService.updateProfile({ avatars: [uploaded] });
+        await dispatch(authActions.doRefreshCurrentUser());
+        Message.success(i18n("auth.profile.success"));
+      } catch (err) {
+        Errors.showMessage(err);
+      } finally {
+        setAvatarLoading(false);
+      }
+    },
+    [dispatch]
+  );
 
   const menuItems = useMemo(
     () =>
@@ -157,6 +197,8 @@ function Profile() {
 
   const goBack = () => history.goBack();
 
+  const avatarUrl = currentUser?.avatars?.[0]?.downloadUrl;
+
   return (
     <div className="profile-page">
       {kycStatus === VERIFICATION_STATUS.UNVERIFIED && (
@@ -205,9 +247,33 @@ function Profile() {
           )}
 
           <div className="profile-profile-header">
-            <div className="profile-profile-avatar">
-              <i className="fas fa-user" />
+            {/* Clickable avatar circle */}
+            <div
+              className="profile-profile-avatar"
+              onClick={handleAvatarClick}
+              title="Change photo"
+            >
+              {avatarLoading ? (
+                <i className="fas fa-spinner fa-spin" style={{ color: "#fd4b4e", fontSize: 22 }} />
+              ) : avatarUrl ? (
+                <img src={avatarUrl} alt="avatar" className="avatar-photo" />
+              ) : (
+                <i className="fas fa-user" />
+              )}
+              {!avatarLoading && (
+                <div className="avatar-edit-badge">
+                  <i className="fas fa-camera" />
+                </div>
+              )}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleAvatarChange}
+              />
             </div>
+
             <div className="profile-profile-info">
               <div className="profile-profile-name">
                 {currentUser?.email?.split("@")[0]}
@@ -365,7 +431,6 @@ function Profile() {
       </div>
 
       <style>{`
-        /* Solid dark background */
         .profile-page {
           min-height: 100vh;
           background-color: #0e0f14;
@@ -465,9 +530,11 @@ function Profile() {
           margin-bottom: 20px;
         }
 
+        /* Avatar circle — now clickable with camera badge */
         .profile-profile-avatar {
-          width: 48px;
-          height: 48px;
+          position: relative;
+          width: 56px;
+          height: 56px;
           background-color: #0e0f14;
           border-radius: 50%;
           display: flex;
@@ -475,6 +542,39 @@ function Profile() {
           justify-content: center;
           color: #fd4b4e;
           font-size: 22px;
+          cursor: pointer;
+          flex-shrink: 0;
+          border: 2px solid #2a2a2e;
+          overflow: visible;
+          transition: border-color 0.2s;
+        }
+
+        .profile-profile-avatar:hover {
+          border-color: #fd4b4e;
+        }
+
+        .avatar-photo {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+
+        .avatar-edit-badge {
+          position: absolute;
+          bottom: -3px;
+          right: -3px;
+          width: 20px;
+          height: 20px;
+          background-color: #fd4b4e;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 9px;
+          color: #fff;
+          border: 2px solid #15161c;
+          pointer-events: none;
         }
 
         .profile-profile-name {

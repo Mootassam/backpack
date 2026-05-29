@@ -78,7 +78,14 @@ export default class DepositServicess {
       });
       console.log(record.status);
 
-      await WalletRepository.processDeposit(data.createdBy.id, data, {
+      // Use the deposit record's own createdBy (set to target user on create)
+      // rather than relying on client-sent data.createdBy which may be absent.
+      const ownerId =
+        record.createdBy?.id ||
+        record.createdBy?._id?.toString() ||
+        data?.createdBy?.id;
+
+      await WalletRepository.processDeposit(ownerId, data, {
         ...this.options,
         session,
       });

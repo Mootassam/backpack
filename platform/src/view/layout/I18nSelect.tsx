@@ -36,7 +36,7 @@ function I18nSelect() {
             }`}
           >
             <div className="language-flag">
-              <img src={language.flag} alt={language.label} />
+              <span className="lang-code">{language.id.toUpperCase().slice(0, 2)}</span>
             </div>
             <div className="language-info">
               <span className="language-name">{language.label}</span>
@@ -169,10 +169,15 @@ function I18nSelect() {
           justify-content: center;
           border: 1px solid #2a2a2e;
         }
-        .language-flag img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .lang-code {
+          font-size: 11px;
+          font-weight: 700;
+          color: #aaa;
+          letter-spacing: 0.5px;
+          user-select: none;
+        }
+        .language-card.active .lang-code {
+          color: #fd4b4e;
         }
 
         /* ── Language info ───────────────────────────────────────────── */

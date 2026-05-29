@@ -41,6 +41,9 @@ const en = {
     title: 'Company Description',
     faqs: 'Frequently asked questions ',
     TC: 'Terms & Conditions',
+    fields: {
+      certificate: 'Upload Certificate',
+    },
   },
   app: {
     title: 'Admin Panel',
@@ -234,6 +237,7 @@ const en = {
         id: 'id',
         orderno: 'Order No',
         createdBy: 'Created By',
+        user: 'Target User',
         amount: 'Amount',
         rechargechannel: 'Recharge Channel',
         txid: 'TXID',

@@ -701,17 +701,19 @@ export default class UserRepository {
   }
 
   static async checkSolde(data, options) {
+    if (!data?.vip?.id) return;
+
     const currentUser = await MongooseRepository.getCurrentUser(options);
 
     const currentBalance = currentUser.balance;
-    const currentVip = currentUser.vip.id;
+    const currentVip = currentUser.vip?.id;
 
-    if (!data?.vip?.id) return;
-
-    if (currentVip === data?.vip?.id) {
-throw new Error400(options.language, "errors.alreadySubscribedToVip");    }
-    if (currentBalance < data?.vip?.levellimit) {
-throw new Error400(options.language, "errors.insufficientBalancePleaseUpgrade");    }
+    if (currentVip === data.vip.id) {
+      throw new Error400(options.language, "errors.alreadySubscribedToVip");
+    }
+    if (currentBalance < data.vip.levellimit) {
+      throw new Error400(options.language, "errors.insufficientBalancePleaseUpgrade");
+    }
   }
 
   static async generateEmailVerificationToken(

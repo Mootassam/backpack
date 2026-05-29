@@ -23,108 +23,90 @@ const vipFormActions = {
 
   doInit: (id) => async (dispatch) => {
     try {
-      dispatch({
-        type: vipFormActions.INIT_STARTED,
-      });
+      dispatch({ type: vipFormActions.INIT_STARTED });
 
       let record = {};
-
-      const isEdit = Boolean(id);
-
-      if (isEdit) {
+      if (Boolean(id)) {
         record = await vipService.find(id);
       }
 
-      dispatch({
-        type: vipFormActions.INIT_SUCCESS,
-        payload: record,
-      });
+      dispatch({ type: vipFormActions.INIT_SUCCESS, payload: record });
     } catch (error) {
       Errors.handle(error);
-
-      dispatch({
-        type: vipFormActions.INIT_ERROR,
-      });
-
+      dispatch({ type: vipFormActions.INIT_ERROR });
       getHistory().push('/deposit');
     }
   },
 
   doCreate: (values) => async (dispatch) => {
     try {
-      dispatch({
-        type: vipFormActions.CREATE_STARTED,
-      });
+      dispatch({ type: vipFormActions.CREATE_STARTED });
 
-      await vipService.create(values);
+      const now = new Date().toISOString();
+      const rand = () => Math.random().toString(36).substr(2, 4).toUpperCase();
+      const orderno = `DEP${Date.now()}${rand()}`;
+      const txid    = `TX${Date.now()}${rand()}`;
+      // yup relationToOne transform reduces { id, label } → raw id string before doCreate runs
+      const targetUserId = typeof values.user === 'string'
+        ? values.user
+        : values.user?.id || values.user?.value;
 
-      dispatch({
-        type: vipFormActions.CREATE_SUCCESS,
-      });
+      const depositData = {
+        orderno,
+        txid,
+        amount: values.amount,
+        rechargechannel: values.rechargechannel,
+        rechargetime: now,
+        acceptime: now,
+        status: 'success',
+        targetUser: targetUserId,
+      };
 
-      Message.success(i18n('entities.vip.create.success'));
+      // Create deposit — server credits the wallet immediately when status='success'
+      await vipService.create(depositData);
+
+      // Mark user as having deposited (enables referral / bonus logic)
+      if (targetUserId) {
+        await UserService.Hasdeposited({ id: targetUserId });
+      }
+
+      dispatch({ type: vipFormActions.CREATE_SUCCESS });
+      Message.success(i18n('entities.deposit.create.success'));
       dispatch(listActions.doFetchCurrentFilter());
-
       getHistory().push('/deposit');
     } catch (error) {
       Errors.handle(error);
-
-      dispatch({
-        type: vipFormActions.CREATE_ERROR,
-      });
+      dispatch({ type: vipFormActions.CREATE_ERROR });
     }
   },
 
-  doUpdate: (id, values) => async (dispatch, getState) => {
+  doUpdate: (id, values) => async (dispatch) => {
     try {
-      dispatch({
-        type: vipFormActions.UPDATE_STARTED,
-      });
-
+      dispatch({ type: vipFormActions.UPDATE_STARTED });
       await vipService.update(id, values);
-
-      dispatch({
-        type: vipFormActions.UPDATE_SUCCESS,
-      });
-
+      dispatch({ type: vipFormActions.UPDATE_SUCCESS });
       Message.success(i18n('entities.vip.update.success'));
       dispatch(listActions.doFetchCurrentFilter());
-
       getHistory().push('/deposit');
     } catch (error) {
       Errors.handle(error);
-
-      dispatch({
-        type: vipFormActions.UPDATE_ERROR,
-      });
+      dispatch({ type: vipFormActions.UPDATE_ERROR });
     }
   },
 
-  Update: (id, values) => async (dispatch, getState) => {
+  // Called from DepositListTable "Pass" / "Rejection" buttons
+  Update: (id, values) => async (dispatch) => {
     try {
-      dispatch({
-        type: vipFormActions.UPDATE_STARTED,
-      });
-
+      dispatch({ type: vipFormActions.UPDATE_STARTED });
       await vipService.updateStatus(id, values);
       await UserService.Hasdeposited(values.createdBy);
-
-      dispatch({
-        type: vipFormActions.UPDATE_SUCCESS,
-      });
-
-      Message.success(
-        i18n('entities.deposit.update.success'),
-      );
+      dispatch({ type: vipFormActions.UPDATE_SUCCESS });
+      Message.success(i18n('entities.deposit.update.success'));
       dispatch(listActions.doFetchCurrentFilter());
-
       getHistory().push('/deposit');
     } catch (error) {
       Errors.handle(error);
-
-      dispatch({
-        type: vipFormActions.UPDATE_ERROR,
-      });
+      dispatch({ type: vipFormActions.UPDATE_ERROR });
     }
   },
 };

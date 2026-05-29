@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
@@ -7,11 +7,12 @@ import * as yup from "yup";
 
 // Local imports
 import actions from "src/modules/auth/authActions";
-import { i18n } from "../../../i18n";
+import { i18n, getLanguages, getLanguageCode } from "../../../i18n";
 import yupFormSchemas from "src/modules/shared/yup/yupFormSchemas";
 import InputFormItem from "src/shared/form/InputFormItem";
 import selectors from "src/modules/auth/authSelectors";
 import ButtonIcon from "src/shared/ButtonIcon";
+import layoutActions from "src/modules/layout/layoutActions";
 
 function Signup() {
   const dispatch = useDispatch();
@@ -20,6 +21,18 @@ function Signup() {
   const errorMessage = useSelector(selectors.selectErrorMessage);
   const [showPassword, setShowPassword] = useState(false);
   const [captchaText, setCaptchaText] = useState("");
+  const [showLangMenu, setShowLangMenu] = useState(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langMenuRef.current && !langMenuRef.current.contains(e.target as Node)) {
+        setShowLangMenu(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Generate initial captcha on component mount
   useEffect(() => {
@@ -131,9 +144,31 @@ function Signup() {
             <i className="fas fa-arrow-left"></i>
           </div>
           <div className="header-spacer"></div>
-          <Link to="/language" className="language-icon">
-            <i className="fas fa-globe"></i>
-          </Link>
+          <div className="lang-picker-wrap" ref={langMenuRef}>
+            <button
+              className="language-icon"
+              onClick={() => setShowLangMenu(v => !v)}
+              type="button"
+            >
+              <i className="fas fa-globe"></i>
+            </button>
+            {showLangMenu && (
+              <div className="lang-dropdown">
+                {getLanguages().map((lang) => (
+                  <button
+                    key={lang.id}
+                    className={`lang-option${getLanguageCode() === lang.id ? ' lang-option--active' : ''}`}
+                    onClick={() => { setShowLangMenu(false); layoutActions.doChangeLanguage(lang.id); }}
+                    type="button"
+                  >
+                    <span className="lang-option-code">{lang.id.toUpperCase().slice(0, 2)}</span>
+                    <span className="lang-option-label">{lang.label}</span>
+                    {getLanguageCode() === lang.id && <i className="fas fa-check lang-option-check" />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Title – no logo here */}
@@ -297,12 +332,67 @@ function Signup() {
           justify-content: center;
           border-radius: 8px;
           text-decoration: none;
+          background: none;
+          border: none;
+          cursor: pointer;
           transition: background-color 0.2s;
         }
 
         .language-icon:hover {
           background-color: rgba(253, 75, 78, 0.15);
         }
+
+        /* Language dropdown */
+        .lang-picker-wrap {
+          position: relative;
+        }
+        .lang-dropdown {
+          position: absolute;
+          top: calc(100% + 8px);
+          right: 0;
+          width: 200px;
+          background: #1a1b22;
+          border: 1px solid #2a2a2e;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+          z-index: 999;
+          max-height: 320px;
+          overflow-y: auto;
+        }
+        .lang-option {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 14px;
+          background: none;
+          border: none;
+          color: #ccc;
+          font-size: 13px;
+          cursor: pointer;
+          transition: background 0.15s;
+          text-align: left;
+        }
+        .lang-option:hover { background: #22232c; color: #fff; }
+        .lang-option--active { color: #fd4b4e; background: rgba(253,75,78,0.07); }
+        .lang-option-code {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: #0e0f14;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 10px;
+          font-weight: 700;
+          color: #aaa;
+          flex-shrink: 0;
+          border: 1px solid #2a2a2e;
+        }
+        .lang-option--active .lang-option-code { color: #fd4b4e; border-color: #fd4b4e; }
+        .lang-option-label { flex: 1; }
+        .lang-option-check { font-size: 11px; color: #fd4b4e; }
 
         .page-title {
           text-align: center;

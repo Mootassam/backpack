@@ -13,7 +13,13 @@
       "Bash(dir \"D:\\\\backpack\\\\platform\\\\src\\\\view\\\\pages\" /b)",
       "Bash(xargs grep -l \"bottom-nav\\\\|BottomNav\\\\|bottomNav\")",
       "Bash(xargs grep -l \"btn-action\\\\|spot-list\")",
-      "Bash(xargs grep -l \"btn-action\")"
+      "Bash(xargs grep -l \"btn-action\")",
+      "Bash(Test-Path \"D:\\\\backpack\\\\platform\\\\src\\\\i18n\\\\pl.tsx\")",
+      "Bash(dir \"D:\\\\backpack\\\\platform\\\\src\\\\view\\\\pages\\\\Auth\" /b)",
+      "Bash(xargs grep -l \"company\\\\|certif\")",
+      "Bash(xargs cat)",
+      "Bash(Get-ChildItem -Path \"D:\\\\backpack\\\\server\\\\src\" -Recurse -Filter \"*eposit*\")",
+      "Bash(Select-Object FullName)"
     ]
   }
 }

@@ -14,12 +14,17 @@ class DepositRepository {
     const currentTenant = MongooseRepository.getCurrentTenant(options);
     const currentUser = MongooseRepository.getCurrentUser(options);
 
+    // When an admin creates a deposit on behalf of a user, targetUser holds the
+    // target user's ID so that the deposit record, wallet, and transaction all
+    // reference the correct user rather than the admin.
+    const ownerId = data.targetUser || currentUser.id;
+
     const [record] = await Deposit(options.database).create(
       [
         {
           ...data,
           tenant: currentTenant.id,
-          createdBy: currentUser.id,
+          createdBy: ownerId,
           updatedBy: currentUser.id,
         },
       ],
@@ -31,27 +36,34 @@ class DepositRepository {
 
     const coinSymbol = data.rechargechannel.toUpperCase();
 
-    // 1️⃣ Fetch the user's wallet for the given asset, creating it if it doesn't exist
-    const wallet = await WalletModel.findOneAndUpdate(
-      {
-        user: currentUser.id,
-        symbol: coinSymbol,
+    const isPreApproved = data.status === "success";
+    const depositAmount = Number(data.amount);
+
+    // Build wallet update: always init new wallets via $setOnInsert.
+    // When pre-approved (admin direct deposit), also $inc the balance immediately
+    // so the user sees the credited amount without a separate updateStatus call.
+    const walletOp: any = {
+      $setOnInsert: {
+        coinName: coinSymbol,
+        status: "available",
         tenant: currentTenant.id,
+        createdBy: ownerId,
+        updatedBy: currentUser.id,
+        // Only seed amount=0 on insert when NOT simultaneously incrementing
+        ...(!isPreApproved ? { amount: 0 } : {}),
       },
-      {
-        $setOnInsert: {
-          coinName: coinSymbol,
-          amount: 0,
-          status: "available",
-          tenant: currentTenant.id,
-          createdBy: currentUser.id,
-          updatedBy: currentUser.id,
-        },
-      },
+    };
+    if (isPreApproved) {
+      walletOp.$inc = { amount: depositAmount };
+    }
+
+    const wallet = await WalletModel.findOneAndUpdate(
+      { user: ownerId, symbol: coinSymbol, tenant: currentTenant.id },
+      walletOp,
       { upsert: true, new: true }
     );
 
-    // 3️⃣ Create a transaction log
+    // Transaction status mirrors the deposit status
     await TransactionModel.create({
       type: "deposit",
       wallet: wallet._id,
@@ -59,16 +71,15 @@ class DepositRepository {
       amount: data.amount,
       referenceId: record.id,
       direction: "in",
-      status: "pending", // deposit is pending
-      user: currentUser.id,
+      status: isPreApproved ? "completed" : "pending",
+      user: ownerId,
       tenant: currentTenant.id,
-      createdBy: currentUser.id,
+      createdBy: ownerId,
       updatedBy: currentUser.id,
     });
 
-
     await sendNotification({
-      userId: currentUser.id,
+      userId: ownerId,
       message: ` ${data.amount} ${coinSymbol} `,
       type: "deposit",
       forAdmin: true,

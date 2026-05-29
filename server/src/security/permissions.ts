@@ -78,6 +78,7 @@ class Permissions {
         allowedStorage: [
           storage.settingsBackgroundImages,
           storage.settingsLogos,
+          storage.companyCertificate,
         ],
       },
       categoryImport: {

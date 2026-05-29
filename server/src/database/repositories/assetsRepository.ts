@@ -330,10 +330,8 @@ class WalletRepository {
           usdtAmount = depositAmount * price;
         }
       } catch (err) {
-        console.error("Error converting coin to USDT", err);
-        throw new Error(
-          "Failed to convert deposit to USDT for referral rewards."
-        );
+        console.error("CoinGecko price fetch failed — skipping referral rewards for this deposit:", err);
+        usdtAmount = 0;
       }
     }
 

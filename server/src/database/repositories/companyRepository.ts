@@ -252,6 +252,7 @@ class CompanyRepository {
     const output = record.toObject ? record.toObject() : record;
 
     output.photo = await FileRepository.fillDownloadUrl(output.photo);
+    output.certificate = await FileRepository.fillDownloadUrl(output.certificate);
 
     return output;
   }

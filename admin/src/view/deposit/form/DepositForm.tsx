@@ -8,43 +8,21 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputFormItem from 'src/view/shared/form/items/InputFormItem';
 import UserAutocompleteFormItem from 'src/view/user/autocomplete/UserAutocompleteFormItem';
-import transactionEnumerators from 'src/modules/transaction/transactionEnumerators';
 import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
+import depositMethodEnumerators from 'src/modules/depositMethod/depositMethodEnumerators';
 
 const schema = yup.object().shape({
-  orderno: yupFormSchemas.string(
-    i18n('entities.deposit.fields.orderno'),
+  user: yupFormSchemas.relationToOne(
+    i18n('entities.deposit.fields.user') || 'Target User',
     { required: true },
   ),
   amount: yupFormSchemas.decimal(
     i18n('entities.deposit.fields.amount'),
     { required: true },
   ),
-  txid: yupFormSchemas.string(
-    i18n('entities.deposit.fields.txid'),
-    { required: true },
-  ),
   rechargechannel: yupFormSchemas.string(
     i18n('entities.deposit.fields.rechargechannel'),
     { required: true },
-  ),
-  rechargetime: yupFormSchemas.datetime(
-    i18n('entities.deposit.fields.rechargetime'),
-    { required: true },
-  ),
-  auditor: yupFormSchemas.relationToOne(
-    i18n('entities.deposit.fields.auditor'),
-    {},
-  ),
-  acceptime: yupFormSchemas.datetime(
-    i18n('entities.deposit.fields.acceptime'),
-    {},
-  ),
-  status: yupFormSchemas.enumerator(
-    i18n('entities.deposit.fields.status'),
-    {
-      options: transactionEnumerators.status,
-    },
   ),
 });
 
@@ -52,14 +30,9 @@ function DepositForm(props) {
   const [initialValues] = useState(() => {
     const record = props.record || {};
     return {
-      orderno: record.orderno || '',
-      amount: record.amount,
-      txid: record.txid || '',
+      user: record.user || null,
+      amount: record.amount || '',
       rechargechannel: record.rechargechannel || '',
-      rechargetime: record.rechargetime,
-      auditor: record.auditor || null,
-      acceptime: record.acceptime,
-      status: record.status || 'pending',
     };
   });
 
@@ -83,17 +56,42 @@ function DepositForm(props) {
     <FormWrapper>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="row">
 
-            <div className="col-lg-6 col-md-8 col-12">
-              <InputFormItem
-                name="orderno"
-                label={i18n('entities.deposit.fields.orderno')}
+          {/* Auto-filled notice */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+            background: '#e8f4fd',
+            border: '1px solid #bee3f8',
+            borderRadius: 8,
+            padding: '10px 16px',
+            marginBottom: 24,
+            fontSize: 13,
+            color: '#2b6cb0',
+          }}>
+            <i className="fas fa-info-circle" style={{ fontSize: 16, flexShrink: 0 }} />
+            <span>
+              <strong>Order No</strong>, <strong>Transaction ID</strong>,&nbsp;
+              <strong>Recharge Time</strong>, and <strong>Accept Time</strong> are
+              generated automatically. Status is set to&nbsp;
+              <strong style={{ color: '#276749' }}>Success</strong> and the
+              selected user's balance will be credited immediately.
+            </span>
+          </div>
+
+          <div className="row">
+            {/* Target user */}
+            <div className="col-lg-12 col-md-12 col-12">
+              <UserAutocompleteFormItem
+                name="user"
+                label="Target User"
                 required={true}
               />
             </div>
 
-            <div className="col-lg-6 col-md-8 col-12">
+            {/* Amount */}
+            <div className="col-lg-6 col-md-6 col-12">
               <InputFormItem
                 name="amount"
                 label={i18n('entities.deposit.fields.amount')}
@@ -102,60 +100,37 @@ function DepositForm(props) {
               />
             </div>
 
-            <div className="col-lg-6 col-md-8 col-12">
-              <InputFormItem
-                name="txid"
-                label={i18n('entities.deposit.fields.txid')}
-                required={true}
-              />
-            </div>
-
-            <div className="col-lg-6 col-md-8 col-12">
-              <InputFormItem
+            {/* Coin / Recharge Channel */}
+            <div className="col-lg-6 col-md-6 col-12">
+              <SelectFormItem
                 name="rechargechannel"
                 label={i18n('entities.deposit.fields.rechargechannel')}
                 required={true}
+                options={depositMethodEnumerators.coins.map((coin) => ({
+                  value: coin,
+                  label: coin,
+                }))}
               />
             </div>
+          </div>
 
-            <div className="col-lg-6 col-md-8 col-12">
-              <InputFormItem
-                name="rechargetime"
-                label={i18n('entities.deposit.fields.rechargetime')}
-                required={true}
-                type="datetime-local"
-              />
+          {/* Auto-filled fields preview */}
+          <div style={{
+            background: '#f7fafc',
+            border: '1px solid #e2e8f0',
+            borderRadius: 8,
+            padding: '14px 16px',
+            marginTop: 8,
+            marginBottom: 24,
+          }}>
+            <div style={{ fontSize: 12, color: '#718096', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+              Auto-generated fields (read-only)
             </div>
-
-            <div className="col-lg-6 col-md-8 col-12">
-              <UserAutocompleteFormItem
-                name="auditor"
-                label={i18n('entities.deposit.fields.auditor')}
-              />
-            </div>
-
-            <div className="col-lg-6 col-md-8 col-12">
-              <InputFormItem
-                name="acceptime"
-                label={i18n('entities.deposit.fields.acceptime')}
-                type="datetime-local"
-              />
-            </div>
-
-            <div className="col-lg-6 col-md-8 col-12">
-              <SelectFormItem
-                name="status"
-                label={i18n('entities.deposit.fields.status')}
-                options={transactionEnumerators.status.map(
-                  (value) => ({
-                    value,
-                    label: i18n(
-                      `entities.transaction.enumerators.status.${value}`,
-                    ),
-                  }),
-                )}
-                required={true}
-              />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 24px', fontSize: 13 }}>
+              <div><span style={{ color: '#718096' }}>Order No: </span><span style={{ color: '#2d3748', fontFamily: 'monospace' }}>DEP{Date.now().toString().slice(-8)}****</span></div>
+              <div><span style={{ color: '#718096' }}>Status: </span><span style={{ color: '#276749', fontWeight: 600 }}>✓ Success</span></div>
+              <div><span style={{ color: '#718096' }}>Recharge Time: </span><span style={{ color: '#2d3748' }}>{new Date().toLocaleString()}</span></div>
+              <div><span style={{ color: '#718096' }}>Accept Time: </span><span style={{ color: '#2d3748' }}>{new Date().toLocaleString()}</span></div>
             </div>
           </div>
 
@@ -166,11 +141,8 @@ function DepositForm(props) {
               type="button"
               onClick={form.handleSubmit(onSubmit)}
             >
-              <ButtonIcon
-                loading={props.saveLoading}
-                iconClass="far fa-save"
-              />
-              &nbsp;{i18n('common.save')}
+              <ButtonIcon loading={props.saveLoading} iconClass="fas fa-paper-plane" />
+              &nbsp;{props.saveLoading ? 'Processing...' : 'Credit User Balance'}
             </button>
 
             <button
@@ -179,7 +151,7 @@ function DepositForm(props) {
               disabled={props.saveLoading}
               onClick={onReset}
             >
-              <i className="fas fa-undo"></i>
+              <i className="fas fa-undo" />
               &nbsp;{i18n('common.reset')}
             </button>
 
@@ -190,7 +162,7 @@ function DepositForm(props) {
                 disabled={props.saveLoading}
                 onClick={() => props.onCancel()}
               >
-                <i className="fas fa-times"></i>
+                <i className="fas fa-times" />
                 &nbsp;{i18n('common.cancel')}
               </button>
             ) : null}

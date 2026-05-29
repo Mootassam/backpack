@@ -437,7 +437,7 @@ function Wallet() {
         .assets-manage { color: #fd4b4e; font-size: 13px; cursor: pointer; }
 
         /* Asset list */
-        .asset-list { min-height: 200px; }
+        .asset-list { min-height: 200px; margin-bottom: 58px; }
 
         .wallet-asset-item {
           display: flex;

@@ -1,10 +1,21 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { i18n } from "../../../i18n";
+import CompanyService from "src/modules/company/companyService";
 
 function Approval() {
   const history = useHistory();
   const goBack = () => history.goBack();
+  const [certificateUrl, setCertificateUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    CompanyService.list(null, null, 1, 0)
+      .then((data) => {
+        const url = data?.rows?.[0]?.certificate?.[0]?.downloadUrl;
+        if (url) setCertificateUrl(url);
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <div className="approval-page">
@@ -21,7 +32,7 @@ function Approval() {
         {/* Card */}
         <div className="content-card">
           <img
-            src="/images/certif.png"
+            src={certificateUrl || "/images/certif.png"}
             alt="Certificate"
             className="certificate-image"
           />

@@ -24,6 +24,7 @@ export default (database) => {
         type: String,
       },
       photo: [FileSchema],
+      certificate: [FileSchema],
       tenant: {
         type: Schema.Types.ObjectId,
         ref: "tenant",

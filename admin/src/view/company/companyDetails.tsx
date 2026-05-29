@@ -16,6 +16,9 @@ import actions from 'src/modules/company/form/companyFormActions';
 import listactions from 'src/modules/company/list/companyListActions';
 import selectors from 'src/modules/company/list/companyListSelectors';
 import Spinner from 'src/view/shared/Spinner';
+import { FormProvider, useForm } from 'react-hook-form';
+import ImagesFormItem from 'src/view/shared/form/items/ImagesFormItem';
+import Storage from 'src/security/storage';
 
 function CompanyDetails() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -25,11 +28,20 @@ function CompanyDetails() {
 
   const dispatch = useDispatch();
 
+  const form = useForm({
+    mode: 'all',
+    defaultValues: {
+      certificate: [],
+    },
+  });
+
   const doSubmit = () => {
     const rawContentState = editorState.getCurrentContent();
     const htmlContent = draftToHtml(convertToRaw(rawContentState));
+    const certificate = form.getValues('certificate');
     const values = {
       companydetails: htmlContent,
+      certificate,
     };
     dispatch(actions.doCreate(values));
   };
@@ -41,6 +53,9 @@ function CompanyDetails() {
   useEffect(() => {
     if (record && record[0]?.companydetails) {
       setRecordContent(record[0].companydetails);
+    }
+    if (record && record[0]?.certificate) {
+      form.setValue('certificate', record[0].certificate);
     }
   }, [record]);
 
@@ -99,6 +114,21 @@ function CompanyDetails() {
               editorClassName="editorClassName"
               onEditorStateChange={onEditorStateChange}
             />
+
+            <Row className="mt-4">
+              <Col xs={12}>
+                <h5>{i18n('company.fields.certificate')}</h5>
+                <FormProvider {...form}>
+                  <ImagesFormItem
+                    name="certificate"
+                    label={i18n('company.fields.certificate')}
+                    required={false}
+                    storage={Storage.values.companyCertificate}
+                    max={1}
+                  />
+                </FormProvider>
+              </Col>
+            </Row>
           </Container>
         )}
       </ContentWrapper>

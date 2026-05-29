@@ -108,6 +108,13 @@ export default class Storage {
         folder: "tenant/:tenantId/produitCommande/attachements",
         maxSizeInBytes: 100 * 1024 * 1024,
       },
+
+      companyCertificate: {
+        id: "companyCertificate",
+        folder: "tenant/:tenantId/company/certificate",
+        maxSizeInBytes: 10 * 1024 * 1024,
+        publicRead: true,
+      },
     };
   }
 }

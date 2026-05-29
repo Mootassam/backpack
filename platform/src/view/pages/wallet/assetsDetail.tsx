@@ -91,8 +91,8 @@ function AssetsDetail() {
 
             case 'convert_in':
                 config.icon = 'fa-exchange-alt';
-                config.typeText = relatedAsset ? 
-                    i18n("pages.assetsDetail.transactionTypes.convertedFrom", { asset: relatedAsset }) : 
+                config.typeText = relatedAsset ?
+                    i18n("pages.assetsDetail.transactionTypes.convertedFrom", relatedAsset) :
                     i18n("pages.assetsDetail.transactionTypes.conversionIn");
                 config.iconClass = 'convert-in';
                 config.color = '#9C27B0';
@@ -101,8 +101,8 @@ function AssetsDetail() {
 
             case 'convert_out':
                 config.icon = 'fa-exchange-alt';
-                config.typeText = relatedAsset ? 
-                    i18n("pages.assetsDetail.transactionTypes.convertedTo", { asset: relatedAsset }) : 
+                config.typeText = relatedAsset ?
+                    i18n("pages.assetsDetail.transactionTypes.convertedTo", relatedAsset) :
                     i18n("pages.assetsDetail.transactionTypes.conversionOut");
                 config.iconClass = 'convert-out';
                 config.color = '#9C27B0';

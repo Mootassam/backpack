@@ -682,7 +682,8 @@ pages: {
         status: {
             completed: "Completado",
             pending: "Pendiente",
-            canceled: "Cancelado"
+            canceled: "Cancelado",
+            success: "Bem-sucedido"
         },
         filterModal: {
             title: "Filtrar Transacciones",
@@ -710,8 +711,8 @@ pages: {
             transaction: "Transacción",
             deposit: "Depósito",
             withdrawal: "Retiro",
-            convertedFrom: "Convertido desde {{asset}}",
-            convertedTo: "Convertido a {{asset}}",
+            convertedFrom: "Convertido desde {0}",
+            convertedTo: "Convertido a {0}",
             conversionIn: "Conversión Entrante",
             conversionOut: "Conversión Saliente",
             stakedAmount: "Monto en Staking",
@@ -1095,7 +1096,8 @@ pages: {
         status: {
             completed: "Completado",
             pending: "Pendiente",
-            canceled: "Cancelado"
+            canceled: "Cancelado",
+            success: "Bem-sucedido"
         },
         dateFormats: {
             today: "Hoy, {0}",

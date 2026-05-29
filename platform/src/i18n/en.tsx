@@ -517,7 +517,8 @@ const en = {
       status: {
         completed: "Completed",
         pending: "Pending",
-        canceled: "Canceled"
+        canceled: "Canceled",
+        success: "Success"
       },
       filterModal: {
         title: "Filter Transactions",
@@ -545,8 +546,8 @@ const en = {
         transaction: "Transaction",
         deposit: "Deposit",
         withdrawal: "Withdrawal",
-        convertedFrom: "Converted from {{asset}}",
-        convertedTo: "Converted to {{asset}}",
+        convertedFrom: "Converted from {0}",
+        convertedTo: "Converted to {0}",
         conversionIn: "Conversion In",
         conversionOut: "Conversion Out",
         stakedAmount: "Staked Amount",
@@ -935,7 +936,8 @@ const en = {
       status: {
         completed: "Completed",
         pending: "Pending",
-        canceled: "Canceled"
+        canceled: "Canceled",
+        success: "Success"
       },
       dateFormats: {
         today: "Today, {0}",

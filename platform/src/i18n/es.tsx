@@ -683,7 +683,8 @@ components: {
       status: {
         completed: "Concluído",
         pending: "Pendente",
-        canceled: "Cancelado"
+        canceled: "Cancelado",
+        success: "Exitoso"
       },
       filterModal: {
         title: "Filtrar Transações",
@@ -711,8 +712,8 @@ components: {
         transaction: "Transação",
         deposit: "Depósito",
         withdrawal: "Saque",
-        convertedFrom: "Convertido de {{asset}}",
-        convertedTo: "Convertido para {{asset}}",
+        convertedFrom: "Convertido de {0}",
+        convertedTo: "Convertido para {0}",
         conversionIn: "Conversão Entrada",
         conversionOut: "Conversão Saída",
         stakedAmount: "Valor em Staking",
@@ -1096,7 +1097,8 @@ components: {
       status: {
         completed: "Concluído",
         pending: "Pendente",
-        canceled: "Cancelado"
+        canceled: "Cancelado",
+        success: "Exitoso"
       },
       dateFormats: {
         today: "Hoje, {0}",

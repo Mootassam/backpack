@@ -512,7 +512,8 @@ const In = {
       status: {
         completed: "पूर्ण",
         pending: "लंबित",
-        canceled: "रद्द"
+        canceled: "रद्द",
+        success: "सफल"
       },
       filterModal: {
         title: "लेनदेन फ़िल्टर करें",
@@ -540,8 +541,8 @@ const In = {
         transaction: "लेनदेन",
         deposit: "जमा",
         withdrawal: "निकासी",
-        convertedFrom: "{{asset}} से परिवर्तित",
-        convertedTo: "{{asset}} में परिवर्तित",
+        convertedFrom: "{0} से परिवर्तित",
+        convertedTo: "{0} में परिवर्तित",
         conversionIn: "रूपांतरण इन",
         conversionOut: "रूपांतरण आउट",
         stakedAmount: "स्टेक की गई राशि",
@@ -929,7 +930,8 @@ const In = {
       status: {
         completed: "पूर्ण",
         pending: "लंबित",
-        canceled: "रद्द"
+        canceled: "रद्द",
+        success: "सफल"
       },
       dateFormats: {
         today: "आज, {0}",

@@ -514,7 +514,8 @@ const hr = {
       status: {
         completed: "Završeno",
         pending: "Na čekanju",
-        canceled: "Otkazano"
+        canceled: "Otkazano",
+        success: "Uspješno"
       },
       filterModal: {
         title: "Filtriraj transakcije",
@@ -542,8 +543,8 @@ const hr = {
         transaction: "Transakcija",
         deposit: "Uplata",
         withdrawal: "Isplata",
-        convertedFrom: "Pretvoreno iz {{asset}}",
-        convertedTo: "Pretvoreno u {{asset}}",
+        convertedFrom: "Pretvoreno iz {0}",
+        convertedTo: "Pretvoreno u {0}",
         conversionIn: "Konverzija ulaz",
         conversionOut: "Konverzija izlaz",
         stakedAmount: "Uloženi iznos",
@@ -931,7 +932,8 @@ const hr = {
       status: {
         completed: "Završeno",
         pending: "Na čekanju",
-        canceled: "Otkazano"
+        canceled: "Otkazano",
+        success: "Uspješno"
       },
       dateFormats: {
         today: "Danas, {0}",

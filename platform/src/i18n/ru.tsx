@@ -677,7 +677,8 @@ components: {
       status: {
         completed: "Завершено",
         pending: "В ожидании",
-        canceled: "Отменено"
+        canceled: "Отменено",
+        success: "Успешно"
       },
       filterModal: {
         title: "Фильтровать транзакции",
@@ -705,8 +706,8 @@ components: {
         transaction: "Транзакция",
         deposit: "Пополнение",
         withdrawal: "Вывод",
-        convertedFrom: "Конвертировано из {{asset}}",
-        convertedTo: "Конвертировано в {{asset}}",
+        convertedFrom: "Конвертировано из {0}",
+        convertedTo: "Конвертировано в {0}",
         conversionIn: "Конвертация В",
         conversionOut: "Конвертация Из",
         stakedAmount: "Стейкинговая сумма",
@@ -1090,7 +1091,8 @@ components: {
       status: {
         completed: "Завершено",
         pending: "В ожидании",
-        canceled: "Отменено"
+        canceled: "Отменено",
+        success: "Успешно"
       },
       dateFormats: {
         today: "Сегодня, {0}",

@@ -681,7 +681,8 @@ pages: {
         status: {
             completed: "Abgeschlossen",
             pending: "Ausstehend",
-            canceled: "Abgebrochen"
+            canceled: "Abgebrochen",
+            success: "Erfolgreich"
         },
         filterModal: {
             title: "Transaktionen filtern",
@@ -709,8 +710,8 @@ pages: {
             transaction: "Transaktion",
             deposit: "Einzahlung",
             withdrawal: "Auszahlung",
-            convertedFrom: "Umgewandelt von {{asset}}",
-            convertedTo: "Umgewandelt in {{asset}}",
+            convertedFrom: "Umgewandelt von {0}",
+            convertedTo: "Umgewandelt in {0}",
             conversionIn: "Conversion Eingang",
             conversionOut: "Conversion Ausgang",
             stakedAmount: "Gestaketer Betrag",
@@ -1094,7 +1095,8 @@ pages: {
         status: {
             completed: "Abgeschlossen",
             pending: "Ausstehend",
-            canceled: "Abgebrochen"
+            canceled: "Abgebrochen",
+            success: "Erfolgreich"
         },
         dateFormats: {
             today: "Heute, {0}",

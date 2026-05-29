@@ -19,7 +19,7 @@ const CURRENCIES = [
 ];
 
 // Minimum deposit in USD
-const MIN_DEPOSIT_USD = 200;
+const MIN_DEPOSIT_USD = 100;
 
 // Decimal places for each currency
 const CURRENCY_DECIMALS = {

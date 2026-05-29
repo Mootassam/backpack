@@ -13,12 +13,7 @@ import Message from "src/view/shared/message";
 import AuthService from "src/modules/auth/authService";
 
 const MENU_ITEMS = [
-  {
-    icon: "fas fa-wallet",
-    path: "/withdrawaddress",
-    name: i18n("pages.profile.menu.withdrawalAddress"),
-    requiresKyc: true,
-  },
+
   {
     icon: "fas fa-lock",
     path: "/passwordtype",

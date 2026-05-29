@@ -686,7 +686,8 @@ pages: {
         status: {
             completed: "Tamamlandı",
             pending: "Beklemede",
-            canceled: "İptal Edildi"
+            canceled: "İptal Edildi",
+            success: "Başarılı"
         },
         filterModal: {
             title: "İşlemleri Filtrele",
@@ -714,8 +715,8 @@ pages: {
             transaction: "İşlem",
             deposit: "Yatırma",
             withdrawal: "Çekme",
-            convertedFrom: "{asset}'den dönüştürüldü",
-            convertedTo: "{asset}'ye dönüştürüldü",
+            convertedFrom: "{0}'den dönüştürüldü",
+            convertedTo: "{0}'ye dönüştürüldü",
             conversionIn: "Dönüşüm Girişi",
             conversionOut: "Dönüşüm Çıkışı",
             stakedAmount: "Stake Edilen Miktar",
@@ -1099,7 +1100,8 @@ pages: {
         status: {
             completed: "Tamamlandı",
             pending: "Beklemede",
-            canceled: "İptal Edildi"
+            canceled: "İptal Edildi",
+            success: "Başarılı"
         },
         dateFormats: {
             today: "Bugün, {0}",

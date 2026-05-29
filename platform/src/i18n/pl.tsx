@@ -517,6 +517,7 @@ const pl = {
         completed: "Zakończone",
         pending: "Oczekujące",
         canceled: "Anulowane",
+        success: "Sukces",
       },
       filterModal: {
         title: "Filtruj Transakcje",
@@ -544,8 +545,8 @@ const pl = {
         transaction: "Transakcja",
         deposit: "Wpłata",
         withdrawal: "Wypłata",
-        convertedFrom: "Skonwertowane z {{asset}}",
-        convertedTo: "Skonwertowane na {{asset}}",
+        convertedFrom: "Skonwertowane z {0}",
+        convertedTo: "Skonwertowane na {0}",
         conversionIn: "Konwersja Wchodząca",
         conversionOut: "Konwersja Wychodząca",
         stakedAmount: "Kwota Stakowana",
@@ -937,6 +938,7 @@ const pl = {
         completed: "Zakończone",
         pending: "Oczekujące",
         canceled: "Anulowane",
+        success: "Sukces",
       },
       dateFormats: {
         today: "Dzisiaj, {0}",

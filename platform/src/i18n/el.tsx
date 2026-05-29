@@ -229,7 +229,7 @@ const el = {
       title: "Λεπτομέρειες Στοιχείου", today: "Σήμερα", yesterday: "Χθες", filter: "Φίλτρο",
       transactionHistory: { title: "Ιστορικό Συναλλαγών" },
       noTransactions: { title: "Δεν υπάρχουν Συναλλαγές", description: "Το ιστορικό θα εμφανιστεί εδώ μόλις ξεκινήσετε." },
-      status: { completed: "Ολοκληρωμένη", pending: "Σε αναμονή", canceled: "Ακυρωμένη" },
+      status: { completed: "Ολοκληρωμένη", pending: "Σε αναμονή", canceled: "Ακυρωμένη", success: "Επιτυχής" },
       filterModal: {
         title: "Φιλτράρισμα Συναλλαγών", status: "Κατάσταση", type: "Τύπος",
         direction: "Κατεύθυνση", startDate: "Ημερομηνία Έναρξης", endDate: "Ημερομηνία Λήξης",
@@ -240,7 +240,7 @@ const el = {
       actions: { deposit: "Κατάθεση", withdraw: "Ανάληψη" },
       transactionTypes: {
         transaction: "Συναλλαγή", deposit: "Κατάθεση", withdrawal: "Ανάληψη",
-        convertedFrom: "Μετατράπηκε από {{asset}}", convertedTo: "Μετατράπηκε σε {{asset}}",
+        convertedFrom: "Μετατράπηκε από {0}", convertedTo: "Μετατράπηκε σε {0}",
         conversionIn: "Μετατροπή Εισερχόμενη", conversionOut: "Μετατροπή Εξερχόμενη",
         stakedAmount: "Ποσό Staking", stakingRewards: "Ανταμοιβές Staking",
         futuresReserved: "Δεσμευμένα Συμβόλαια", futuresProfit: "Κέρδος Συμβολαίων",
@@ -404,7 +404,7 @@ const el = {
       filters: { all: "Όλες", deposits: "Καταθέσεις", withdrawals: "Αναλήψεις", profits: "Κέρδη", losses: "Ζημίες", conversions: "Μετατροπές", stacking: "Staking" },
       statusFilters: { allStatus: "Όλες Καταστάσεις", completed: "Ολοκληρωμένη", pending: "Σε αναμονή", canceled: "Ακυρωμένη" },
       timeFilters: { allTime: "Όλη η Ώρα", today: "Σήμερα", week: "Εβδομάδα", month: "Μήνας", year: "Έτος" },
-      status: { completed: "Ολοκληρωμένη", pending: "Σε αναμονή", canceled: "Ακυρωμένη" },
+      status: { completed: "Ολοκληρωμένη", pending: "Σε αναμονή", canceled: "Ακυρωμένη", success: "Επιτυχής" },
       dateFormats: { today: "Σήμερα, {0}", yesterday: "Χθες, {0}" },
       transactionTypes: {
         transaction: "Συναλλαγή", deposit: "Κατάθεση", withdrawal: "Ανάληψη",

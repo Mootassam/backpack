@@ -512,7 +512,8 @@ const ne = {
       status: {
         completed: "पूरा भयो",
         pending: "पेन्डिङ",
-        canceled: "रद्द गरियो"
+        canceled: "रद्द गरियो",
+        success: "सफल भयो"
       },
       filterModal: {
         title: "लेनदेन फिल्टर गर्नुहोस्",
@@ -540,8 +541,8 @@ const ne = {
         transaction: "लेनदेन",
         deposit: "जम्मा",
         withdrawal: "निकासी",
-        convertedFrom: "{{asset}} बाट रूपान्तरण भयो",
-        convertedTo: "{{asset}} मा रूपान्तरण भयो",
+        convertedFrom: "{0} बाट रूपान्तरण भयो",
+        convertedTo: "{0} मा रूपान्तरण भयो",
         conversionIn: "रूपान्तरण भित्री",
         conversionOut: "रूपान्तरण बाहिरी",
         stakedAmount: "स्टेक गरिएको रकम",
@@ -929,7 +930,8 @@ const ne = {
       status: {
         completed: "पूरा भयो",
         pending: "पेन्डिङ",
-        canceled: "रद्द गरियो"
+        canceled: "रद्द गरियो",
+        success: "सफल भयो"
       },
       dateFormats: {
         today: "आज, {0}",
@@ -939,8 +941,8 @@ const ne = {
         transaction: "लेनदेन",
         deposit: "जम्मा",
         withdrawal: "निकासी",
-        convertedFrom: "{{asset}} बाट रूपान्तरण भयो",
-        convertedTo: "{{asset}} मा रूपान्तरण भयो",
+        convertedFrom: "{0} बाट रूपान्तरण भयो",
+        convertedTo: "{0} मा रूपान्तरण भयो",
         conversionIn: "रूपान्तरण भित्री",
         conversionOut: "रूपान्तरण बाहिरी",
         stakedAmount: "स्टेक गरिएको रकम",

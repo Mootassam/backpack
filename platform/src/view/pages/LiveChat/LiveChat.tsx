@@ -8,7 +8,9 @@ declare global {
   }
 }
 
-const CRISP_WEBSITE_ID = "ab42b4d9-6c25-43e7-9e5a-13da903a28f3";
+// const CRISP_WEBSITE_ID = "ab42b4d9-6c25-43e7-9e5a-13da903a28f3"; // me 
+const CRISP_WEBSITE_ID = "16e0fdfd-ed8a-418a-be26-4d29f29d6727"; // Sharp 
+
 
 function LiveChat() {
   const history = useHistory();

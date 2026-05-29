@@ -52,4 +52,6 @@ export default (app) => {
   app.put(`/auth/verify-email`, require("./authVerifyEmail").default);
 
   app.get(`/auth/me`, require("./authMe").default);
+
+  app.post(`/auth/verify-withdraw-password`, require("./authVerifyWithdrawPassword").default);
 };

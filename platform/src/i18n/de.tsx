@@ -1182,7 +1182,8 @@ pages: {
             belowMin: "Unter Minimum ({0} {1})",
             insufficientBalance: "Unzureichender Kontostand",
             insufficientForFee: "Unzureichender Kontostand (einschließlich Gebühr)",
-            enterPassword: "Passwort eingeben"
+            enterPassword: "Passwort eingeben",
+            enterAddress: "Auszahlungsadresse eingeben"
         }
     },
     deposit: {

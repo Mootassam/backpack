@@ -1018,7 +1018,8 @@ const In = {
         belowMin: "न्यूनतम ({0} {1}) से नीचे",
         insufficientBalance: "अपर्याप्त बैलेंस",
         insufficientForFee: "अपर्याप्त बैलेंस (शुल्क सहित)",
-        enterPassword: "पासवर्ड दर्ज करें"
+        enterPassword: "पासवर्ड दर्ज करें",
+        enterAddress: "निकासी पता दर्ज करें"
       }
     },
     deposit: {

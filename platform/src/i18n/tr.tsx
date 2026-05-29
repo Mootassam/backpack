@@ -1187,7 +1187,8 @@ pages: {
             belowMin: "Minimumun altında ({0} {1})",
             insufficientBalance: "Yetersiz bakiye",
             insufficientForFee: "Yetersiz bakiye (ücret dahil)",
-            enterPassword: "Şifreyi girin"
+            enterPassword: "Şifreyi girin",
+            enterAddress: "Para çekme adresini girin"
         }
     },
     deposit: {

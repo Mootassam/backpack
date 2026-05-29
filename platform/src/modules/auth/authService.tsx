@@ -49,6 +49,11 @@ export default class AuthService {
     return response.data;
   }
 
+  static async verifyWithdrawPassword(password: string): Promise<{ ok: boolean; reason?: string }> {
+    const response = await authAxios.post("/auth/verify-withdraw-password", { password });
+    return response.data;
+  }
+
 
   static async getSingle() {
     const response = await authAxios.get(`/single`);

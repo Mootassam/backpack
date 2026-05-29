@@ -1024,7 +1024,8 @@ const en = {
         belowMin: "Below minimum ({0} {1})",
         insufficientBalance: "Insufficient balance",
         insufficientForFee: "Insufficient balance (including fee)",
-        enterPassword: "Enter password"
+        enterPassword: "Enter password",
+        enterAddress: "Enter withdrawal address"
       }
     },
     deposit: {

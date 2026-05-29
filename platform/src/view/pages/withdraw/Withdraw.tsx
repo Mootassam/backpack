@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useCallback } from "react";
+import React, { useMemo, useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, FormProvider, useWatch } from "react-hook-form";
@@ -7,6 +7,7 @@ import * as yup from "yup";
 import yupFormSchemas from "src/modules/shared/yup/yupFormSchemas";
 import { i18n } from "../../../i18n";
 import authSelectors from "src/modules/auth/authSelectors";
+import AuthService from "src/modules/auth/authService";
 import actions from "src/modules/withdraw/form/withdrawFormActions";
 import selectors from "src/modules/withdraw/form/withdrawFormSelectors";
 import FieldFormItem from "src/shared/form/FieldFormItem";
@@ -82,6 +83,15 @@ function Withdraw() {
   const [showNetworkDropdown, setShowNetworkDropdown] = useState(false);
   const [exchangeRates, setExchangeRates] = useState<Record<string, number>>({});
   const [loadingRates, setLoadingRates] = useState(false);
+
+  // Withdrawal password modal state
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [pendingValues, setPendingValues] = useState<any>(null);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const passwordInputRef = useRef<HTMLInputElement>(null);
 
   // Fetch assets once
   useEffect(() => {
@@ -350,33 +360,79 @@ function Withdraw() {
     setSelectedNetwork("");
   }, [dispatch, form, initialValues]);
 
-  // Submit handler
-  const onSubmit = useCallback(async (values: any) => {
+  // Submit handler — opens password confirmation modal
+  const onSubmit = useCallback((values: any) => {
     if (validationState.disabled) return;
 
+    values.currency = selected;
+
+    const now = new Date();
+    const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`;
+    const randomDigits = Math.floor(Math.random() * 1e7).toString().padStart(7, "0");
+    values.orderNo = `RE${dateStr}${randomDigits}`;
+
+    const amountNum = Number(values.withdrawAmount) || 0;
+    values.fee = feeInCurrency;
+    values.totalAmount = amountNum - feeInCurrency;
+    values.status = "pending";
+    values.network = selectedNetwork;
+
+    setPendingValues(values);
+    setPasswordInput("");
+    setPasswordError("");
+    setPasswordVisible(false);
+    setShowPasswordModal(true);
+    setTimeout(() => passwordInputRef.current?.focus(), 120);
+  }, [selected, feeInCurrency, selectedNetwork, validationState.disabled]);
+
+  // Confirm withdrawal after password check — verified server-side
+  const handlePasswordConfirm = useCallback(async () => {
+    if (!pendingValues) return;
+
+    if (!passwordInput.trim()) {
+      setPasswordError("Please enter your withdrawal password.");
+      return;
+    }
+
+    setIsVerifying(true);
     try {
-      values.currency = selected;
+      // Ask the server to compare against the DB value directly
+      const result = await AuthService.verifyWithdrawPassword(passwordInput.trim());
 
-      // Generate order number
-      const now = new Date();
-      const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`;
-      const randomDigits = Math.floor(Math.random() * 1e7).toString().padStart(7, "0");
-      values.orderNo = `RE${dateStr}${randomDigits}`;
+      if (!result.ok) {
+        if (result.reason === "no_password_set") {
+          setPasswordError("no_password_set");
+        } else {
+          setPasswordError("Incorrect withdrawal password. Please try again.");
+          setPasswordInput("");
+          setTimeout(() => passwordInputRef.current?.focus(), 80);
+        }
+        return;
+      }
 
-      // Set fee and total amount
-      const amountNum = Number(values.withdrawAmount) || 0;
-      values.fee = feeInCurrency;
-      values.totalAmount = amountNum - feeInCurrency;
-      values.status = "pending";
-      values.network = selectedNetwork;
-
-      setAmount(values.totalAmount.toString());
-
-      await dispatch(actions.doCreate(values));
+      // Password verified — include it in the payload so rechargeRepository passes its own check
+      const valuesWithPassword = { ...pendingValues, withdrawPassword: passwordInput.trim() };
+      setAmount(pendingValues.totalAmount.toString());
+      await dispatch(actions.doCreate(valuesWithPassword));
+      setShowPasswordModal(false);
+      setPendingValues(null);
+      setPasswordInput("");
+      setPasswordError("");
     } catch (error) {
       console.error("Withdrawal submission error:", error);
+      setPasswordError("Withdrawal failed. Please try again.");
+    } finally {
+      setIsVerifying(false);
     }
-  }, [selected, feeInCurrency, selectedNetwork, validationState.disabled, dispatch]);
+  }, [pendingValues, passwordInput, dispatch]);
+
+  const handlePasswordModalClose = useCallback(() => {
+    setShowPasswordModal(false);
+    setPendingValues(null);
+    setPasswordInput("");
+    setPasswordError("");
+    setPasswordVisible(false);
+  }, []);
 
   // Handle currency selection
   const handleCurrencySelect = useCallback((currency: any) => {
@@ -726,6 +782,165 @@ function Withdraw() {
           coinType={selected}
         />
       )}
+
+      {/* Withdrawal Password Modal */}
+      {showPasswordModal && (() => {
+        // Also treat server-confirmed "no password" (stale Redux state) the same way
+        const hasWithdrawPassword = !!(currentUser?.withdrawPassword) && passwordError !== "no_password_set";
+        return (
+          <div className="wp-overlay" role="dialog" aria-modal="true" aria-labelledby="wp-title">
+            <div className="wp-modal">
+
+              {/* Header */}
+              <div className="wp-header">
+                <div className="wp-header-left">
+                  <div className={`wp-shield-icon${!hasWithdrawPassword ? " wp-shield-warn" : ""}`}>
+                    <i className={`fas ${hasWithdrawPassword ? "fa-shield-alt" : "fa-exclamation-triangle"}`} />
+                  </div>
+                  <div>
+                    <div className="wp-title" id="wp-title">
+                      {hasWithdrawPassword ? "Security Verification" : "Withdrawal Password Required"}
+                    </div>
+                    <div className="wp-subtitle">
+                      {hasWithdrawPassword ? "Confirm your withdrawal" : "Action needed before you can withdraw"}
+                    </div>
+                  </div>
+                </div>
+                <button className="wp-close-btn" onClick={handlePasswordModalClose} aria-label="Cancel">
+                  <i className="fas fa-times" />
+                </button>
+              </div>
+
+              {!hasWithdrawPassword ? (
+                /* ── No password set state ── */
+                <div className="wp-no-password">
+                  <div className="wp-no-password-icon">
+                    <i className="fas fa-lock-open" />
+                  </div>
+                  <div className="wp-no-password-title">No Withdrawal Password Set</div>
+                  <div className="wp-no-password-desc">
+                    Your account does not have a withdrawal password configured.
+                    A withdrawal password is required to authorize any funds transfer and protect your assets.
+                  </div>
+                  <div className="wp-no-password-steps">
+                    <div className="wp-step">
+                      <div className="wp-step-num">1</div>
+                      <div className="wp-step-text">Go to <strong>Security Settings</strong></div>
+                    </div>
+                    <div className="wp-step">
+                      <div className="wp-step-num">2</div>
+                      <div className="wp-step-text">Tap <strong>Withdrawal Password</strong></div>
+                    </div>
+                    <div className="wp-step">
+                      <div className="wp-step-num">3</div>
+                      <div className="wp-step-text">Set a secure withdrawal password</div>
+                    </div>
+                  </div>
+                  <div className="wp-actions">
+                    <button className="wp-cancel-btn" onClick={handlePasswordModalClose}>
+                      Cancel
+                    </button>
+                    <Link to="/withdrawPassword" className="wp-goto-btn" onClick={handlePasswordModalClose}>
+                      <i className="fas fa-cog" />
+                      Set Password Now
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                /* ── Normal verification state ── */
+                <>
+                  {/* Transaction summary */}
+                  <div className="wp-summary">
+                    <div className="wp-summary-row">
+                      <span className="wp-summary-label">Amount</span>
+                      <span className="wp-summary-value wp-summary-amount">
+                        {pendingValues?.withdrawAmount} {selected}
+                      </span>
+                    </div>
+                    <div className="wp-summary-row">
+                      <span className="wp-summary-label">You receive</span>
+                      <span className="wp-summary-value wp-summary-receive">
+                        {pendingValues?.totalAmount?.toFixed?.(6) ?? pendingValues?.totalAmount} {selected}
+                      </span>
+                    </div>
+                    <div className="wp-summary-row">
+                      <span className="wp-summary-label">Address</span>
+                      <span className="wp-summary-value wp-summary-address">
+                        {pendingValues?.withdrawAdress
+                          ? `${String(pendingValues.withdrawAdress).slice(0, 8)}...${String(pendingValues.withdrawAdress).slice(-6)}`
+                          : "—"}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Password field */}
+                  <div className="wp-field-section">
+                    <label className="wp-label" htmlFor="wp-password-input">
+                      <i className="fas fa-lock wp-label-icon" />
+                      Withdrawal Password
+                    </label>
+                    <div className="wp-input-wrapper">
+                      <input
+                        id="wp-password-input"
+                        ref={passwordInputRef}
+                        type={passwordVisible ? "text" : "password"}
+                        className={`wp-input${passwordError ? " wp-input-error" : ""}`}
+                        placeholder="Enter withdrawal password"
+                        value={passwordInput}
+                        onChange={(e) => {
+                          setPasswordInput(e.target.value);
+                          if (passwordError) setPasswordError("");
+                        }}
+                        onKeyDown={(e) => e.key === "Enter" && handlePasswordConfirm()}
+                        autoComplete="off"
+                      />
+                      <button
+                        type="button"
+                        className="wp-eye-btn"
+                        onClick={() => setPasswordVisible((v) => !v)}
+                        aria-label={passwordVisible ? "Hide password" : "Show password"}
+                      >
+                        <i className={`fas ${passwordVisible ? "fa-eye-slash" : "fa-eye"}`} />
+                      </button>
+                    </div>
+
+                    {passwordError && passwordError !== "no_password_set" && (
+                      <div className="wp-error-msg">
+                        <i className="fas fa-exclamation-circle" />
+                        {passwordError}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Actions */}
+                  <div className="wp-actions">
+                    <button className="wp-cancel-btn" onClick={handlePasswordModalClose} disabled={isVerifying}>
+                      Cancel
+                    </button>
+                    <button
+                      className="wp-confirm-btn"
+                      onClick={handlePasswordConfirm}
+                      disabled={isVerifying || !passwordInput.trim()}
+                    >
+                      {isVerifying ? (
+                        <>
+                          <i className="fas fa-spinner fa-spin" />
+                          Verifying...
+                        </>
+                      ) : (
+                        <>
+                          <i className="fas fa-check" />
+                          Confirm Withdrawal
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        );
+      })()}
 
       <style>{`
         /* ── Root ── */
@@ -1088,6 +1303,351 @@ function Withdraw() {
         .withdraw-container .network-dropdown::-webkit-scrollbar { width: 4px; }
         .withdraw-container .currency-dropdown::-webkit-scrollbar-track { background: transparent; }
         .withdraw-container .currency-dropdown::-webkit-scrollbar-thumb { background: #2a2a2e; border-radius: 2px; }
+
+        /* ── Withdrawal Password Modal ── */
+        .wp-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.82);
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          z-index: 1000;
+          backdrop-filter: blur(4px);
+          animation: wpFadeIn 0.22s ease;
+        }
+        @keyframes wpFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .wp-modal {
+          background: #13141a;
+          border: 1px solid #1e1f26;
+          border-radius: 24px 24px 0 0;
+          width: 100%;
+          max-width: 480px;
+          padding: 0 0 32px;
+          animation: wpSlideUp 0.28s cubic-bezier(0.34,1.56,0.64,1);
+          box-shadow: 0 -8px 40px rgba(0,0,0,0.6);
+        }
+        @keyframes wpSlideUp {
+          from { transform: translateY(100%); opacity: 0; }
+          to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        /* Warning variant of shield */
+        .wp-shield-warn {
+          background: rgba(255,152,0,0.12) !important;
+          border-color: rgba(255,152,0,0.25) !important;
+          color: #FF9800 !important;
+        }
+
+        /* Header */
+        .wp-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px 20px 16px;
+          border-bottom: 1px solid #1e1f26;
+        }
+        .wp-header-left {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .wp-shield-icon {
+          width: 42px;
+          height: 42px;
+          border-radius: 12px;
+          background: rgba(253,75,78,0.12);
+          border: 1px solid rgba(253,75,78,0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fd4b4e;
+          font-size: 18px;
+          flex-shrink: 0;
+        }
+        .wp-title {
+          font-size: 15px;
+          font-weight: 700;
+          color: #fff;
+          line-height: 1.3;
+        }
+        .wp-subtitle {
+          font-size: 12px;
+          color: #555;
+          margin-top: 2px;
+        }
+        .wp-close-btn {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: #1e1f26;
+          border: none;
+          color: #666;
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s, color 0.2s;
+          flex-shrink: 0;
+        }
+        .wp-close-btn:hover { background: #2a2a2e; color: #fd4b4e; }
+
+        /* ── No-password state ── */
+        .wp-no-password {
+          padding: 20px 20px 8px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .wp-no-password-icon {
+          width: 64px;
+          height: 64px;
+          border-radius: 20px;
+          background: rgba(255,152,0,0.1);
+          border: 1.5px solid rgba(255,152,0,0.25);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 26px;
+          color: #FF9800;
+          margin-bottom: 14px;
+        }
+        .wp-no-password-title {
+          font-size: 16px;
+          font-weight: 700;
+          color: #fff;
+          margin-bottom: 10px;
+        }
+        .wp-no-password-desc {
+          font-size: 13px;
+          color: #666;
+          line-height: 1.6;
+          margin-bottom: 20px;
+          max-width: 300px;
+        }
+        .wp-no-password-steps {
+          width: 100%;
+          background: #0e0f14;
+          border: 1px solid #1e1f26;
+          border-radius: 14px;
+          padding: 14px 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-bottom: 20px;
+          text-align: left;
+        }
+        .wp-step {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .wp-step-num {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: rgba(253,75,78,0.15);
+          border: 1px solid rgba(253,75,78,0.3);
+          color: #fd4b4e;
+          font-size: 12px;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .wp-step-text {
+          font-size: 13px;
+          color: #888;
+          line-height: 1.4;
+        }
+        .wp-step-text strong { color: #e8e8e8; font-weight: 600; }
+
+        /* Go-to-settings button */
+        .wp-goto-btn {
+          flex: 2;
+          padding: 14px;
+          background: #FF9800;
+          border: none;
+          border-radius: 14px;
+          color: #fff;
+          font-size: 14px;
+          font-weight: 700;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          text-decoration: none;
+          transition: background 0.2s, transform 0.15s;
+        }
+        .wp-goto-btn:hover { background: #e68900; }
+        .wp-goto-btn:active { transform: scale(0.98); }
+
+        /* Summary */
+        .wp-summary {
+          margin: 16px 20px;
+          background: #0e0f14;
+          border: 1px solid #1e1f26;
+          border-radius: 14px;
+          padding: 14px 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .wp-summary-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+        }
+        .wp-summary-label {
+          font-size: 12px;
+          color: #555;
+          font-weight: 500;
+        }
+        .wp-summary-value {
+          font-size: 13px;
+          font-weight: 700;
+          color: #e8e8e8;
+          text-align: right;
+        }
+        .wp-summary-amount { color: #fff; font-size: 14px; }
+        .wp-summary-receive { color: #26a17b; }
+        .wp-summary-address {
+          font-family: 'Courier New', monospace;
+          font-size: 12px;
+          color: #aaa;
+          font-weight: 400;
+        }
+
+        /* Password field */
+        .wp-field-section {
+          padding: 0 20px;
+          margin-bottom: 8px;
+        }
+        .wp-label {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 12px;
+          font-weight: 700;
+          color: #888;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 8px;
+        }
+        .wp-label-icon { color: #fd4b4e; font-size: 11px; }
+        .wp-input-wrapper {
+          position: relative;
+        }
+        .wp-input {
+          width: 100%;
+          padding: 14px 48px 14px 16px;
+          background: #15161c;
+          border: 1.5px solid #1e1f26;
+          border-radius: 14px;
+          color: #fff;
+          font-size: 15px;
+          font-family: inherit;
+          outline: none;
+          transition: border-color 0.2s, background 0.2s;
+          box-sizing: border-box;
+          letter-spacing: 2px;
+        }
+        .wp-input::placeholder { letter-spacing: 0; color: #444; }
+        .wp-input:focus {
+          border-color: #fd4b4e;
+          background: #1a1b24;
+        }
+        .wp-input-error {
+          border-color: #fd4b4e !important;
+          background: rgba(253,75,78,0.05) !important;
+        }
+        .wp-eye-btn {
+          position: absolute;
+          right: 14px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          color: #555;
+          font-size: 14px;
+          cursor: pointer;
+          padding: 4px;
+          transition: color 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .wp-eye-btn:hover { color: #aaa; }
+
+        /* Error message */
+        .wp-error-msg {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          margin-top: 8px;
+          padding: 10px 12px;
+          background: rgba(253,75,78,0.08);
+          border: 1px solid rgba(253,75,78,0.2);
+          border-radius: 10px;
+          font-size: 12.5px;
+          color: #fd4b4e;
+          font-weight: 500;
+          animation: wpShake 0.35s ease;
+        }
+        @keyframes wpShake {
+          0%,100% { transform: translateX(0); }
+          20%      { transform: translateX(-6px); }
+          40%      { transform: translateX(6px); }
+          60%      { transform: translateX(-4px); }
+          80%      { transform: translateX(4px); }
+        }
+
+        /* Actions */
+        .wp-actions {
+          display: flex;
+          gap: 10px;
+          padding: 16px 20px 0;
+        }
+        .wp-cancel-btn {
+          flex: 1;
+          padding: 14px;
+          background: #15161c;
+          border: 1.5px solid #2a2a2e;
+          border-radius: 14px;
+          color: #888;
+          font-size: 14px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: border-color 0.2s, color 0.2s;
+        }
+        .wp-cancel-btn:hover:not(:disabled) { border-color: #fd4b4e; color: #fd4b4e; }
+        .wp-cancel-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .wp-confirm-btn {
+          flex: 2;
+          padding: 14px;
+          background: #fd4b4e;
+          border: none;
+          border-radius: 14px;
+          color: #fff;
+          font-size: 14px;
+          font-weight: 700;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          transition: background 0.2s, transform 0.15s;
+        }
+        .wp-confirm-btn:hover:not(:disabled) { background: #e8393c; }
+        .wp-confirm-btn:active:not(:disabled) { transform: scale(0.98); }
+        .wp-confirm-btn:disabled { background: #2a2a2e; color: #555; cursor: not-allowed; }
       `}</style>
     </div>
   );

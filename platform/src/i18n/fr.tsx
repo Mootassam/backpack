@@ -960,7 +960,8 @@ pages: {
             belowMin: "En dessous du minimum ({0} {1})",
             insufficientBalance: "Solde insuffisant",
             insufficientForFee: "Solde insuffisant (frais inclus)",
-            enterPassword: "Entrer le mot de passe"
+            enterPassword: "Entrer le mot de passe",
+            enterAddress: "Entrez l'adresse de retrait"
         }
     },
     deposit: {

@@ -1184,7 +1184,8 @@ components: {
         belowMin: "Abaixo do mínimo ({0} {1})",
         insufficientBalance: "Saldo insuficiente",
         insufficientForFee: "Saldo insuficiente (incluindo taxa)",
-        enterPassword: "Digitar senha"
+        enterPassword: "Digitar senha",
+        enterAddress: "Digite o endereço de retirada"
       }
     },
     deposit: {

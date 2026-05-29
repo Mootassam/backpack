@@ -10,7 +10,9 @@ import axios from "axios";
 import method from "src/modules/depositMethod/list/depositMethodListActions";
 import selectors from "src/modules/depositMethod/list/depositMethodSelectors";
 import depositActions from "src/modules/deposit/form/depositFormActions";
+import depositFormSelectors from "src/modules/deposit/form/depositFormSelectors";
 import FieldFormItem from "src/shared/form/FieldFormItem";
+import SuccessModalComponent from "src/view/shared/modals/sucessModal";
 
 // Currency configurations
 const CURRENCIES = [
@@ -93,11 +95,11 @@ function Deposit() {
 
   const listMethod = useSelector(selectors.selectRows);
   const loading = useSelector(selectors.selectLoading);
+  const showSuccessModal = useSelector(depositFormSelectors.selectDepositModal);
 
   const [showToast, setShowToast] = useState(false);
   const [copiedText, setCopiedText] = useState("Address copied");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [exchangeRates, setExchangeRates] = useState<Record<string, number>>({});
   const [loadingRates, setLoadingRates] = useState(false);
 
@@ -349,7 +351,6 @@ function Deposit() {
 
       await dispatch(depositActions.doCreate(depositData));
 
-      setShowSuccessModal(true);
       formMethods.reset();
     } catch (error) {
       console.error("Deposit submission error:", error);
@@ -359,9 +360,9 @@ function Deposit() {
   }, [selectedNetwork, currentCurrency, currentAddress, symbol, dispatch, formMethods]);
 
   const handleCloseModal = useCallback(() => {
-    setShowSuccessModal(false);
+    dispatch(depositActions.doClose());
     setSubmittedAmount("");
-  }, []);
+  }, [dispatch]);
 
   // Get currency icon URL
   const getCurrencyIcon = useCallback((sym: string) => {
@@ -620,32 +621,13 @@ function Deposit() {
         {copiedText}
       </div>
 
-      {/* Success Modal */}
-      {showSuccessModal && (
-        <div className="modal-overlay" role="dialog" aria-modal="true">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h3>Deposit Submitted Successfully</h3>
-              <button className="modal-close" onClick={handleCloseModal} aria-label="Close">
-                <i className="fas fa-times" />
-              </button>
-            </div>
-            <div className="modal-body">
-              <div className="success-icon"><i className="fas fa-check-circle" /></div>
-              <div className="success-message">
-                Your deposit of {submittedAmount} {symbol} has been submitted for processing.
-              </div>
-              <div className="success-details">
-                <p>Please wait for network confirmations. This usually takes 5-30 minutes.</p>
-                <p>You can track the status in your transaction history.</p>
-              </div>
-            </div>
-            <div className="modal-footer">
-              <button className="modal-btn" onClick={handleCloseModal}>OK</button>
-            </div>
-          </div>
-        </div>
-      )}
+      <SuccessModalComponent
+        isOpen={showSuccessModal}
+        onClose={handleCloseModal}
+        type="deposit"
+        amount={submittedAmount}
+        coinType={symbol}
+      />
 
       <style>{`
         /* ── Base ── */
@@ -887,53 +869,6 @@ function Deposit() {
         .toast.visible { transform: translateX(-50%) translateY(0); }
         .toast-icon { color: #26a17b; }
 
-        /* ── Success modal ── */
-        .modal-overlay {
-          position: fixed; inset: 0;
-          background: rgba(0,0,0,0.75);
-          display: flex; align-items: center; justify-content: center;
-          z-index: 1000; backdrop-filter: blur(3px);
-          animation: depFadeIn 0.25s ease;
-        }
-        @keyframes depFadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .modal-content {
-          background: #15161c; border: 1px solid #1e1f26;
-          border-radius: 20px; width: 90%; max-width: 360px;
-          overflow: hidden;
-          animation: depSlideUp 0.25s cubic-bezier(0.4,0,0.2,1);
-        }
-        @keyframes depSlideUp {
-          from { transform: translateY(24px); opacity: 0; }
-          to   { transform: translateY(0);    opacity: 1; }
-        }
-        .modal-header {
-          padding: 18px 20px;
-          border-bottom: 1px solid #1e1f26;
-          display: flex; justify-content: space-between; align-items: center;
-        }
-        .modal-header h3 { margin: 0; font-size: 16px; font-weight: 700; color: #fff; }
-        .modal-close {
-          width: 28px; height: 28px; border-radius: 50%;
-          background: #1e1f26; border: none; color: #888;
-          cursor: pointer; font-size: 14px;
-          display: flex; align-items: center; justify-content: center;
-          transition: background 0.2s, color 0.2s;
-        }
-        .modal-close:hover { background: #2a2a2e; color: #fd4b4e; }
-        .modal-body { padding: 28px 20px; text-align: center; }
-        .success-icon { font-size: 56px; color: #26a17b; margin-bottom: 16px; }
-        .success-message { font-size: 15px; color: #fff; font-weight: 700; margin-bottom: 12px; }
-        .success-details { font-size: 13px; color: #555; line-height: 1.6; }
-        .success-details p { margin: 8px 0; }
-        .modal-footer { padding: 16px 20px; border-top: 1px solid #1e1f26; }
-        .modal-btn {
-          width: 100%; padding: 13px;
-          background: #fd4b4e; color: #fff;
-          border: none; border-radius: 12px;
-          font-size: 15px; font-weight: 700; cursor: pointer;
-          transition: background 0.2s;
-        }
-        .modal-btn:hover { background: #e8393c; }
       `}</style>
     </div>
   );

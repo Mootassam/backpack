@@ -1183,7 +1183,8 @@ pages: {
             belowMin: "Por debajo del mínimo ({0} {1})",
             insufficientBalance: "Saldo insuficiente",
             insufficientForFee: "Saldo insuficiente (comisión incluida)",
-            enterPassword: "Ingresar contraseña"
+            enterPassword: "Ingresar contraseña",
+            enterAddress: "Ingrese la dirección de retiro"
         }
     },
     deposit: {

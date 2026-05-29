@@ -445,7 +445,8 @@ const el = {
       validation: {
         selectCurrency: "Επιλέξτε νόμισμα", enterAmount: "Εισάγετε ποσό",
         belowMin: "Κάτω από ελάχιστο ({0} {1})", insufficientBalance: "Ανεπαρκές υπόλοιπο",
-        insufficientForFee: "Ανεπαρκές υπόλοιπο (με τέλος)", enterPassword: "Εισάγετε κωδικό"
+        insufficientForFee: "Ανεπαρκές υπόλοιπο (με τέλος)", enterPassword: "Εισάγετε κωδικό",
+        enterAddress: "Εισάγετε διεύθυνση ανάληψης"
       }
     },
     deposit: {

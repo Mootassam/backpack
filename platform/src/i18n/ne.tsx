@@ -1018,7 +1018,8 @@ const ne = {
         belowMin: "न्यूनतम भन्दा तल ({0} {1})",
         insufficientBalance: "अपर्याप्त ब्यालेन्स",
         insufficientForFee: "अपर्याप्त ब्यालेन्स (शुल्क सहित)",
-        enterPassword: "पासवर्ड प्रविष्ट गर्नुहोस्"
+        enterPassword: "पासवर्ड प्रविष्ट गर्नुहोस्",
+        enterAddress: "निकासी ठेगाना प्रविष्ट गर्नुहोस्"
       }
     },
     deposit: {

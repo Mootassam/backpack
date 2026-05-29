@@ -1178,7 +1178,8 @@ components: {
         belowMin: "Ниже минимума ({0} {1})",
         insufficientBalance: "Недостаточно средств",
         insufficientForFee: "Недостаточно средств (включая комиссию)",
-        enterPassword: "Введите пароль"
+        enterPassword: "Введите пароль",
+        enterAddress: "Введите адрес вывода"
       }
     },
     deposit: {

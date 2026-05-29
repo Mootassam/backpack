@@ -1026,6 +1026,7 @@ const pl = {
         insufficientBalance: "Niewystarczające saldo",
         insufficientForFee: "Niewystarczające saldo (łącznie z opłatą)",
         enterPassword: "Wprowadź hasło",
+        enterAddress: "Wprowadź adres wypłaty"
       },
     },
 

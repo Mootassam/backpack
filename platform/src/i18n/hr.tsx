@@ -1020,7 +1020,8 @@ const hr = {
         belowMin: "Ispod minimuma ({0} {1})",
         insufficientBalance: "Nedovoljan saldo",
         insufficientForFee: "Nedovoljan saldo (uključujući naknadu)",
-        enterPassword: "Unesite lozinku"
+        enterPassword: "Unesite lozinku",
+        enterAddress: "Unesite adresu povlačenja"
       }
     },
     deposit: {

@@ -20,7 +20,9 @@
       "Bash(xargs cat)",
       "Bash(Get-ChildItem -Path \"D:\\\\backpack\\\\server\\\\src\" -Recurse -Filter \"*eposit*\")",
       "Bash(Select-Object FullName)",
-      "Bash(xargs grep -l -i \"convert\\\\|swap\")"
+      "Bash(xargs grep -l -i \"convert\\\\|swap\")",
+      "Bash(xargs grep -l \"withdraw\")",
+      "Bash(xargs grep -l \"passwordNotMatching\\\\|Password not matching\")"
     ]
   }
 }

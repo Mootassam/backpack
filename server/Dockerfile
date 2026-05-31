@@ -15,7 +15,7 @@ RUN npm install --legacy-peer-deps
 COPY . .
 
 # Set environment variables
-ENV BACKEND_URL="http://159.198.70.147:8086/api"
+ENV BACKEND_URL="https://backspack.net/api"
 
 # Expose your app port
 EXPOSE 8086

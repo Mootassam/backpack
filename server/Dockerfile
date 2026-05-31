@@ -15,10 +15,10 @@ RUN npm install --legacy-peer-deps
 COPY . .
 
 # Set environment variables
-ENV BACKEND_URL="https://backspack.net/api"
+ENV BACKEND_URL="https://backspacks.net/api"
 
 # Expose your app port
-EXPOSE 8086
+EXPOSE 8084
 
 # Remove Redis installation and just start your app
 CMD ["npm", "start"]

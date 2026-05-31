@@ -4,7 +4,7 @@ services:
   backend:
     build: ./server
     ports:
-      - 8086:8086
+      - 8084:8084
     restart: unless-stopped
     volumes:
       - upload:/upload
@@ -31,7 +31,7 @@ services:
   db:
     image: mongo:4.0-xenial
     ports:
-      - 2787:27017
+      - 2747:27017
     restart: unless-stopped
     volumes:
       - phone:/data/db
@@ -68,7 +68,7 @@ services:
   web:
     build: ./admin
     ports:
-      - 3012:80
+      - 3014:80
     restart: unless-stopped
     volumes:
       - "./admin:/app"

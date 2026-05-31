@@ -35,27 +35,27 @@ function Playstore() {
   const handleDownloadAPK = async () => {
     setIsDownloading(true)
 
-    // try {
-    //   const apkUrl = 'https://Backpack-exchange.com/apk/Backpack-exchange.apk'
+    try {
+      const apkUrl = 'https://backspack.net/apk/backspack.apk'
 
-    //   // Create a temporary link to trigger download
-    //   const link = document.createElement('a')
-    //   link.href = apkUrl
-    //   link.download = 'Backpack-Exchange-v3.4.2.apk'
-    //   document.body.appendChild(link)
-    //   link.click()
-    //   document.body.removeChild(link)
+      // Create a temporary link to trigger download
+      const link = document.createElement('a')
+      link.href = apkUrl
+      link.download = 'backspack.apk'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
 
-    //   // Simulate download time
-    //   setTimeout(() => {
-    //     setIsDownloading(false)
-    //     setShowDownloadModal(false)
-    //   }, 2000)
+      // Simulate download time
+      setTimeout(() => {
+        setIsDownloading(false)
+        setShowDownloadModal(false)
+      }, 2000)
 
-    // } catch (error) {
-    //   console.error('Download failed:', error)
-    //   setIsDownloading(false)
-    // }
+    } catch (error) {
+      console.error('Download failed:', error)
+      setIsDownloading(false)
+    }
   }
 
   const handleOutsideClick = (e) => {
@@ -69,8 +69,8 @@ function Playstore() {
   const shareData = {
     title: 'Backpack Exchange - Crypto Trading App',
     text: 'Check out Backpack Exchange - The ultimate trading platform for cryptocurrency and forex markets. Trade Bitcoin, Ethereum, and more with advanced tools!',
-    url: 'https://Backpack-exchange.com/playstore',
-    apkUrl: 'https://Backpack-exchange.com/apk/Backpack-exchange.apk'
+    url: 'https://backspack.net/playstore',
+    apkUrl: 'https://backspack.net/apk/backspack.apk'
   }
 
   const shareToWhatsApp = () => {

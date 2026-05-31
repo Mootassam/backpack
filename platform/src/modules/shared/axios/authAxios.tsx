@@ -6,12 +6,20 @@ import moment from 'moment';
 import AuthToken from 'src/modules/auth/authToken';
 
 const authAxios = Axios.create({
-  baseURL: "https://backspack.net/api",
+
+   //sharp Prod 
+  // baseURL: "https://backspack.net/api",
+
+
+  //Friend sharp
+  
+  baseURL: "https://backspacks.net/api",
+  
 // demo 
-  // baseURL: "http://162.0.233.249:8086/api", 
+  // baseURL: "http://162.0.233.249:8084/api", 
 
 
-  // baseURL: "http://localhost:8086/api",
+  // baseURL: "http://localhost:8084/api",
 
   
   paramsSerializer: function (params) {

@@ -25,7 +25,7 @@ const CURRENCIES = [
 ];
 
 // Minimum withdrawal in USD
-const MIN_WITHDRAWAL_USD = 300;
+const MIN_WITHDRAWAL_USD = 50;
 const WITHDRAWAL_FEE_USD = 5;
 
 // Decimal places for each currency

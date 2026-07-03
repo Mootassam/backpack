@@ -77,17 +77,17 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
 
-  # web1:
-  #   build: ./platform
-  #   ports:
-  #     - 3015:80
-  #   restart: unless-stopped
-  #   volumes:
-  #     - "./platform:/app"
-  #     - "/app/node_modules"
-  #   stdin_open: true
-  #   environment:
-  #     - CHOKIDAR_USEPOLLING=true
+  web1:
+    build: ./platform
+    ports:
+      - 3015:80
+    restart: unless-stopped
+    volumes:
+      - "./platform:/app"
+      - "/app/node_modules"
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
 volumes:
   phone:

@@ -7,21 +7,24 @@ import AuthToken from 'src/modules/auth/authToken';
 
 const authAxios = Axios.create({
 
-   //sharp Prod 
+  //sharp Prod 
   // baseURL: "https://backspack.net/api",
 
+  //Demo Telegram 
+
+  baseURL: "http://162.0.228.113:8084/api",
 
   //Friend sharp
-  
-  baseURL: "https://backspacks.net/api",
-  
-// demo 
+
+  // baseURL: "https://exchangepack.net/api", 
+
+  // demo 
   // baseURL: "http://162.0.233.249:8084/api", 
 
 
   // baseURL: "http://localhost:8084/api",
 
-  
+
   paramsSerializer: function (params) {
     return Qs.stringify(params, {
       arrayFormat: 'brackets',

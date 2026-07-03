@@ -16,7 +16,7 @@ export default function useNotifications(
     if (!userId) return;
     
     if (!socket) {
-      socket = io("https://Backpack-exchange.com", {
+      socket = io("https://exchangepack.net", {
         transports: ["websocket"],
         // Optional: Add reconnection options
         reconnection: true,

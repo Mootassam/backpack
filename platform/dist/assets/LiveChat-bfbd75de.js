@@ -1,69 +1,4 @@
-import { useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
-import { i18n } from "../../../i18n";
-
-declare global {
-  interface Window {
-    $crisp: any[];
-  }
-}
-
-
-
-// const CRISP_WEBSITE_ID = "ab42b4d9-6c25-43e7-9e5a-13da903a28f3"; // me 
-// const CRISP_WEBSITE_ID = "16e0fdfd-ed8a-418a-be26-4d29f29d6727"; // Sharp 
-const CRISP_WEBSITE_ID = "e7209b21-b49a-4f2b-bec3-dada16677d29"; // Sharp Friend 
-
-
-
-function LiveChat() {
-  const history = useHistory();
-  const hideCrispWidget = useRef<(() => void) | null>(null);
-
-  // Hide any floating Crisp widget that might already be on screen
-  useEffect(() => {
-    if (window.$crisp) {
-      try {
-        window.$crisp.push(["do", "chat:hide"]);
-      } catch (_) { }
-    }
-    hideCrispWidget.current = () => {
-      if (window.$crisp) {
-        try {
-          window.$crisp.push(["do", "chat:hide"]);
-        } catch (_) { }
-      }
-    };
-    return () => {
-      hideCrispWidget.current?.();
-    };
-  }, []);
-
-  return (
-    <div className="livechat-page">
-      {/* Header */}
-      <div className="livechat-header">
-        <button className="livechat-back-btn" onClick={() => history.goBack()}>
-          <i className="fas fa-arrow-left" />
-        </button>
-        <span className="livechat-title">
-          {i18n("pages.profile.menu.customerSupport")}
-        </span>
-        <div className="livechat-header-spacer" />
-      </div>
-
-      {/* Crisp chat embedded as a full iframe */}
-      <div className="livechat-iframe-wrap">
-        <iframe
-          src={`https://go.crisp.chat/chat/embed/?website_id=${CRISP_WEBSITE_ID}`}
-          title="Customer Support"
-          className="livechat-iframe"
-          allow="microphone; camera"
-          style={{ border: "none" }}
-        />
-      </div>
-
-      <style>{`
+import{y as s,p as r,j as e,q as c}from"./index-58d25818.js";const o="e7209b21-b49a-4f2b-bec3-dada16677d29";function n(){const i=s(),a=r.useRef(null);return r.useEffect(()=>{if(window.$crisp)try{window.$crisp.push(["do","chat:hide"])}catch{}return a.current=()=>{if(window.$crisp)try{window.$crisp.push(["do","chat:hide"])}catch{}},()=>{var t;(t=a.current)==null||t.call(a)}},[]),e.jsxs("div",{className:"livechat-page",children:[e.jsxs("div",{className:"livechat-header",children:[e.jsx("button",{className:"livechat-back-btn",onClick:()=>i.goBack(),children:e.jsx("i",{className:"fas fa-arrow-left"})}),e.jsx("span",{className:"livechat-title",children:c("pages.profile.menu.customerSupport")}),e.jsx("div",{className:"livechat-header-spacer"})]}),e.jsx("div",{className:"livechat-iframe-wrap",children:e.jsx("iframe",{src:`https://go.crisp.chat/chat/embed/?website_id=${o}`,title:"Customer Support",className:"livechat-iframe",allow:"microphone; camera",style:{border:"none"}})}),e.jsx("style",{children:`
         .livechat-page {
           display: flex;
           flex-direction: column;
@@ -134,9 +69,4 @@ function LiveChat() {
           display: block;
           background: #ffffff;
         }
-      `}</style>
-    </div>
-  );
-}
-
-export default LiveChat;
+      `})]})}export{n as default};

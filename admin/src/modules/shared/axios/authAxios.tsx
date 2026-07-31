@@ -10,7 +10,7 @@ const authAxios = Axios.create({
   //sharp
   // baseURL: "http://162.0.233.249:8086/api",
   //Friend sharp
-  // baseURL: "http://162.0.233.249:8084/api",
+  // baseURL: "http://162.0.233.249:8088/api",
     //Demo Telegram
   // baseURL: "http://162.0.228.113:8084/api",
   //Jack

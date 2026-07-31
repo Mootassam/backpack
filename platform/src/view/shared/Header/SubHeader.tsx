@@ -94,7 +94,7 @@ function SubHeader(props) {
       position: absolute;
       top: -8px;
       right: -8px;
-      background: #FF4444;
+      background: #F41112;
       color: white;
       border-radius: 50%;
       width: 18px;

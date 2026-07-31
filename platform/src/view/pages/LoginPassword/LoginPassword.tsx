@@ -154,7 +154,7 @@ function LoginPassword() {
         }
 
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
 
         .page-title {
@@ -216,7 +216,7 @@ function LoginPassword() {
         }
 
         .form-input:focus {
-          border-color: #fd4b4e;
+          border-color: #F41112;
         }
 
         .form-input::placeholder {
@@ -238,7 +238,7 @@ function LoginPassword() {
 
         .save-button {
           width: 100%;
-          background-color: #fd4b4e;
+          background-color: #F41112;
           color: #ffffff;
           border: none;
           border-radius: 10px;
@@ -251,11 +251,11 @@ function LoginPassword() {
         }
 
         .save-button:hover {
-          background-color: #e04345;
+          background-color: #AD1111;
         }
 
         .warning-message {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 13px;
           text-align: center;
           margin-top: 16px;
@@ -263,7 +263,7 @@ function LoginPassword() {
         }
 
         .invalid-feedback {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 12px;
           margin-top: 4px;
         }

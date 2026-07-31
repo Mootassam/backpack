@@ -24,7 +24,7 @@ function History() {
       typeText: i18n("pages.history.transactionTypes.transaction"),
       iconClass: 'swap',
       color: '#627EEA',
-      amountColor: direction === 'in' ? '#4caf50' : '#fd4b4e'
+      amountColor: direction === 'in' ? '#4caf50' : '#F41112'
     };
 
     switch (type) {
@@ -39,8 +39,8 @@ function History() {
         config.icon = 'fa-arrow-up';
         config.typeText = i18n("pages.history.transactionTypes.withdrawal");
         config.iconClass = 'withdraw';
-        config.color = '#fd4b4e';
-        config.amountColor = '#fd4b4e';
+        config.color = '#F41112';
+        config.amountColor = '#F41112';
         break;
       case 'convert_in':
         config.icon = 'fa-exchange-alt';
@@ -54,7 +54,7 @@ function History() {
         config.typeText = relatedAsset ? i18n("pages.history.transactionTypes.convertedTo", relatedAsset) : i18n("pages.history.transactionTypes.conversionOut");
         config.iconClass = 'convert-out';
         config.color = '#9C27B0';
-        config.amountColor = '#fd4b4e';
+        config.amountColor = '#F41112';
         break;
       case 'stacking':
         config.icon = 'fa-coins';
@@ -259,7 +259,7 @@ function History() {
           transition: background-color 0.2s;
         }
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
         .page-title {
           color: #ffffff;
@@ -309,9 +309,9 @@ function History() {
           transition: all 0.2s;
         }
         .filter-chip.active {
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
-          border-color: #fd4b4e;
+          border-color: #F41112;
         }
 
         /* ====== Transactions ====== */
@@ -378,10 +378,10 @@ function History() {
           color: #4caf50;
         }
         .tx-status.status-pending {
-          color: #fd4b4e;
+          color: #F41112;
         }
         .tx-status.status-canceled {
-          color: #fd4b4e;
+          color: #F41112;
         }
 
         /* ====== Empty state ====== */

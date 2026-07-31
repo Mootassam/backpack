@@ -315,7 +315,7 @@ function Signup() {
         }
 
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
 
         .header-spacer {
@@ -339,7 +339,7 @@ function Signup() {
         }
 
         .language-icon:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
 
         /* Language dropdown */
@@ -375,7 +375,7 @@ function Signup() {
           text-align: left;
         }
         .lang-option:hover { background: #22232c; color: #fff; }
-        .lang-option--active { color: #fd4b4e; background: rgba(253,75,78,0.07); }
+        .lang-option--active { color: #F41112; background: rgba(244, 17, 18,0.07); }
         .lang-option-code {
           width: 28px;
           height: 28px;
@@ -390,9 +390,9 @@ function Signup() {
           flex-shrink: 0;
           border: 1px solid #2a2a2e;
         }
-        .lang-option--active .lang-option-code { color: #fd4b4e; border-color: #fd4b4e; }
+        .lang-option--active .lang-option-code { color: #F41112; border-color: #F41112; }
         .lang-option-label { flex: 1; }
-        .lang-option-check { font-size: 11px; color: #fd4b4e; }
+        .lang-option-check { font-size: 11px; color: #F41112; }
 
         .page-title {
           text-align: center;
@@ -438,7 +438,7 @@ function Signup() {
         .captcha-text {
           font-size: 24px;
           font-weight: 700;
-          color: #fd4b4e;
+          color: #F41112;
           letter-spacing: 6px;
           user-select: none;
         }
@@ -453,7 +453,7 @@ function Signup() {
           display: flex;
           align-items: center;
           gap: 4px;
-          color: #fd4b4e;
+          color: #F41112;
           cursor: pointer;
           font-size: 13px;
           white-space: nowrap;
@@ -475,13 +475,13 @@ function Signup() {
         }
 
         .captcha-input input:focus {
-          border-color: #fd4b4e;
+          border-color: #F41112;
         }
 
         /* Buttons */
         .signup-button {
           width: 100%;
-          background-color: #fd4b4e;
+          background-color: #F41112;
           color: #ffffff;
           border: none;
           border-radius: 10px;
@@ -498,7 +498,7 @@ function Signup() {
         }
 
         .signup-button:hover:not(:disabled) {
-          background-color: #e04345;
+          background-color: #AD1111;
         }
 
         .signup-button:disabled {
@@ -519,7 +519,7 @@ function Signup() {
         }
 
         .signin-prompt a {
-          color: #fd4b4e;
+          color: #F41112;
           text-decoration: none;
           font-weight: 500;
         }
@@ -537,7 +537,7 @@ function Signup() {
         }
 
         .terms a {
-          color: #fd4b4e;
+          color: #F41112;
           text-decoration: none;
         }
 

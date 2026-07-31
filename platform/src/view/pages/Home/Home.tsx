@@ -42,14 +42,6 @@ function Home() {
   );
   const ws = useRef<WebSocket | null>(null);
 
-  // State for image slider
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const sliderImages = [
-    "/images/1.png",
-    "/images/2.png",
-    "/images/3.png",
-  ];
-
   // Sample notifications data
   const notifications = [
     {
@@ -90,15 +82,6 @@ function Home() {
     };
     dispatch(productListActions.doFindNews(data));
   }, []);
-
-  // Auto-advance slides every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % sliderImages.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [sliderImages.length]);
 
   // WebSocket connection for real-time data
   useEffect(() => {
@@ -240,29 +223,37 @@ function Home() {
       {/* Header Section */}
       <Header />
 
-      {/* Image Slider Section */}
-      <div className="slider-container card-style">
-        <div className="slider">
-          <div
-            className="slides-container"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {sliderImages.map((image, index) => (
-              <div key={index} className="slide">
-                <img src={image} alt={`Slide ${index + 1}`} />
-              </div>
-            ))}
+      {/* Hero Section */}
+      <div className="home-hero">
+        <div className="home-hero-media__video-overlay">
+          <video
+            className="home-hero-media__video"
+            src="/hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+          <div className="home-hero-media__grid" />
+          <div className="home-hero-media__gradient" />
+        </div>
+        <div className="home-hero__content">
+          <div className="home-hero__badge">
+            <img src="/images/logo.png" alt="Backpack  Exchange" />
+            <span>FxPro <br />Exchange</span>
           </div>
-
-          {/* Indicators */}
-          <div className="slider-indicators">
-            {sliderImages.map((_, index) => (
-              <div
-                key={index}
-                className={`slider-indicator ${index === currentSlide ? "active" : ""}`}
-              />
-            ))}
-          </div>
+          <h1 className="home-hero__title">
+            Trade Crypto
+            <br />
+            Like a Pro
+          </h1>
+          <p className="home-hero__subtitle">
+            {i18n("pages.home.hero.subtitle")}
+          </p>
+          <Link to="/market" className="home-hero__cta remove_blue">
+            {i18n("pages.home.hero.cta")}
+            <i className="fas fa-arrow-right" />
+          </Link>
         </div>
       </div>
 
@@ -350,7 +341,7 @@ function Home() {
                     color: data
                       ? data.isPositive
                         ? "#4caf50"
-                        : "#fd4b4e"
+                        : "#F41112"
                       : "#aaaaaa",
                   }}
                 />
@@ -386,48 +377,114 @@ function Home() {
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        /* ===== SLIDER ===== */
-        .slider-container.card-style {
-          padding: 0;
-          overflow: hidden;
-        }
-        .slider {
+        /* ===== HERO ===== */
+        .home-hero {
           position: relative;
-          width: 100%;
-        }
-        .slides-container {
+          margin: 0 -5px 16px;
+          min-height: 320px;
           display: flex;
-          transition: transform 0.5s ease-in-out;
-          height: auto;
+          align-items: center;
+          overflow: hidden;
+          background-color: #0a0b0f;
         }
-        .slide {
-          min-width: 100%;
-        }
-        .slide img {
-          width: 100%;
-          object-fit: contain;
-          border-radius: 24px 24px 0 0;
-        }
-        .slider-indicators {
+        .home-hero-media__video-overlay {
           position: absolute;
-          bottom: 15px;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
+          inset: 0;
+          z-index: 0;
+        }
+        .home-hero-media__video {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .home-hero-media__grid {
+          position: absolute;
+          inset: 0;
+          opacity: 0.5;
+          background-image:
+            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+          background-size: 28px 28px;
+          -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.15));
+          mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.15));
+        }
+        .home-hero-media__gradient {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(120% 90% at 15% 20%, rgba(244, 17, 18, 0.35) 0%, rgba(244, 17, 18, 0) 55%),
+            radial-gradient(100% 80% at 90% 100%, rgba(244, 17, 18, 0.18) 0%, rgba(244, 17, 18, 0) 60%),
+            linear-gradient(160deg, rgba(10, 11, 15, 0.75) 0%, rgba(20, 21, 28, 0.45) 55%, rgba(10, 11, 15, 0.75) 100%);
+        }
+        .home-hero__content {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          padding: 36px 24px 32px;
+          text-align: center;
+        }
+        .home-hero__badge {
+          display: inline-flex;
+          align-items: center;
           gap: 8px;
-          z-index: 10;
+          background: rgba(244, 17, 18, 0.12);
+          border: 1px solid rgba(244, 17, 18, 0.35);
+          border-radius: 999px;
+          padding: 6px 14px 6px 6px;
+          margin-bottom: 18px;
         }
-        .slider-indicator {
-          width: 8px;
-          height: 8px;
+        .home-hero__badge img {
+          width: 22px;
+          height: 22px;
           border-radius: 50%;
-          background-color: rgba(255, 255, 255, 0.4);
-          transition: background-color 0.3s ease;
+          object-fit: cover;
         }
-        .slider-indicator.active {
-          background-color: #fd4b4e;
-          width: 20px;
-          border-radius: 4px;
+        .home-hero__badge span {
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.3px;
+          color: #ffffff;
+          line-height: 1.15;
+          text-align: left;
+        }
+        .home-hero__title {
+          font-size: 28px;
+          font-weight: 800;
+          color: #ffffff;
+          line-height: 1.2;
+          margin: 0 0 10px;
+          letter-spacing: -0.3px;
+        }
+        .home-hero__subtitle {
+          font-size: 13.5px;
+          color: rgba(255, 255, 255, 0.65);
+          line-height: 1.55;
+          margin: 0 auto 24px;
+          max-width: 300px;
+        }
+        .home-hero__cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #F41112;
+          color: #ffffff;
+          font-size: 14.5px;
+          font-weight: 700;
+          padding: 13px 26px;
+          border-radius: 12px;
+          box-shadow: 0 8px 20px rgba(244, 17, 18, 0.35);
+          transition: background-color 0.2s, transform 0.15s;
+        }
+        .home-hero__cta:hover {
+          background: #AD1111;
+          transform: translateY(-2px);
+        }
+        @media (max-width: 350px) {
+          .home-hero__title {
+            font-size: 24px;
+          }
         }
 
         /* ===== QUICK ACCESS ===== */
@@ -463,11 +520,11 @@ function Home() {
         }
         .access-card:hover {
           transform: translateY(-3px);
-          background-color: rgba(253, 75, 78, 0.08);
+          background-color: rgba(244, 17, 18, 0.08);
         }
         .access-icon {
           font-size: 22px;
-          color: #fd4b4e;
+          color: #F41112;
           margin-bottom: 8px;
         }
         .access-text {
@@ -481,16 +538,16 @@ function Home() {
         .deposit-header-button {
           display: flex;
           align-items: center;
-          background: #fd4b4e;
+          background: #F41112;
           border-radius: 10px;
           padding: 8px 16px;
           transition: background-color 0.2s;
-          box-shadow: 0 2px 8px rgba(253, 75, 78, 0.3);
+          box-shadow: 0 2px 8px rgba(244, 17, 18, 0.3);
         }
         .deposit-header-button:hover {
-          background-color: #e04345;
+          background-color: #AD1111;
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(253, 75, 78, 0.4);
+          box-shadow: 0 4px 12px rgba(244, 17, 18, 0.4);
         }
         .deposit-header-icon {
           font-size: 14px;
@@ -517,7 +574,7 @@ function Home() {
         }
         .see-all {
           font-size: 13px;
-          color: #fd4b4e;
+          color: #F41112;
           font-weight: 500;
         }
 
@@ -533,7 +590,7 @@ function Home() {
           transition: background-color 0.2s;
         }
         .market-item:hover {
-          background-color: rgba(253, 75, 78, 0.05);
+          background-color: rgba(244, 17, 18, 0.05);
         }
         .crypto-info {
           display: flex;
@@ -575,7 +632,7 @@ function Home() {
           color: #4caf50;
         }
         .change.negative {
-          color: #fd4b4e;
+          color: #F41112;
         }
         .chart i {
           font-size: 18px;

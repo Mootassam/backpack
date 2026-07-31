@@ -332,7 +332,7 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
               <div
                 className="circular-progress"
                 style={{
-                  background: `conic-gradient(${direction === "up" ? "#26a17b" : "#fd4b4e"} ${calculateProgress()}%, #1e1f26 ${calculateProgress()}%)`,
+                  background: `conic-gradient(${direction === "up" ? "#26a17b" : "#F41112"} ${calculateProgress()}%, #1e1f26 ${calculateProgress()}%)`,
                 }}
               >
                 <div className="progress-inner">
@@ -550,7 +550,7 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
 
         /* direction accent line */
         .up-theme   { border-top: 3px solid #26a17b; }
-        .down-theme { border-top: 3px solid #fd4b4e; }
+        .down-theme { border-top: 3px solid #F41112; }
 
         /* ── Drag handle ── */
         .fm-handle {
@@ -600,7 +600,7 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
           font-size: 13px; font-weight: 700; letter-spacing: 0.3px;
         }
         .up-indicator   { background: rgba(38,161,123,0.10); color: #26a17b; }
-        .down-indicator { background: rgba(253,75,78,0.10);  color: #fd4b4e; }
+        .down-indicator { background: rgba(244, 17, 18,0.10);  color: #F41112; }
         .direction-indicator::before {
           font-family: "Font Awesome 5 Free";
           font-weight: 900;
@@ -644,9 +644,9 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
         }
         /* DOWN theme selected */
         .down-theme .option-btn.selected {
-          background: rgba(253,75,78,0.12);
-          border-color: #fd4b4e;
-          color: #fd4b4e;
+          background: rgba(244, 17, 18,0.12);
+          border-color: #F41112;
+          color: #F41112;
         }
 
         /* ── Amount control ── */
@@ -676,7 +676,7 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
         input[type="number"] { -moz-appearance: textfield; }
 
         .balance-info { font-size: 12px; color: #555; text-align: right; }
-        .error-message { font-size: 11px; color: #fd4b4e !important; margin-top: 4px; }
+        .error-message { font-size: 11px; color: #F41112 !important; margin-top: 4px; }
 
         /* ── Projected profit box ── */
         .profit-info {
@@ -688,7 +688,7 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
           text-align: center;
         }
         .up-theme   .profit-info span { color: #26a17b; font-weight: 700; }
-        .down-theme .profit-info span { color: #fd4b4e; font-weight: 700; }
+        .down-theme .profit-info span { color: #F41112; font-weight: 700; }
 
         /* ── Confirm button ── */
         .confirm-btn {
@@ -699,7 +699,7 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
           transition: opacity 0.2s, transform 0.15s;
         }
         .up-theme   .confirm-btn { background: #26a17b; color: #fff; }
-        .down-theme .confirm-btn { background: #fd4b4e; color: #fff; }
+        .down-theme .confirm-btn { background: #F41112; color: #fff; }
         .confirm-btn:hover:not(:disabled) { opacity: 0.88; }
         .confirm-btn:active:not(:disabled) { transform: scale(0.98); }
         .confirm-btn:disabled { background: #1e1f26; color: #444; cursor: not-allowed; }
@@ -734,14 +734,14 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
           margin-bottom: 16px;
         }
         .trade-result-badge.win  { background: rgba(38,161,123,0.14); color: #26a17b; }
-        .trade-result-badge.loss { background: rgba(253,75,78,0.14);  color: #fd4b4e; }
+        .trade-result-badge.loss { background: rgba(244, 17, 18,0.14);  color: #F41112; }
 
         .pnl-display {
           font-size: 28px; font-weight: 800; letter-spacing: -0.5px;
           margin-bottom: 18px;
         }
         .pnl-display.win  { color: #26a17b; }
-        .pnl-display.loss { color: #fd4b4e; }
+        .pnl-display.loss { color: #F41112; }
 
         /* ── Trade details card ── */
         .trade-details {
@@ -761,7 +761,7 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
         .trade-details-row span:last-child  { color: #e8e8e8; font-weight: 600; }
 
         .up-text   { color: #26a17b !important; }
-        .down-text { color: #fd4b4e !important; }
+        .down-text { color: #F41112 !important; }
 
         /* ── Action buttons ── */
         .trade-actions { display: flex; gap: 10px; }
@@ -773,12 +773,12 @@ const FuturesModal: React.FC<FuturesModalProps> = ({
           transition: opacity 0.2s, transform 0.15s;
         }
         .trade-action-btn:active { transform: scale(0.97); }
-        .trade-action-btn.primary   { background: #fd4b4e; color: #fff; }
+        .trade-action-btn.primary   { background: #F41112; color: #fff; }
         .trade-action-btn.secondary { background: #1e1f26; color: #aaa; border: 1px solid #2a2a2e; }
         .trade-action-btn.secondary:hover { background: #2a2a2e; color: #fff; }
 
         .up-theme   .trade-action-btn.keep-buying { background: #26a17b; color: #fff; }
-        .down-theme .trade-action-btn.keep-buying { background: #fd4b4e; color: #fff; }
+        .down-theme .trade-action-btn.keep-buying { background: #F41112; color: #fff; }
         .trade-action-btn.keep-buying { width: 100%; }
         .trade-action-btn:hover:not(.secondary) { opacity: 0.88; }
       `}</style>

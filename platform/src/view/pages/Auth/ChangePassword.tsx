@@ -59,7 +59,7 @@ function ChangePassword() {
                 <div className="form__">
                   <div className="form__group">
                     <div className="label__form">
-                      <span style={{ color: "red" }}>*</span>
+                      <span style={{ color: "#F41112" }}>*</span>
                       <span style={{ fontSize: "13px" }}>Old Password</span>
                     </div>
                     <div className="input__div">
@@ -73,7 +73,7 @@ function ChangePassword() {
                   </div>
                   <div className="form__group">
                     <div className="label__form">
-                      <span style={{ color: "red" }}>*</span>
+                      <span style={{ color: "#F41112" }}>*</span>
                       <span style={{ fontSize: "13px" }}>New Password</span>
                     </div>
                     <div className="input__div">
@@ -87,7 +87,7 @@ function ChangePassword() {
                   </div>
                   <div className="form__group">
                     <div className="label__form">
-                      <span style={{ color: "red" }}>*</span>
+                      <span style={{ color: "#F41112" }}>*</span>
                       <span style={{ fontSize: "13px" }}>Confirm Password</span>
                     </div>
                     <div className="input__div">

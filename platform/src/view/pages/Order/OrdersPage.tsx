@@ -443,9 +443,9 @@ function OrdersPage() {
         }
         .filters-menu button:hover { border-color: #555; color: #ccc; }
         .filters-menu button.active {
-          background: rgba(253,75,78,0.12);
-          border-color: #fd4b4e;
-          color: #fd4b4e;
+          background: rgba(244, 17, 18,0.12);
+          border-color: #F41112;
+          color: #F41112;
           font-weight: 600;
         }
 

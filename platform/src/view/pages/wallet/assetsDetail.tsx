@@ -572,8 +572,8 @@ function AssetsDetail() {
                 }
                 .ad-back-btn:hover {
                     background: #2a2a2e;
-                    border-color: #fd4b4e;
-                    color: #fd4b4e;
+                    border-color: #F41112;
+                    color: #F41112;
                 }
                 .ad-topbar-title {
                     color: #fff;
@@ -601,7 +601,7 @@ function AssetsDetail() {
                     top: -60px; right: -60px;
                     width: 200px; height: 200px;
                     border-radius: 50%;
-                    background: radial-gradient(circle, rgba(253,75,78,0.12) 0%, transparent 65%);
+                    background: radial-gradient(circle, rgba(244, 17, 18,0.12) 0%, transparent 65%);
                     pointer-events: none;
                 }
                 .asset-card img {
@@ -668,8 +668,8 @@ function AssetsDetail() {
                     user-select: none;
                 }
                 .filter-button:hover {
-                    border-color: #fd4b4e;
-                    color: #fd4b4e;
+                    border-color: #F41112;
+                    color: #F41112;
                 }
                 .filter-button i { font-size: 11px; }
 
@@ -899,7 +899,7 @@ function AssetsDetail() {
                     transition: border-color 0.2s;
                 }
                 .filter-group select:focus,
-                .filter-group input:focus { border-color: #fd4b4e; }
+                .filter-group input:focus { border-color: #F41112; }
                 .filter-group input[type="date"]::-webkit-calendar-picker-indicator {
                     filter: invert(0.5);
                     cursor: pointer;
@@ -923,10 +923,10 @@ function AssetsDetail() {
                     cursor: pointer;
                     transition: border-color 0.2s, color 0.2s;
                 }
-                .btn-secondary:hover { border-color: #fd4b4e; color: #fd4b4e; }
+                .btn-secondary:hover { border-color: #F41112; color: #F41112; }
                 .btn-primary {
                     flex: 1;
-                    background: #fd4b4e;
+                    background: #F41112;
                     border: none;
                     border-radius: 12px;
                     color: #fff;
@@ -936,7 +936,7 @@ function AssetsDetail() {
                     cursor: pointer;
                     transition: background 0.2s;
                 }
-                .btn-primary:hover { background: #e8393c; }
+                .btn-primary:hover { background: #AD1111; }
 
                 /* ── Action buttons (fixed bottom) ── */
                 .action-buttons {
@@ -969,7 +969,7 @@ function AssetsDetail() {
                 }
                 .action-button:hover { opacity: 0.9; transform: translateY(-1px); }
                 .deposit-button  { background: #26a17b; color: #fff; }
-                .withdraw-button { background: #fd4b4e; color: #fff; }
+                .withdraw-button { background: #F41112; color: #fff; }
                 a.remove_blue { text-decoration: none; color: inherit; }
             `}</style>
         </div>

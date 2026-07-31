@@ -156,7 +156,7 @@ function termservice() {
       <div className="section-content">
         <p>For questions about these Terms, please contact us at:</p>
         <p>
-          Email: support@Backpack-exchange.com
+          Email: support@Backpack -exchange.com
           <br />
           Address: 981 OAV Street, Wilmington, DE 19801
         </p>

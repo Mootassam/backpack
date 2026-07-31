@@ -114,8 +114,8 @@ function TabBottomNavigator() {
         }
 
         .nav-item.active {
-          color: #fd4b4e;
-          background-color: rgba(253, 75, 78, 0.1);
+          color: #F41112;
+          background-color: rgba(244, 17, 18, 0.1);
         }
 
         /* Keep links clean */
@@ -124,7 +124,7 @@ function TabBottomNavigator() {
         }
 
         a.nav-item.active:hover {
-          color: #fd4b4e;
+          color: #F41112;
         }
       `}</style>
     </>

@@ -64,7 +64,7 @@ function Error404Page() {
           position: absolute;
           font-size: 48px;
           opacity: 0.04;
-          color: #fd4b4e;
+          color: #F41112;
           animation: epFloat 8s ease-in-out infinite;
         }
         .ep-f1 { top: 10%; left: 8%;  animation-delay: 0s;   animation-duration: 9s;  }
@@ -102,9 +102,9 @@ function Error404Page() {
           margin: 0 auto 20px;
         }
         .ep-icon-404 {
-          background: rgba(253,75,78,0.12);
-          border: 1.5px solid rgba(253,75,78,0.3);
-          color: #fd4b4e;
+          background: rgba(244, 17, 18,0.12);
+          border: 1.5px solid rgba(244, 17, 18,0.3);
+          color: #F41112;
         }
         .ep-icon-403 {
           background: rgba(255,152,0,0.12);
@@ -123,7 +123,7 @@ function Error404Page() {
           font-weight: 900;
           line-height: 1;
           margin-bottom: 12px;
-          background: linear-gradient(135deg, #fd4b4e 0%, #ff8a6e 100%);
+          background: linear-gradient(135deg, #F41112 0%, #F64141 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -155,7 +155,7 @@ function Error404Page() {
           align-items: center;
           justify-content: center;
           gap: 8px;
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           font-size: 14px;
           font-weight: 700;
@@ -164,7 +164,7 @@ function Error404Page() {
           text-decoration: none;
           transition: background 0.2s, transform 0.15s;
         }
-        .ep-btn-primary:hover { background: #e8393c; transform: translateY(-1px); }
+        .ep-btn-primary:hover { background: #AD1111; transform: translateY(-1px); }
         .ep-btn-ghost {
           display: flex;
           align-items: center;
@@ -179,7 +179,7 @@ function Error404Page() {
           text-decoration: none;
           transition: border-color 0.2s, color 0.2s;
         }
-        .ep-btn-ghost:hover { border-color: #fd4b4e; color: #fd4b4e; }
+        .ep-btn-ghost:hover { border-color: #F41112; color: #F41112; }
         a.remove_blue { text-decoration: none; color: inherit; }
       `}</style>
     </div>

@@ -371,7 +371,7 @@ function Futures() {
             <div
               className="market-change"
               style={{
-                color: priceChangePercent?.startsWith("-") ? "#fd4b4e" : "#4caf50",
+                color: priceChangePercent?.startsWith("-") ? "#F41112" : "#4caf50",
               }}
             >
               {priceChangePercent !== "0" ? (
@@ -662,11 +662,11 @@ function Futures() {
         }
         
         .sell-button {
-          background-color: #fd4b4e;
+          background-color: #F41112;
         }
         
         .sell-button:hover {
-          background-color: #e04345;
+          background-color: #AD1111;
         }
         
         /* Section Tabs */
@@ -751,8 +751,8 @@ function Futures() {
         }
         
         .order-direction.sell {
-          background-color: rgba(253, 75, 78, 0.2);
-          color: #fd4b4e;
+          background-color: rgba(244, 17, 18, 0.2);
+          color: #F41112;
         }
         
         .order-status {
@@ -794,7 +794,7 @@ function Futures() {
         }
         
         .order-value.sell {
-          color: #fd4b4e;
+          color: #F41112;
         }
         
         .no-orders {
@@ -897,7 +897,7 @@ function Futures() {
         }
         
         .close-order-button {
-          background-color: #fd4b4e;
+          background-color: #F41112;
           color: #ffffff;
           border: none;
           border-radius: 10px;
@@ -908,7 +908,7 @@ function Futures() {
         }
         
         .close-order-button:hover {
-          background-color: #e04345;
+          background-color: #AD1111;
         }
         
         /* Order Detail Sections */
@@ -950,8 +950,8 @@ function Futures() {
         }
         
         .detail-direction.sell {
-          background-color: rgba(253, 75, 78, 0.2);
-          color: #fd4b4e;
+          background-color: rgba(244, 17, 18, 0.2);
+          color: #F41112;
         }
         
         .detail-status {
@@ -988,7 +988,7 @@ function Futures() {
         }
         
         .detail-value.loss {
-          color: #fd4b4e;
+          color: #F41112;
         }
 
         /* Allow modal scrolling for small screens */

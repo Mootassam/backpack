@@ -670,7 +670,7 @@ function Deposit() {
           transition: background 0.2s, border-color 0.2s, color 0.2s;
           flex-shrink: 0;
         }
-        .back-arrow:hover { background: #2a2a2e; border-color: #fd4b4e; color: #fd4b4e; }
+        .back-arrow:hover { background: #2a2a2e; border-color: #F41112; color: #F41112; }
         .page-title {
           color: #fff; font-size: 15px; font-weight: 700;
           position: absolute; left: 50%; transform: translateX(-50%);
@@ -732,7 +732,7 @@ function Deposit() {
           appearance: none; cursor: pointer; outline: none;
           transition: border-color 0.2s;
         }
-        .network-select:focus { border-color: #fd4b4e; }
+        .network-select:focus { border-color: #F41112; }
         .select-arrow {
           position: absolute; right: 14px; top: 50%;
           transform: translateY(-50%);
@@ -769,9 +769,9 @@ function Deposit() {
           transition: opacity 0.2s, transform 0.15s;
         }
         .action-btn:hover { opacity: 0.88; transform: translateY(-1px); }
-        .copy-btn { background: #fd4b4e; color: #fff; }
+        .copy-btn { background: #F41112; color: #fff; }
         .save-btn { background: #15161c; color: #aaa; border: 1.5px solid #2a2a2e; }
-        .save-btn:hover { border-color: #fd4b4e; color: #fd4b4e; }
+        .save-btn:hover { border-color: #F41112; color: #F41112; }
 
         /* ── Form ── */
         .deposit-form { margin-top: 4px; }
@@ -793,7 +793,7 @@ function Deposit() {
           transition: border-color 0.2s !important;
         }
         .deposit-form input:focus {
-          border-color: #fd4b4e !important;
+          border-color: #F41112 !important;
         }
         .deposit-form label {
           color: #888 !important;
@@ -817,13 +817,13 @@ function Deposit() {
         .form-actions { margin-top: 20px; }
         .submit-btn {
           width: 100%; padding: 14px;
-          background: #fd4b4e; color: #fff;
+          background: #F41112; color: #fff;
           border: none; border-radius: 12px;
           font-size: 15px; font-weight: 700; cursor: pointer;
           display: flex; align-items: center; justify-content: center; gap: 8px;
           transition: background 0.2s, transform 0.15s;
         }
-        .submit-btn:hover:not(:disabled) { background: #e8393c; transform: translateY(-1px); }
+        .submit-btn:hover:not(:disabled) { background: #AD1111; transform: translateY(-1px); }
         .submit-btn:disabled { background: #2a2a2e; color: #444; cursor: not-allowed; }
 
         /* ── Spinner ── */
@@ -831,14 +831,14 @@ function Deposit() {
         @keyframes depSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .loading-section { text-align: center; padding: 40px 0; color: #555; }
         .spinner {
-          border: 3px solid #1e1f26; border-top: 3px solid #fd4b4e;
+          border: 3px solid #1e1f26; border-top: 3px solid #F41112;
           border-radius: 50%; width: 40px; height: 40px;
           animation: depSpin 1s linear infinite; margin: 0 auto 16px;
         }
 
         /* ── Error state ── */
         .error-section { text-align: center; padding: 40px 20px; }
-        .error-section i { font-size: 40px; color: #fd4b4e; margin-bottom: 16px; display: block; }
+        .error-section i { font-size: 40px; color: #F41112; margin-bottom: 16px; display: block; }
         .error-section div { color: #aaa; font-size: 14px; }
         .error-note { margin-top: 8px; font-size: 12px; color: #555; }
 
@@ -853,7 +853,7 @@ function Deposit() {
           font-size: 11.5px; color: #555; line-height: 1.5;
           padding-left: 14px; position: relative;
         }
-        .hint-item::before { content: "•"; position: absolute; left: 0; color: #fd4b4e; font-weight: bold; }
+        .hint-item::before { content: "•"; position: absolute; left: 0; color: #F41112; font-weight: bold; }
 
         /* ── Toast ── */
         .toast {

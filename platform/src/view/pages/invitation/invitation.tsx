@@ -55,7 +55,7 @@ function Invitation() {
   };
 
   const shareReferral = (platform: string) => {
-    const shareText = `Join Backpack using my referral code: ${currentUser?.refcode}`;
+    const shareText = `Join Backpack  using my referral code: ${currentUser?.refcode}`;
     const shareUrl = window.location.origin;
 
     switch (platform) {
@@ -67,7 +67,7 @@ function Invitation() {
         break;
       case "email":
         window.open(
-          `mailto:?subject=Join Backpack&body=${encodeURIComponent(shareText)}`,
+          `mailto:?subject=Join Backpack &body=${encodeURIComponent(shareText)}`,
           "_blank"
         );
         break;
@@ -77,7 +77,7 @@ function Invitation() {
       case "more":
         if (navigator.share) {
           navigator.share({
-            title: "Backpack Referral",
+            title: "Backpack  Referral",
             text: shareText,
             url: shareUrl,
           });
@@ -449,7 +449,7 @@ function Invitation() {
           transition: background-color 0.2s;
         }
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
         .page-title {
           color: #ffffff;
@@ -516,9 +516,9 @@ function Invitation() {
         .copy-btn {
           width: 100%;
           padding: 10px;
-          border: 1px solid #fd4b4e;
+          border: 1px solid #F41112;
           background: transparent;
-          color: #fd4b4e;
+          color: #F41112;
           border-radius: 8px;
           font-size: 13px;
           font-weight: 600;
@@ -530,7 +530,7 @@ function Invitation() {
           gap: 6px;
         }
         .copy-btn:hover {
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
         }
 
@@ -555,7 +555,7 @@ function Invitation() {
           transition: background 0.2s;
         }
         .share-btn:hover {
-          background: #fd4b4e;
+          background: #F41112;
         }
 
         /* ====== Total Earned ====== */
@@ -608,7 +608,7 @@ function Invitation() {
           gap: 8px;
         }
         .generation-stat-title i {
-          color: #fd4b4e;
+          color: #F41112;
         }
         .generation-stats-details {
           display: flex;
@@ -635,7 +635,7 @@ function Invitation() {
           color: #4caf50;
         }
         .generation-stat-detail.pending .generation-stat-value {
-          color: #fd4b4e;
+          color: #F41112;
         }
         .generation-stat-label {
           font-size: 11px;
@@ -665,7 +665,7 @@ function Invitation() {
           gap: 8px;
         }
         .commission-title i {
-          color: #fd4b4e;
+          color: #F41112;
         }
         .commission-details {
           display: flex;
@@ -701,7 +701,7 @@ function Invitation() {
           width: 28px;
           height: 28px;
           border-radius: 50%;
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           font-size: 14px;
           font-weight: 700;
@@ -763,7 +763,7 @@ function Invitation() {
           cursor: pointer;
         }
         .modal-close:hover {
-          color: #fd4b4e;
+          color: #F41112;
         }
         .modal-body {
           flex: 1;
@@ -817,8 +817,8 @@ function Invitation() {
           color: #4caf50;
         }
         .member-status.pending {
-          background: rgba(253, 75, 78, 0.15);
-          color: #fd4b4e;
+          background: rgba(244, 17, 18, 0.15);
+          color: #F41112;
         }
 
         /* ====== Toast ====== */

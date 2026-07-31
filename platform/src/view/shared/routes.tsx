@@ -4,13 +4,6 @@ import Permissions from "src/security/permissions";
 const permissions = Permissions.values;
 
 const privateRoutes = [
-  {
-    path: "/",
-    loader: () => import("src/view/pages/Home/Home"),
-    permissionRequired: permissions.categoryRead,
-    exact: true,
-  },
-
 
   {
     path: "/news",
@@ -47,12 +40,7 @@ const privateRoutes = [
     exact: true,
   },
 
-  {
-    path: "/",
-    loader: () => import("src/view/pages/Home/Home"),
-    permissionRequired: permissions.categoryRead,
-    exact: true,
-  },
+
 
   {
     path: "/market",

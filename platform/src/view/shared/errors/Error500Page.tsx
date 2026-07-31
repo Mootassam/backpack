@@ -150,7 +150,7 @@ function Error500Page() {
           align-items: center;
           justify-content: center;
           gap: 8px;
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           font-size: 14px;
           font-weight: 700;
@@ -161,7 +161,7 @@ function Error500Page() {
           width: 100%;
           transition: background 0.2s, transform 0.15s;
         }
-        .ep-btn-primary:hover { background: #e8393c; transform: translateY(-1px); }
+        .ep-btn-primary:hover { background: #AD1111; transform: translateY(-1px); }
         .ep-btn-ghost {
           display: flex;
           align-items: center;
@@ -186,7 +186,7 @@ function Error500Page() {
         }
         .ep-hint i { margin-right: 5px; }
         .ep-hint-link {
-          color: #fd4b4e;
+          color: #F41112;
           font-weight: 600;
           text-decoration: none;
         }

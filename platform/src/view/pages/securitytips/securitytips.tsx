@@ -268,7 +268,7 @@ function SecurityTips() {
           transition: background-color 0.2s;
         }
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
         .page-title {
           color: #ffffff;
@@ -322,7 +322,7 @@ function SecurityTips() {
           margin-bottom: 12px;
         }
         .category-icon {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 16px;
           width: 24px;
           text-align: center;
@@ -373,10 +373,10 @@ function SecurityTips() {
           transition: background-color 0.2s;
         }
         .action-card:hover {
-          background-color: rgba(253, 75, 78, 0.08);
+          background-color: rgba(244, 17, 18, 0.08);
         }
         .action-icon {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 24px;
           margin-bottom: 8px;
         }
@@ -403,7 +403,7 @@ function SecurityTips() {
           display: flex;
           align-items: center;
           gap: 8px;
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 15px;
           font-weight: 600;
           margin-bottom: 12px;
@@ -424,7 +424,7 @@ function SecurityTips() {
           border-bottom: none;
         }
         .emergency-icon {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 16px;
           width: 24px;
           text-align: center;
@@ -443,7 +443,7 @@ function SecurityTips() {
           margin-bottom: 4px;
         }
         .contact-info {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 14px;
         }
 
@@ -461,7 +461,7 @@ function SecurityTips() {
           margin-bottom: 10px;
         }
         .resource-icon {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 20px;
           width: 32px;
           text-align: center;
@@ -476,7 +476,7 @@ function SecurityTips() {
           margin-bottom: 4px;
         }
         .resource-link {
-          color: #fd4b4e;
+          color: #F41112;
           text-decoration: none;
           font-size: 13px;
         }

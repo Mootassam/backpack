@@ -185,7 +185,7 @@ function formWithdrawAdress() {
           transition: background-color 0.2s;
         }
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
         .page-title {
           color: #ffffff;
@@ -276,7 +276,7 @@ function formWithdrawAdress() {
           width: 100%;
           padding: 12px;
           margin-top: 8px;
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           border: none;
           border-radius: 10px;
@@ -288,7 +288,7 @@ function formWithdrawAdress() {
           transition: background 0.2s;
         }
         .save-btn:hover {
-          background: #e04345;
+          background: #AD1111;
         }
       `}</style>
     </div>

@@ -57,10 +57,10 @@ function Termeofuse() {
                             <div className="content-item">
                                 <div className="item-title">
                                     <i className="fas fa-info-circle item-icon" />
-                                    {i18n("pages.termsOfUse.aboutServices.aboutBackpack.title")}
+                                    {i18n("pages.termsOfUse.aboutServices.aboutBackpack .title")}
                                 </div>
                                 <div className="item-content">
-                                    {i18n("pages.termsOfUse.aboutServices.aboutBackpack.content")}
+                                    {i18n("pages.termsOfUse.aboutServices.aboutBackpack .content")}
                                 </div>
                             </div>
                             <div className="content-item">
@@ -371,7 +371,7 @@ function Termeofuse() {
                 }
 
                 .back-button:hover {
-                    background-color: rgba(253, 75, 78, 0.15);
+                    background-color: rgba(244, 17, 18, 0.15);
                 }
 
                 .page-title {
@@ -429,7 +429,7 @@ function Termeofuse() {
                 }
 
                 .section-title i {
-                    color: #fd4b4e;
+                    color: #F41112;
                     font-size: 18px;
                 }
 
@@ -449,7 +449,7 @@ function Termeofuse() {
                 }
 
                 .item-icon {
-                    color: #fd4b4e;
+                    color: #F41112;
                     font-size: 16px;
                     width: 20px;
                     text-align: center;
@@ -463,15 +463,15 @@ function Termeofuse() {
 
                 /* Warning section */
                 .warning-section {
-                    background-color: rgba(253, 75, 78, 0.08);
-                    border-left: 3px solid #fd4b4e;
+                    background-color: rgba(244, 17, 18, 0.08);
+                    border-left: 3px solid #F41112;
                     border-radius: 10px;
                     padding: 16px;
                     margin-bottom: 24px;
                 }
 
                 .warning-title {
-                    color: #fd4b4e;
+                    color: #F41112;
                     font-size: 15px;
                     font-weight: 600;
                     margin-bottom: 8px;
@@ -533,7 +533,7 @@ function Termeofuse() {
 
                 .action-icon {
                     font-size: 24px;
-                    color: #fd4b4e;
+                    color: #F41112;
                     margin-bottom: 8px;
                 }
 

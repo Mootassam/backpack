@@ -104,12 +104,12 @@ function I18nSelect() {
         }
         .language-header i {
           font-size: 36px;
-          color: #fd4b4e;
+          color: #F41112;
           margin-bottom: 14px;
           width: 68px;
           height: 68px;
           border-radius: 50%;
-          background: rgba(253,75,78,0.1);
+          background: rgba(244, 17, 18,0.1);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -152,8 +152,8 @@ function I18nSelect() {
           border-color: #2a2a2e;
         }
         .language-card.active {
-          border-color: #fd4b4e;
-          background: rgba(253,75,78,0.06);
+          border-color: #F41112;
+          background: rgba(244, 17, 18,0.06);
         }
 
         /* ── Flag ────────────────────────────────────────────────────── */
@@ -177,7 +177,7 @@ function I18nSelect() {
           user-select: none;
         }
         .language-card.active .lang-code {
-          color: #fd4b4e;
+          color: #F41112;
         }
 
         /* ── Language info ───────────────────────────────────────────── */
@@ -198,14 +198,14 @@ function I18nSelect() {
           color: #666;
         }
         .language-card.active .language-name { color: #fff; }
-        .language-card.active .language-native { color: #fd4b4e; }
+        .language-card.active .language-native { color: #F41112; }
 
         /* ── Check indicator ─────────────────────────────────────────── */
         .selected-indicator {
           width: 26px;
           height: 26px;
           border-radius: 50%;
-          background: #fd4b4e;
+          background: #F41112;
           display: flex;
           align-items: center;
           justify-content: center;

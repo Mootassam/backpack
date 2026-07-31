@@ -347,7 +347,7 @@ const In = {
       },
       aboutServices: {
         title: "हमारी सेवाओं के बारे में",
-        aboutBackpack: {
+        aboutBackpack : {
           title: "नेक्सस के बारे में",
           content: "नेक्सस हमारे प्लेटफॉर्म के माध्यम से डिजिटल परिसंपत्ति एक्सचेंज, कस्टडी सेवाएं और संबंधित वित्तीय सेवाएं प्रदान करता है।"
         },
@@ -677,7 +677,7 @@ const In = {
         lostDevice: "यदि आपका डिवाइस खो जाता है या चोरी हो जाता है, तो तुरंत अपनी खाता सेटिंग्स से सत्र पहुंच रद्द करें।",
         phishing: "यदि आप फ़िशिंग के शिकार हुए हैं, तो अपना खाता फ्रीज करें और तुरंत सहायता से संपर्क करें।",
         supportTitle: "24/7 सुरक्षा सहायता",
-        supportEmail: "support@Backpack-exchange.com"
+        supportEmail: "support@Backpack -exchange.com"
       },
       resources: {
         title: "सुरक्षा संसाधन",
@@ -1143,6 +1143,10 @@ const In = {
       }
     },
     home: {
+      hero: {
+        subtitle: "रीयल-टाइम मार्केट, कम शुल्क और बैंक-स्तरीय सुरक्षा के साथ 100+ क्रिप्टोकरेंसी खरीदें, बेचें और प्रबंधित करें।",
+        cta: "ट्रेडिंग शुरू करें"
+      },
       quickAccess: {
         title: "त्वरित पहुंच",
         deposit: "जमा",
@@ -1196,7 +1200,7 @@ const In = {
         verificationProcess: "एक सरकारी आईडी और एक सेल्फी फोटो अपलोड करें। सत्यापन आमतौर पर कुछ घंटों के भीतर स्वीकृत हो जाता है।"
       },
       steps: {
-        goToWebsite: "https://Backpack-exchange.com पर जाएं",
+        goToWebsite: "https://Backpack -exchange.com पर जाएं",
         clickSignUp: '"साइन अप" पर क्लिक करें',
         enterDetails: "अपना विवरण दर्ज करें",
         verifyEmail: "अपने ईमेल पते को सत्यापित करें",
@@ -1256,7 +1260,7 @@ const In = {
       },
       footer: {
         copyright: "© 2025 नेक्सस एक्सचेंज। सर्वाधिकार सुरक्षित।",
-        needHelp: "अधिक सहायता चाहिए? support@Backpack-exchange.com से संपर्क करें"
+        needHelp: "अधिक सहायता चाहिए? support@Backpack -exchange.com से संपर्क करें"
       }
     },
 

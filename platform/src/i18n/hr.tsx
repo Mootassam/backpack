@@ -43,7 +43,7 @@ const hr = {
   },
 
   app: {
-    title: "Backpack Exchange",
+    title: "Backpack  Exchange",
   },
 
   api: {
@@ -98,7 +98,7 @@ const hr = {
     },
     proof: {
       title: "Provjera identiteta",
-      instructions: "Verificirajte svoj identitet za pristup svim značajkama Backpack Exchangea",
+      instructions: "Verificirajte svoj identitet za pristup svim značajkama Backpack  Exchangea",
       sections: {
         documentInfo: "Podaci o dokumentu",
         documentUpload: "Prijenos dokumenta"
@@ -236,7 +236,7 @@ const hr = {
     privacy: {
       title: "Portal za privatnost",
       hero: {
-        title: "Backpack Portal za privatnost",
+        title: "Backpack  Portal za privatnost",
         subtitle: "Zaštita vaših podataka i privatnosti strogim smjernicama, pravnom usklađenošću i najboljim praksama u industriji."
       },
       principles: {
@@ -271,7 +271,7 @@ const hr = {
       personalData: {
         title: "Što su osobni podaci?",
         definition: "Osobni podaci odnose se na sve informacije koje identificiraju pojedinca.",
-        examples: "Primjeri uključuju: ime, Backpack ID, e-mail adresu, podatke o lokaciji, povijest transakcija i informacije o uređaju."
+        examples: "Primjeri uključuju: ime, Backpack  ID, e-mail adresu, podatke o lokaciji, povijest transakcija i informacije o uređaju."
       },
       dataUsage: {
         title: "Kako koristimo vaše podatke",
@@ -306,7 +306,7 @@ const hr = {
       },
       dataSharing: {
         title: "Dijeljenje podataka",
-        content: "Možemo dijeliti vaše podatke s drugim Backpack entitetima ili pouzdanim trećim stranama pod strogim ugovornim zaštitama, samo kada je to potrebno za svrhe navedene u našoj Obavijesti o privatnosti."
+        content: "Možemo dijeliti vaše podatke s drugim Backpack  entitetima ili pouzdanim trećim stranama pod strogim ugovornim zaštitama, samo kada je to potrebno za svrhe navedene u našoj Obavijesti o privatnosti."
       },
       cookies: {
         title: "Kolačići i praćenje",
@@ -337,21 +337,21 @@ const hr = {
     termsOfUse: {
       title: "Uvjeti korištenja",
       hero: {
-        title: "Backpack uvjeti korištenja"
+        title: "Backpack  uvjeti korištenja"
       },
       agreement: {
         title: "Sporazum",
-        content: "Ovo je obvezujući sporazum između vas (korisnika) i Backpacka. Obuhvaća sve Backpack usluge kojima pristupate ili ih koristite."
+        content: "Ovo je obvezujući sporazum između vas (korisnika) i Backpack a. Obuhvaća sve Backpack  usluge kojima pristupate ili ih koristite."
       },
       riskWarning: {
         title: "Upozorenje o riziku",
-        content: "Digitalna imovina je volatilna i može značajno fluktuirati u vrijednosti. Backpack nije broker, financijski savjetnik niti investicijski savjetnik. Morate provesti vlastitu dužnu pažnju prije donošenja financijskih odluka."
+        content: "Digitalna imovina je volatilna i može značajno fluktuirati u vrijednosti. Backpack  nije broker, financijski savjetnik niti investicijski savjetnik. Morate provesti vlastitu dužnu pažnju prije donošenja financijskih odluka."
       },
       aboutServices: {
         title: "O našim uslugama",
-        aboutBackpack: {
-          title: "O Backpacku",
-          content: "Backpack pruža razmjenu digitalne imovine, usluge skrbništva i srodne financijske usluge putem naše platforme."
+        aboutBackpack : {
+          title: "O Backpack u",
+          content: "Backpack  pruža razmjenu digitalne imovine, usluge skrbništva i srodne financijske usluge putem naše platforme."
         },
         eligibility: {
           title: "Prihvatljivost",
@@ -359,14 +359,14 @@ const hr = {
         },
         communication: {
           title: "Komunikacija",
-          content: "Morate redovito ažurirati kontaktne podatke. Backpack će vas kontaktirati putem e-maila, SMS-a ili telefona u vezi vašeg računa i naših usluga."
+          content: "Morate redovito ažurirati kontaktne podatke. Backpack  će vas kontaktirati putem e-maila, SMS-a ili telefona u vezi vašeg računa i naših usluga."
         }
       },
       services: {
         title: "Naše usluge",
         servicesProvided: {
           title: "Pružene usluge",
-          content: "Backpack nudi trgovanje digitalnom imovinom, sigurna rješenja skrbništva i korisničku podršku putem automatiziranih botova i ljudskih predstavnika. Dostupna je i funkcionalnost korisničkog chata."
+          content: "Backpack  nudi trgovanje digitalnom imovinom, sigurna rješenja skrbništva i korisničku podršku putem automatiziranih botova i ljudskih predstavnika. Dostupna je i funkcionalnost korisničkog chata."
         },
         fees: {
           title: "Naknade",
@@ -396,7 +396,7 @@ const hr = {
         },
         transactionCancellation: {
           title: "Otkazivanje transakcija",
-          content: "Backpack zadržava pravo otkazivanja ili izmjene transakcija u slučajevima sumnje na prijevaru, greške ili kršenja ovih Uvjeta."
+          content: "Backpack  zadržava pravo otkazivanja ili izmjene transakcija u slučajevima sumnje na prijevaru, greške ili kršenja ovih Uvjeta."
         },
         unauthorizedTransactions: {
           title: "Neovlaštene transakcije",
@@ -407,11 +407,11 @@ const hr = {
         title: "Digitalna imovina",
         supportedAssets: {
           title: "Podržana imovina",
-          content: "Možete trgovati samo digitalnom imovinom koju Backpack eksplicitno podržava. Pokušaj depozita nepodržane imovine može rezultirati trajnim gubitkom."
+          content: "Možete trgovati samo digitalnom imovinom koju Backpack  eksplicitno podržava. Pokušaj depozita nepodržane imovine može rezultirati trajnim gubitkom."
         },
         forksAirdrops: {
           title: "Viljuške i airdropi",
-          content: "Backpack ne jamči podršku za blockchain viljuške, airdrope ili slične događaje. Odluke o podršci donose se prema našoj isključivoj procjeni."
+          content: "Backpack  ne jamči podršku za blockchain viljuške, airdrope ili slične događaje. Odluke o podršci donose se prema našoj isključivoj procjeni."
         }
       },
       accountSecurity: {
@@ -423,37 +423,37 @@ const hr = {
       },
       privacy: {
         title: "Privatnost",
-        content: "Vaša privatnost uređena je Backpack Obaviješću o privatnosti, koja objašnjava kako prikupljamo, koristimo i štitimo vaše osobne podatke."
+        content: "Vaša privatnost uređena je Backpack  Obaviješću o privatnosti, koja objašnjava kako prikupljamo, koristimo i štitimo vaše osobne podatke."
       },
       termination: {
         title: "Ukidanje računa",
         terminationSuspension: {
           title: "Ukidanje/suspenzija",
-          content: "Backpack može ograničiti, suspendirati ili ukinuti račune zbog prijevare, kršenja zakona, sumnjive aktivnosti ili kršenja Uvjeta. Korisnici mogu zatvoriti račune osim ako su zamrznuti ili neaktivni."
+          content: "Backpack  može ograničiti, suspendirati ili ukinuti račune zbog prijevare, kršenja zakona, sumnjive aktivnosti ili kršenja Uvjeta. Korisnici mogu zatvoriti račune osim ako su zamrznuti ili neaktivni."
         }
       },
       prohibitedUse: {
         title: "Zabranjena upotreba",
-        content: "Ne smijete koristiti Backpack usluge za prijevaru, manipulaciju tržištem, nezakonite aktivnosti, neovlašteni pristup ili bilo koju svrhu koja krši primjenjive zakone ili ove Uvjete."
+        content: "Ne smijete koristiti Backpack  usluge za prijevaru, manipulaciju tržištem, nezakonite aktivnosti, neovlašteni pristup ili bilo koju svrhu koja krši primjenjive zakone ili ove Uvjete."
       },
       liability: {
         title: "Odgovornost i intelektualno vlasništvo",
         liability: {
           title: "Odgovornost",
-          content: "Backpack nije odgovoran za gubitke osim u slučajevima dokazane grube nepažnje ili prijevare. Nismo odgovorni za tržišne fluktuacije, tehničke probleme ili radnje trećih strana."
+          content: "Backpack  nije odgovoran za gubitke osim u slučajevima dokazane grube nepažnje ili prijevare. Nismo odgovorni za tržišne fluktuacije, tehničke probleme ili radnje trećih strana."
         },
         intellectualProperty: {
           title: "Intelektualno vlasništvo",
-          content: "Backpack zadržava sva prava intelektualnog vlasništva na našu platformu, tehnologiju i brendiranje. Korisnici dobivaju ograničenu licencu za korištenje naših usluga kako je navedeno u ovim Uvjetima."
+          content: "Backpack  zadržava sva prava intelektualnog vlasništva na našu platformu, tehnologiju i brendiranje. Korisnici dobivaju ograničenu licencu za korištenje naših usluga kako je navedeno u ovim Uvjetima."
         },
         indemnity: {
           title: "Odšteta",
-          content: "Slažete se nadoknaditi Backpacku štetu od svih zahtjeva, gubitaka ili šteta nastalih zbog zloupotrebe naših usluga ili kršenja ovih Uvjeta."
+          content: "Slažete se nadoknaditi Backpack u štetu od svih zahtjeva, gubitaka ili šteta nastalih zbog zloupotrebe naših usluga ili kršenja ovih Uvjeta."
         }
       },
       importantNotice: {
         title: "Važna napomena",
-        content: "Korištenjem Backpack usluga potvrđujete da ste pročitali, razumjeli i prihvatili ove Uvjete korištenja. Ako se ne slažete, morate odmah prestati koristiti naše usluge."
+        content: "Korištenjem Backpack  usluga potvrđujete da ste pročitali, razumjeli i prihvatili ove Uvjete korištenja. Ako se ne slažete, morate odmah prestati koristiti naše usluge."
       },
       actionCards: {
         security: {
@@ -474,7 +474,7 @@ const hr = {
         }
       },
       footer: {
-        copyright: "© 2025 Backpack Exchange. Sva prava pridržana.",
+        copyright: "© 2025 Backpack  Exchange. Sva prava pridržana.",
         lastUpdated: "Zadnje ažuriranje: 6. svibnja 2025."
       }
     },
@@ -578,7 +578,7 @@ const hr = {
     invitation: {
       title: "Pozovi prijatelje",
       earnTogether: "Zaradite zajedno",
-      description: "Pozovite prijatelje da se pridruže Backpacku i zaradite nagrade kada se registriraju i počnu trgovati.",
+      description: "Pozovite prijatelje da se pridruže Backpack u i zaradite nagrade kada se registriraju i počnu trgovati.",
       yourReferralCode: "VAŠ REFERALNI KOD",
       loading: "Učitavanje...",
       copied: "KOPIRANO!",
@@ -679,7 +679,7 @@ const hr = {
         lostDevice: "Ako je vaš uređaj izgubljen ili ukraden, odmah opozvite pristup sesiji iz postavki računa.",
         phishing: "Ako ste postali žrtva phishing napada, zamrznite račun i odmah kontaktirajte podršku.",
         supportTitle: "Sigurnosna podrška 24/7",
-        supportEmail: "support@Backpack-exchange.com"
+        supportEmail: "support@Backpack -exchange.com"
       },
       resources: {
         title: "Sigurnosni resursi",
@@ -803,7 +803,7 @@ const hr = {
         },
         accountActivated: {
           title: "KYC verifikacija",
-          message: "Pozdrav {0}, vaši KYC dokumenti su verificirani i sada možete uživati u neograničenim značajkama Backpack Exchangea"
+          message: "Pozdrav {0}, vaši KYC dokumenti su verificirani i sada možete uživati u neograničenim značajkama Backpack  Exchangea"
         },
         custom: {
           title: "Obavijest",
@@ -1150,6 +1150,10 @@ const hr = {
       }
     },
     home: {
+      hero: {
+        subtitle: "Kupujte, prodajte i upravljajte s više od 100 kriptovaluta uz tržišta u stvarnom vremenu, niske naknade i sigurnost bankovne razine.",
+        cta: "Započni trgovanje"
+      },
       quickAccess: {
         title: "Brzi pristup",
         deposit: "Uplata",
@@ -1181,7 +1185,7 @@ const hr = {
       title: "FAQ centar",
       hero: {
         title: "Često postavljana pitanja",
-        subtitle: "Pronađite odgovore na uobičajena pitanja o korištenju Backpacka"
+        subtitle: "Pronađite odgovore na uobičajena pitanja o korištenju Backpack a"
       },
       search: {
         placeholder: "Pretražite odgovore..."
@@ -1203,7 +1207,7 @@ const hr = {
         verificationProcess: "Prenesite osobni identifikacijski dokument i selfie fotografiju. Verifikacija se obično odobri unutar nekoliko sati."
       },
       steps: {
-        goToWebsite: "Idite na https://Backpack-exchange.com",
+        goToWebsite: "Idite na https://Backpack -exchange.com",
         clickSignUp: 'Kliknite na "Registracija"',
         enterDetails: "Unesite podatke",
         verifyEmail: "Verificirajte svoju e-mail adresu",
@@ -1249,7 +1253,7 @@ const hr = {
         profitLossExplanation: "Izračunava se na temelju razlike u cijeni pomnožene s polugom i veličinom pozicije."
       },
       benefits: {
-        title: "Zašto odabrati Backpack terminske?",
+        title: "Zašto odabrati Backpack  terminske?",
         hedge: "Zaštita od tržišne volatilnosti",
         multiplyProfits: "Množite dobit s polugom",
         tradeBothMarkets: "Trgujte i na rastućim i na padajućim tržištima",
@@ -1262,8 +1266,8 @@ const hr = {
         joinDiscussions: "Pridružite se diskusijama"
       },
       footer: {
-        copyright: "© 2025 Backpack Exchange. Sva prava pridržana.",
-        needHelp: "Trebate više pomoći? Kontaktirajte support@Backpack-exchange.com"
+        copyright: "© 2025 Backpack  Exchange. Sva prava pridržana.",
+        needHelp: "Trebate više pomoći? Kontaktirajte support@Backpack -exchange.com"
       }
     },
 

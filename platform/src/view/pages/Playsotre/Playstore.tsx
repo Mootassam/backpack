@@ -67,8 +67,8 @@ function Playstore() {
 
   // Share functionality
   const shareData = {
-    title: 'Backpack Exchange - Crypto Trading App',
-    text: 'Check out Backpack Exchange - The ultimate trading platform for cryptocurrency and forex markets. Trade Bitcoin, Ethereum, and more with advanced tools!',
+    title: 'Backpack  Exchange - Crypto Trading App',
+    text: 'Check out Backpack  Exchange - The ultimate trading platform for cryptocurrency and forex markets. Trade Bitcoin, Ethereum, and more with advanced tools!',
     url: 'https://backspack.net/playstore',
     apkUrl: 'https://backspack.net/apk/backspack.apk'
   }
@@ -135,9 +135,9 @@ function Playstore() {
 
         {/* App Header */}
         <div className="app-header">
-          <img src="/playsotre/logo.png" className="app-icon" alt="Backpack Exchange" />
+          <img src="/playsotre/logo.svg" className="app-icon" alt="Backpack  Exchange" />
           <div className="app-info">
-            <h1 className="app-title">Backpack Exchange</h1>
+            <h1 className="app-title">Backpack  Exchange</h1>
             <div className="app-developer">SpotTrade Technologies Inc.</div>
             <div className="app-badges">
               <div className="rating">
@@ -192,7 +192,7 @@ function Playstore() {
         <div className="app-details">
           <div className="about-app">
             <p className={`description ${expandedDescription ? 'expanded' : ''}`}>
-              Backpack Exchange is the ultimate trading platform for cryptocurrency and forex markets.
+              Backpack  Exchange is the ultimate trading platform for cryptocurrency and forex markets.
               Trade Bitcoin, Ethereum, Forex pairs and more with advanced charting tools, real-time
               market data, and secure transactions. Enjoy a seamless trading experience with our
               intuitive interface designed for both beginners and experts.
@@ -552,10 +552,10 @@ function Playstore() {
           <div className="download-modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="download-header">
               <div className="download-app-icon">
-                <img src="/playsotre/logo.png" alt="Backpack Exchange" />
+                <img src="/playsotre/logo.svg" alt="Backpack  Exchange" />
               </div>
               <div className="download-app-info">
-                <h3>Backpack Exchange</h3>
+                <h3>Backpack  Exchange</h3>
                 <p>SpotTrade Technologies Inc.</p>
                 <div className="download-rating">
                   <div className="stars">
@@ -632,7 +632,7 @@ function Playstore() {
         <div className="share-modal" onClick={() => setShowShareModal(false)}>
           <div className="share-modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="share-header">
-              <h3>Share Backpack Exchange</h3>
+              <h3>Share Backpack  Exchange</h3>
               <button className="close-share-button" onClick={() => setShowShareModal(false)}>
                 <i className="fas fa-times" />
               </button>

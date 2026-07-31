@@ -87,7 +87,7 @@ function About() {
         }
 
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
 
         .page-title {
@@ -137,7 +137,7 @@ function About() {
         }
 
         .about-content a {
-          color: #fd4b4e;
+          color: #F41112;
           text-decoration: none;
         }
 
@@ -169,7 +169,7 @@ function About() {
 
         .empty-state i {
           font-size: 36px;
-          color: #fd4b4e;
+          color: #F41112;
           margin-bottom: 12px;
         }
       `}</style>

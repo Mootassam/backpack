@@ -12,7 +12,7 @@ const authAxios = Axios.create({
 
   //Demo Telegram 
 
-  baseURL: "http://162.0.228.113:8084/api",
+  // baseURL: "http://162.0.228.113:8084/api",
 
   //Friend sharp
 
@@ -22,7 +22,7 @@ const authAxios = Axios.create({
   // baseURL: "http://162.0.233.249:8084/api", 
 
 
-  // baseURL: "http://localhost:8084/api",
+  baseURL: "http://localhost:8084/api",
 
 
   paramsSerializer: function (params) {

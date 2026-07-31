@@ -403,7 +403,7 @@ const Market: React.FC = () => {
           border: 1px solid #2a2a2e;
           transition: border-color 0.2s;
         }
-        .search-bar:focus-within { border-color: #fd4b4e; }
+        .search-bar:focus-within { border-color: #F41112; }
         .search-bar i { margin-right: 10px; color: #aaaaaa; font-size: 14px; }
         .search-bar input {
           background: transparent;
@@ -454,7 +454,7 @@ const Market: React.FC = () => {
           transition: background-color 0.15s;
         }
         .table-row:last-child { border-bottom: none; }
-        .table-row:hover { background-color: rgba(253, 75, 78, 0.05); }
+        .table-row:hover { background-color: rgba(244, 17, 18, 0.05); }
 
         .pair-col {
           flex: 2;
@@ -494,7 +494,7 @@ const Market: React.FC = () => {
         .icon-fallback {
           font-size: 13px;
           font-weight: 700;
-          color: #fd4b4e;
+          color: #F41112;
         }
 
         .crypto-price {
@@ -514,7 +514,7 @@ const Market: React.FC = () => {
         }
 
         .change-positive { background-color: rgba(76, 175, 80, 0.15); color: #4caf50; }
-        .change-negative { background-color: rgba(253, 75, 78, 0.15); color: #fd4b4e; }
+        .change-negative { background-color: rgba(244, 17, 18, 0.15); color: #F41112; }
 
         .no-results {
           text-align: center;

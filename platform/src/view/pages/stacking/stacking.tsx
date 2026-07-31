@@ -743,7 +743,7 @@ function StackingPage() {
           transition: background-color 0.2s;
         }
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
 
         .page-title {
@@ -818,7 +818,7 @@ function StackingPage() {
           transition: background 0.2s, color 0.2s;
         }
         .stacking-toggle-active {
-          background: #fd4b4e;
+          background: #F41112;
           color: #ffffff;
         }
 
@@ -832,7 +832,7 @@ function StackingPage() {
           transition: border 0.2s;
         }
         .stacking-option-card:hover {
-          border-color: #fd4b4e;
+          border-color: #F41112;
         }
         .stacking-option-header {
           display: flex;
@@ -879,7 +879,7 @@ function StackingPage() {
         }
         .stacking-stake-button {
           width: 100%;
-          background: #fd4b4e;
+          background: #F41112;
           color: #ffffff;
           border: none;
           padding: 10px;
@@ -891,7 +891,7 @@ function StackingPage() {
           margin-top: 8px;
         }
         .stacking-stake-button:hover {
-          background: #e04345;
+          background: #AD1111;
         }
 
         /* ----- Stake Items (Active/Completed) ----- */
@@ -940,8 +940,8 @@ function StackingPage() {
           font-weight: 600;
         }
         .stacking-status-active {
-          background: rgba(253, 75, 78, 0.15);
-          color: #fd4b4e;
+          background: rgba(244, 17, 18, 0.15);
+          color: #F41112;
         }
         .stacking-status-completed {
           background: rgba(76, 175, 80, 0.15);
@@ -973,7 +973,7 @@ function StackingPage() {
         }
         .stacking-progress-fill {
           height: 100%;
-          background: #fd4b4e;
+          background: #F41112;
           border-radius: 2px;
         }
         .stacking-completed-rewards {
@@ -1017,7 +1017,7 @@ function StackingPage() {
           margin-bottom: 16px;
         }
         .start-staking-button {
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           border: none;
           padding: 10px 20px;
@@ -1102,7 +1102,7 @@ function StackingPage() {
           cursor: pointer;
         }
         .modal-close:hover {
-          color: #fd4b4e;
+          color: #F41112;
         }
         .modal-body {
           padding: 16px;
@@ -1144,7 +1144,7 @@ function StackingPage() {
           padding: 12px;
           border: none;
           border-radius: 10px;
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           font-size: 14px;
           font-weight: 600;
@@ -1152,7 +1152,7 @@ function StackingPage() {
           transition: background 0.2s;
         }
         .stake-submit-btn:hover:not(.disabled) {
-          background: #e04345;
+          background: #AD1111;
         }
         .stake-submit-btn.disabled {
           background: #2a2a2e;

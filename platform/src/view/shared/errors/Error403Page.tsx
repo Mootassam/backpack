@@ -143,7 +143,7 @@ function Error403Page() {
           align-items: center;
           justify-content: center;
           gap: 8px;
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           font-size: 14px;
           font-weight: 700;
@@ -152,7 +152,7 @@ function Error403Page() {
           text-decoration: none;
           transition: background 0.2s, transform 0.15s;
         }
-        .ep-btn-primary:hover { background: #e8393c; transform: translateY(-1px); }
+        .ep-btn-primary:hover { background: #AD1111; transform: translateY(-1px); }
         .ep-btn-ghost {
           display: flex;
           align-items: center;

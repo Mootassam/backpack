@@ -255,7 +255,7 @@ function MarketDetail() {
           />
         </div>
         <div className="market-name">{selectedCoin}</div>
-        <div className="market-change" style={{ color: isPriceUp ? "#4caf50" : "#fd4b4e" }}>
+        <div className="market-change" style={{ color: isPriceUp ? "#4caf50" : "#F41112" }}>
           {stats.changePercent !== null
             ? `${stats.changePercent}%`
             : <Skeleton w="50px" h="16px" />}
@@ -308,7 +308,7 @@ function MarketDetail() {
       {/* Header */}
       <div className="header">
         {headerSection}
-        <div className="market-price" style={{ color: isPriceUp ? "#4caf50" : "#fd4b4e" }}>
+        <div className="market-price" style={{ color: isPriceUp ? "#4caf50" : "#F41112" }}>
           {stats.price !== null
             ? `$${formatNumber(stats.price)}`
             : <Skeleton w="120px" h="28px" />}
@@ -463,7 +463,7 @@ function MarketDetail() {
         }
         .action-button:hover { opacity: 0.85; }
         .buy-button  { background-color: #4caf50; color: white; }
-        .sell-button { background-color: #fd4b4e; color: white; }
+        .sell-button { background-color: #F41112; color: white; }
 
         a.remove_blue { text-decoration: none; color: inherit; display: block; }
 
@@ -510,7 +510,7 @@ function MarketDetail() {
         .trade-time   { flex: 1; text-align: right; color: #888888; font-size: 11px; }
 
         .buy-trade  .trade-price { color: #4caf50; }
-        .sell-trade .trade-price { color: #fd4b4e; }
+        .sell-trade .trade-price { color: #F41112; }
       `}</style>
     </div>
   );

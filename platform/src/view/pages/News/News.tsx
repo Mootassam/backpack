@@ -142,7 +142,7 @@ function News() {
           transition: background-color 0.2s;
         }
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
         .page-title {
           color: #ffffff;
@@ -184,11 +184,11 @@ function News() {
           white-space: nowrap;
         }
         .filter-button.active {
-          background-color: #fd4b4e;
+          background-color: #F41112;
           color: #ffffff;
         }
         .filter-button:hover:not(.active) {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
           color: #ffffff;
         }
 

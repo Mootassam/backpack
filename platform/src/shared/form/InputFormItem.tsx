@@ -154,11 +154,11 @@ export function InputFormItem(props) {
         }
 
         .input-container input:focus {
-          border-color: #fd4b4e;
+          border-color: #F41112;
         }
 
         .input-container input.__danger {
-          border-color: #fd4b4e;
+          border-color: #F41112;
         }
 
         .input-container input:disabled {
@@ -167,7 +167,7 @@ export function InputFormItem(props) {
         }
 
         .invalid-feedback {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 13px;
           margin-top: 6px;
           padding-left: 4px;

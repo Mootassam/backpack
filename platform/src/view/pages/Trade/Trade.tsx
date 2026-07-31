@@ -607,7 +607,7 @@ function Trade() {
                   );
                 })}
                 <div className="order-book-row current-price-row">
-                  <div className="current-price" style={{ color: priceIsUp ? "#4caf50" : "#fd4b4e" }}>
+                  <div className="current-price" style={{ color: priceIsUp ? "#4caf50" : "#F41112" }}>
                     ${fmt(marketPrice, 2)}
                   </div>
                 </div>
@@ -684,8 +684,8 @@ function Trade() {
 
         .market-name { font-weight: 700; font-size: 14px; color: #fff; }
 
-        .coin-select-icon { color: #fd4b4e; font-size: 13px; cursor: pointer; transition: color 0.2s; }
-        .coin-select-icon:hover { color: #ff6b6d; }
+        .coin-select-icon { color: #F41112; font-size: 13px; cursor: pointer; transition: color 0.2s; }
+        .coin-select-icon:hover { color: #F64141; }
 
         .market-change { font-size: 12px; font-weight: 600; }
 
@@ -745,7 +745,7 @@ function Trade() {
           color: #aaaaaa;
         }
         .buy-tab.active  { background-color: #4caf50; color: #fff; }
-        .sell-tab.active { background-color: #fd4b4e; color: #fff; }
+        .sell-tab.active { background-color: #F41112; color: #fff; }
 
         /* Order type */
         .order-type { margin-bottom: 12px; }
@@ -798,7 +798,7 @@ function Trade() {
           font-weight: 700;
           transition: background-color 0.2s;
         }
-        .value-button:hover { background-color: #fd4b4e; }
+        .value-button:hover { background-color: #F41112; }
 
         /* % quick-select */
         .pct-row { display: flex; gap: 4px; margin-bottom: 8px; }
@@ -813,7 +813,7 @@ function Trade() {
           cursor: pointer;
           transition: background 0.2s, color 0.2s;
         }
-        .pct-btn:hover { background: #fd4b4e; color: #fff; }
+        .pct-btn:hover { background: #F41112; color: #fff; }
 
         .balance-info { font-size: 12px; color: #aaa; margin: 8px 0; text-align: center; }
 
@@ -834,8 +834,8 @@ function Trade() {
         }
         .buy-button  { background-color: #4caf50; }
         .buy-button:hover:not(:disabled)  { background-color: #43a047; }
-        .sell-button { background-color: #fd4b4e; }
-        .sell-button:hover:not(:disabled) { background-color: #e04345; }
+        .sell-button { background-color: #F41112; }
+        .sell-button:hover:not(:disabled) { background-color: #AD1111; }
         .action-button:disabled { opacity: 0.6; cursor: not-allowed; }
 
         /* Order book */
@@ -861,7 +861,7 @@ function Trade() {
           border-radius: 6px;
           transition: background-color 0.15s;
         }
-        .order-book-row:hover { background-color: rgba(253,75,78,0.08); }
+        .order-book-row:hover { background-color: rgba(244, 17, 18,0.08); }
 
         .depth-bar {
           position: absolute;
@@ -872,12 +872,12 @@ function Trade() {
           border-radius: 6px;
           transition: width 0.3s ease;
         }
-        .ask-depth { right: 0; background-color: #fd4b4e; }
+        .ask-depth { right: 0; background-color: #F41112; }
         .bid-depth { left:  0; background-color: #4caf50; }
 
         .order-price, .order-amount { flex: 1; z-index: 2; font-size: 12px; }
         .order-amount { text-align: right; }
-        .ask-row .order-price { color: #fd4b4e; }
+        .ask-row .order-price { color: #F41112; }
         .bid-row .order-price { color: #4caf50; }
 
         .current-price-row {
@@ -905,10 +905,10 @@ function Trade() {
           margin-bottom: 14px;
         }
 
-        .open-orders-title { font-size: 15px; font-weight: 700; color: #fd4b4e; }
+        .open-orders-title { font-size: 15px; font-weight: 700; color: #F41112; }
 
         .orders-filter a { color: #aaa; font-size: 18px; transition: color 0.2s; }
-        .orders-filter a:hover { color: #fd4b4e; }
+        .orders-filter a:hover { color: #F41112; }
 
         .order-item {
           background-color: #2a2a2e;
@@ -928,7 +928,7 @@ function Trade() {
           font-weight: 700;
         }
         .order-action.buy  { background: rgba(76,175,80,0.2);  color: #4caf50; }
-        .order-action.sell { background: rgba(253,75,78,0.2);  color: #fd4b4e; }
+        .order-action.sell { background: rgba(244, 17, 18,0.2);  color: #F41112; }
 
         .order-type-badge { font-size: 10px; color: #aaa; background: #15161c; padding: 2px 6px; border-radius: 6px; }
 
@@ -941,7 +941,7 @@ function Trade() {
 
         .order-status { font-size: 11px; font-weight: 700; }
         .order-status.completed       { color: #4caf50; }
-        .order-status.canceled        { color: #fd4b4e; }
+        .order-status.canceled        { color: #F41112; }
         .order-status.pending         { color: #f3ba2f; }
         .order-status.partially-filled { color: #ff6838; }
 
@@ -950,7 +950,7 @@ function Trade() {
         .order-actions { display: flex; justify-content: flex-end; }
 
         .cancel-order-btn {
-          background: #fd4b4e;
+          background: #F41112;
           color: white;
           border: none;
           padding: 6px 12px;
@@ -960,7 +960,7 @@ function Trade() {
           cursor: pointer;
           transition: background-color 0.2s;
         }
-        .cancel-order-btn:hover { background: #e04345; }
+        .cancel-order-btn:hover { background: #AD1111; }
 
         .completed-indicator { color: #4caf50; font-size: 18px; }
 
@@ -970,8 +970,8 @@ function Trade() {
         .empty-subtext { color: #777; font-size: 12px; }
 
         .error-message {
-          background: rgba(253,75,78,0.15);
-          color: #fd4b4e;
+          background: rgba(244, 17, 18,0.15);
+          color: #F41112;
           padding: 8px;
           border-radius: 8px;
           margin: 8px 0;

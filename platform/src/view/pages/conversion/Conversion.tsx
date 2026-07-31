@@ -710,7 +710,7 @@ function Conversion() {
           cursor: pointer;
           transition: background-color 0.2s;
         }
-        .back-button:hover { background-color: rgba(253, 75, 78, 0.15); }
+        .back-button:hover { background-color: rgba(244, 17, 18, 0.15); }
 
         .page-title {
           color: #ffffff;
@@ -751,15 +751,15 @@ function Conversion() {
           width: 36px;
           height: 36px;
           border: 3px solid #2a2a2e;
-          border-top-color: #fd4b4e;
+          border-top-color: #F41112;
           border-radius: 50%;
           animation: spin 1s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
         .error-banner {
-          background: rgba(253,75,78,0.15);
-          color: #fd4b4e;
+          background: rgba(244, 17, 18,0.15);
+          color: #F41112;
           padding: 10px;
           border-radius: 8px;
           margin-bottom: 16px;
@@ -781,15 +781,15 @@ function Conversion() {
         .balance-text { font-size: 12px; color: #777; }
         .max-btn {
           background: #2a2a2e;
-          color: #fd4b4e;
-          border: 1px solid #fd4b4e;
+          color: #F41112;
+          border: 1px solid #F41112;
           border-radius: 6px;
           padding: 2px 6px;
           font-size: 11px;
           cursor: pointer;
           transition: 0.2s;
         }
-        .max-btn:hover { background: #fd4b4e; color: #fff; }
+        .max-btn:hover { background: #F41112; color: #fff; }
 
         .input-row {
           display: flex;
@@ -821,7 +821,7 @@ function Conversion() {
           font-weight: 600;
           transition: background 0.2s;
         }
-        .coin-selector:hover { background: #fd4b4e; }
+        .coin-selector:hover { background: #F41112; }
         .coin-icon {
           width: 22px;
           height: 22px;
@@ -838,7 +838,7 @@ function Conversion() {
         .usd-price { font-size: 12px; color: #aaaaaa; margin-top: 6px; }
 
         .insufficient-warning {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 12px;
           margin-top: 6px;
           display: flex;
@@ -854,7 +854,7 @@ function Conversion() {
           border-radius: 50%;
           background: #2a2a2e;
           border: none;
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 16px;
           cursor: pointer;
           display: flex;
@@ -862,7 +862,7 @@ function Conversion() {
           justify-content: center;
           transition: 0.2s;
         }
-        .switch-btn:hover { background: #fd4b4e; color: #fff; transform: rotate(180deg); }
+        .switch-btn:hover { background: #F41112; color: #fff; transform: rotate(180deg); }
 
         /* Conversion info */
         .conversion-info {
@@ -887,7 +887,7 @@ function Conversion() {
           padding: 14px;
           border: none;
           border-radius: 10px;
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           font-size: 15px;
           font-weight: 700;
@@ -896,7 +896,7 @@ function Conversion() {
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
-        .convert-btn:hover:not(.disabled) { background: #e04345; }
+        .convert-btn:hover:not(.disabled) { background: #AD1111; }
         .convert-btn.disabled { background: #2a2a2e; color: #777; cursor: not-allowed; }
 
         .update-notice { text-align: center; color: #777; font-size: 12px; margin-top: 12px; }
@@ -940,7 +940,7 @@ function Conversion() {
           border-radius: 4px;
           transition: color 0.2s;
         }
-        .modal-close:hover { color: #fd4b4e; }
+        .modal-close:hover { color: #F41112; }
 
         .modal-search {
           display: flex;
@@ -976,7 +976,7 @@ function Conversion() {
           transition: background 0.2s;
           border-bottom: 1px solid #2a2a2e;
         }
-        .modal-list li:hover { background: rgba(253,75,78,0.06); }
+        .modal-list li:hover { background: rgba(244, 17, 18,0.06); }
 
         .modal-coin-icon {
           width: 32px;
@@ -1029,8 +1029,8 @@ function Conversion() {
         }
         .swap-side { display: flex; flex-direction: column; align-items: center; }
         .swap-amount { font-size: 18px; font-weight: 700; color: #fff; }
-        .swap-currency { font-size: 12px; color: #fd4b4e; margin-top: 4px; }
-        .swap-arrow { color: #fd4b4e; font-size: 18px; }
+        .swap-currency { font-size: 12px; color: #F41112; margin-top: 4px; }
+        .swap-arrow { color: #F41112; font-size: 18px; }
         .swap-details {
           background: #1e1e24;
           border-radius: 12px;
@@ -1053,7 +1053,7 @@ function Conversion() {
           border-top: 1px solid #2a2a2e;
         }
         .confirm-btn {
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           border: none;
           padding: 14px;
@@ -1067,7 +1067,7 @@ function Conversion() {
           justify-content: center;
           gap: 8px;
         }
-        .confirm-btn:hover:not(:disabled) { background: #e04345; }
+        .confirm-btn:hover:not(:disabled) { background: #AD1111; }
         .confirm-btn:disabled { opacity: 0.6; cursor: not-allowed; }
         .cancel-btn {
           background: transparent;

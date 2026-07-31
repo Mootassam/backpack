@@ -391,7 +391,7 @@ function Wallet() {
         .balance-amount  { color: #ffffff; font-size: 28px; font-weight: 700; }
         .balance-change  { font-size: 13px; font-weight: 500; margin-top: 4px; }
         .balance-change.positive { color: #4caf50; }
-        .balance-change.negative { color: #fd4b4e; }
+        .balance-change.negative { color: #F41112; }
         .balance-placeholder { margin-top: 8px; }
 
         /* Quick actions */
@@ -418,7 +418,7 @@ function Wallet() {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 18px;
           transition: background-color 0.2s;
         }
@@ -434,7 +434,7 @@ function Wallet() {
           margin-bottom: 12px;
         }
         .assets-title  { color: #ffffff; font-size: 14px; font-weight: 600; }
-        .assets-manage { color: #fd4b4e; font-size: 13px; cursor: pointer; }
+        .assets-manage { color: #F41112; font-size: 13px; cursor: pointer; }
 
         /* Asset list */
         .asset-list { min-height: 200px; margin-bottom: 58px; }
@@ -468,7 +468,7 @@ function Wallet() {
         .wallet-value-amount { color: #ffffff; font-size: 14px; font-weight: 600; margin-bottom: 3px; }
         .wallet-value-change { font-size: 12px; }
         .wallet-value-change.positive { color: #4caf50; }
-        .wallet-value-change.negative { color: #fd4b4e; }
+        .wallet-value-change.negative { color: #F41112; }
 
         .no-assets { text-align: center; color: #888; padding: 40px 0; }
 

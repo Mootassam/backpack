@@ -59,11 +59,11 @@ const HEADER_STYLES = `
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    color: #fd4b4e;
+    color: #F41112;
   }
   
   .notification-btn:hover {
-    background: rgba(253, 75, 78, 0.15);
+    background: rgba(244, 17, 18, 0.15);
     transform: scale(1.1);
   }
   
@@ -71,7 +71,7 @@ const HEADER_STYLES = `
     position: absolute;
     top: -5px;
     right: -5px;
-    background: #fd4b4e;
+    background: #F41112;
     color: white;
     border-radius: 50%;
     width: 18px;
@@ -105,12 +105,12 @@ const HEADER_STYLES = `
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fd4b4e;
+    color: #F41112;
     transition: all 0.2s ease;
   }
   
   .profile-avatars:hover {
-    background: rgba(253, 75, 78, 0.15);
+    background: rgba(244, 17, 18, 0.15);
     transform: scale(1.1);
   }
 `;
@@ -143,7 +143,7 @@ function Header() {
   const logoSection = useMemo(() => (
     <div className="logo-section">
       <img 
-        src="/playsotre/logo.png" 
+        src="/playsotre/logo.svg" 
         alt="App Logo" 
         style={{ height: 25 }}
         loading="lazy" // Improve loading performance

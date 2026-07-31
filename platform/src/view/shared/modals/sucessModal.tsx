@@ -65,7 +65,7 @@ const SuccessModalComponent: React.FC<SuccessModalProps> = ({
         title: 'Withdrawal Submitted!',
         message: 'Your withdrawal request is under review. We will process it within 24 hours.',
         icon: 'fas fa-arrow-up',
-        color: '#fd4b4e',
+        color: '#F41112',
       },
     };
     return config[modalType as keyof typeof config] || config.deposit;
@@ -237,7 +237,7 @@ const SuccessModalComponent: React.FC<SuccessModalProps> = ({
           font-weight: 700;
           cursor: pointer;
           transition: opacity 0.2s, transform 0.15s;
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           letter-spacing: 0.2px;
         }

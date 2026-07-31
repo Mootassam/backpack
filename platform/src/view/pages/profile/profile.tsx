@@ -249,7 +249,7 @@ function Profile() {
               title="Change photo"
             >
               {avatarLoading ? (
-                <i className="fas fa-spinner fa-spin" style={{ color: "#fd4b4e", fontSize: 22 }} />
+                <i className="fas fa-spinner fa-spin" style={{ color: "#F41112", fontSize: 22 }} />
               ) : avatarUrl ? (
                 <img src={avatarUrl} alt="avatar" className="avatar-photo" />
               ) : (
@@ -466,7 +466,7 @@ function Profile() {
         }
 
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
 
         .page-title {
@@ -501,7 +501,7 @@ function Profile() {
 
         .status-icon {
           font-size: 28px;
-          color: #fd4b4e;
+          color: #F41112;
           margin-bottom: 8px;
         }
 
@@ -535,7 +535,7 @@ function Profile() {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 22px;
           cursor: pointer;
           flex-shrink: 0;
@@ -545,7 +545,7 @@ function Profile() {
         }
 
         .profile-profile-avatar:hover {
-          border-color: #fd4b4e;
+          border-color: #F41112;
         }
 
         .avatar-photo {
@@ -561,7 +561,7 @@ function Profile() {
           right: -3px;
           width: 20px;
           height: 20px;
-          background-color: #fd4b4e;
+          background-color: #F41112;
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -585,7 +585,7 @@ function Profile() {
         }
 
         .profile-not-status {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 13px;
           margin-top: 4px;
         }
@@ -643,7 +643,7 @@ function Profile() {
         }
 
         .verification-icon {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 20px;
           width: 36px;
           text-align: center;
@@ -665,8 +665,8 @@ function Profile() {
         }
 
         .verification-status-badge {
-          background-color: rgba(253, 75, 78, 0.15);
-          color: #fd4b4e;
+          background-color: rgba(244, 17, 18, 0.15);
+          color: #F41112;
           font-size: 11px;
           padding: 4px 10px;
           border-radius: 12px;
@@ -719,7 +719,7 @@ function Profile() {
         }
 
         .profile-settings-item:hover {
-          background-color: rgba(253, 75, 78, 0.05);
+          background-color: rgba(244, 17, 18, 0.05);
         }
 
         .profile-settings-info {
@@ -729,7 +729,7 @@ function Profile() {
         }
 
         .profile-settings-icon {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 16px;
           width: 28px;
           text-align: center;
@@ -789,7 +789,7 @@ function Profile() {
 
         .popup-card .alert-icon {
           font-size: 36px;
-          color: #fd4b4e;
+          color: #F41112;
           margin-bottom: 16px;
         }
 
@@ -808,7 +808,7 @@ function Profile() {
         }
 
         .verify-now-button {
-          background-color: #fd4b4e;
+          background-color: #F41112;
           color: #ffffff;
           border: none;
           border-radius: 10px;
@@ -821,7 +821,7 @@ function Profile() {
         }
 
         .verify-now-button:hover {
-          background-color: #e04345;
+          background-color: #AD1111;
         }
       `}</style>
     </div>

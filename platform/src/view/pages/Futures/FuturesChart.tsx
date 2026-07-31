@@ -193,7 +193,7 @@ const FuturesChart: React.FC<FuturesChartProps> = ({ symbol = "BTCUSDT" }) => {
     chart.setStyles?.({
       candle: {
         type: "candle_solid",
-        bar: { upColor: "#0ECB81", downColor: "#F6465D", noChangeColor: "#888" },
+        bar: { upColor: "#0ECB81", downColor: "#F41112", noChangeColor: "#888" },
         priceMark: {
           last: {
             line: { color: "#444", style: "dashed" },

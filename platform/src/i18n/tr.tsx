@@ -277,7 +277,7 @@ pages: {
 },
     proof: {
         title: "Kimlik Doğrulama",
-        instructions: "Backpack Exchange'in tüm özelliklerine erişmek için kimliğinizi doğrulayın",
+        instructions: "Backpack  Exchange'in tüm özelliklerine erişmek için kimliğinizi doğrulayın",
         sections: {
             documentInfo: "Belge Bilgileri",
             documentUpload: "Belge Yükleme"
@@ -409,7 +409,7 @@ pages: {
     privacy: {
         title: "Gizlilik Portalı",
         hero: {
-            title: "Backpack Gizlilik Portalı",
+            title: "Backpack  Gizlilik Portalı",
             subtitle: "Verilerinizi ve gizliliğinizi katı kurallar, yasal uyumluluk ve sektör en iyi uygulamaları ile koruyoruz."
         },
         principles: {
@@ -444,7 +444,7 @@ pages: {
         personalData: {
             title: "Kişisel Veri Nedir?",
             definition: "Kişisel veri, bir bireyi tanımlayan her türlü bilgiyi ifade eder.",
-            examples: "Örnekler: isim, Backpack ID, e-posta adresi, konum verileri, işlem geçmişi ve cihaz bilgisi."
+            examples: "Örnekler: isim, Backpack  ID, e-posta adresi, konum verileri, işlem geçmişi ve cihaz bilgisi."
         },
         dataUsage: {
             title: "Verilerinizi Nasıl Kullanıyoruz?",
@@ -479,7 +479,7 @@ pages: {
         },
         dataSharing: {
             title: "Veri Paylaşımı",
-            content: "Verilerinizi, Gizlilik Bildirimimizde belirtilen amaçlar için yalnızca gerekli olduğunda, katı sözleşmesel güvenceler altında diğer Backpack birimleri veya güvenilir üçüncü taraflarla paylaşabiliriz."
+            content: "Verilerinizi, Gizlilik Bildirimimizde belirtilen amaçlar için yalnızca gerekli olduğunda, katı sözleşmesel güvenceler altında diğer Backpack  birimleri veya güvenilir üçüncü taraflarla paylaşabiliriz."
         },
         cookies: {
             title: "Çerezler ve İzleme",
@@ -509,21 +509,21 @@ pages: {
     termsOfUse: {
         title: "Kullanım Koşulları",
         hero: {
-            title: "Backpack Kullanım Koşulları"
+            title: "Backpack  Kullanım Koşulları"
         },
         agreement: {
             title: "Anlaşma",
-            content: "Bu, sizin (kullanıcı) ile Backpack arasında bağlayıcı bir anlaşmadır. Eriştiğiniz veya kullandığınız tüm Backpack Hizmetlerini kapsar."
+            content: "Bu, sizin (kullanıcı) ile Backpack  arasında bağlayıcı bir anlaşmadır. Eriştiğiniz veya kullandığınız tüm Backpack  Hizmetlerini kapsar."
         },
         riskWarning: {
             title: "Risk Uyarısı",
-            content: "Dijital varlıklar oynaktır ve değerleri önemli ölçüde dalgalanabilir. Backpack bir aracı, finansal danışman veya yatırım danışmanı değildir. Herhangi bir finansal karar vermeden önce kendi due diligence'inizi yapmalısınız."
+            content: "Dijital varlıklar oynaktır ve değerleri önemli ölçüde dalgalanabilir. Backpack  bir aracı, finansal danışman veya yatırım danışmanı değildir. Herhangi bir finansal karar vermeden önce kendi due diligence'inizi yapmalısınız."
         },
         aboutServices: {
             title: "Hizmetlerimiz Hakkında",
-            aboutBackpack: {
-                title: "Backpack Hakkında",
-                content: "Backpack, platformumuz aracılığıyla dijital varlık değişimi, saklama hizmetleri ve ilgili finansal hizmetler sağlar."
+            aboutBackpack : {
+                title: "Backpack  Hakkında",
+                content: "Backpack , platformumuz aracılığıyla dijital varlık değişimi, saklama hizmetleri ve ilgili finansal hizmetler sağlar."
             },
             eligibility: {
                 title: "Uygunluk",
@@ -531,14 +531,14 @@ pages: {
             },
             communication: {
                 title: "İletişim",
-                content: "İletişim bilgilerinizi güncel tutmalısınız. Backpack, hesabınız ve hizmetlerimiz hakkında sizinle e-posta, SMS veya telefon yoluyla iletişime geçecektir."
+                content: "İletişim bilgilerinizi güncel tutmalısınız. Backpack , hesabınız ve hizmetlerimiz hakkında sizinle e-posta, SMS veya telefon yoluyla iletişime geçecektir."
             }
         },
         services: {
             title: "Hizmetlerimiz",
             servicesProvided: {
                 title: "Sağlanan Hizmetler",
-                content: "Backpack, hem otomatik botlar hem de insan temsilciler aracılığıyla dijital varlık ticareti, güvenli saklama çözümleri ve müşteri desteği sunar. Kullanıcı sohbet işlevselliği de mevcuttur."
+                content: "Backpack , hem otomatik botlar hem de insan temsilciler aracılığıyla dijital varlık ticareti, güvenli saklama çözümleri ve müşteri desteği sunar. Kullanıcı sohbet işlevselliği de mevcuttur."
             },
             fees: {
                 title: "Ücretler",
@@ -568,7 +568,7 @@ pages: {
             },
             transactionCancellation: {
                 title: "İşlem İptali",
-                content: "Backpack, şüpheli dolandırıcılık, hatalar veya bu Koşulların ihlali durumlarında işlemleri iptal etme veya değiştirme hakkını saklı tutar."
+                content: "Backpack , şüpheli dolandırıcılık, hatalar veya bu Koşulların ihlali durumlarında işlemleri iptal etme veya değiştirme hakkını saklı tutar."
             },
             unauthorizedTransactions: {
                 title: "Yetkisiz İşlemler",
@@ -579,11 +579,11 @@ pages: {
             title: "Dijital Varlıklar",
             supportedAssets: {
                 title: "Desteklenen Varlıklar",
-                content: "Yalnızca Backpack tarafından açıkça desteklenen dijital varlıklarla işlem yapabilirsiniz. Desteklenmeyen varlıkları yatırmaya çalışmak, varlıklarınızın kalıcı kaybına neden olabilir."
+                content: "Yalnızca Backpack  tarafından açıkça desteklenen dijital varlıklarla işlem yapabilirsiniz. Desteklenmeyen varlıkları yatırmaya çalışmak, varlıklarınızın kalıcı kaybına neden olabilir."
             },
             forksAirdrops: {
                 title: "Fork'lar ve Airdrop'lar",
-                content: "Backpack, blok zinciri fork'ları, airdrop'lar veya benzer diğer etkinlikler için destek garanti etmez. Destek kararları tamamen kendi takdirimize bağlı olarak verilir."
+                content: "Backpack , blok zinciri fork'ları, airdrop'lar veya benzer diğer etkinlikler için destek garanti etmez. Destek kararları tamamen kendi takdirimize bağlı olarak verilir."
             }
         },
         accountSecurity: {
@@ -595,37 +595,37 @@ pages: {
         },
         privacy: {
             title: "Gizlilik",
-            content: "Gizliliğiniz, kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklayan Backpack Gizlilik Bildirimi tarafından yönetilir."
+            content: "Gizliliğiniz, kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklayan Backpack  Gizlilik Bildirimi tarafından yönetilir."
         },
         termination: {
             title: "Hesap Sonlandırma",
             terminationSuspension: {
                 title: "Sonlandırma/Askıya Alma",
-                content: "Backpack, dolandırıcılık, yasa ihlalleri, şüpheli aktivite veya Koşul ihlalleri nedeniyle hesapları kısıtlayabilir, askıya alabilir veya sonlandırabilir. Kullanıcılar, dondurulmamış veya etkin olmayan hesaplar dışında hesaplarını kapatabilir."
+                content: "Backpack , dolandırıcılık, yasa ihlalleri, şüpheli aktivite veya Koşul ihlalleri nedeniyle hesapları kısıtlayabilir, askıya alabilir veya sonlandırabilir. Kullanıcılar, dondurulmamış veya etkin olmayan hesaplar dışında hesaplarını kapatabilir."
             }
         },
         prohibitedUse: {
             title: "Yasaklanmış Kullanım",
-            content: "Backpack hizmetlerini dolandırıcılık, piyasa manipülasyonu, yasa dışı faaliyetler, yetkisiz erişim veya uygulanabilir yasaları veya bu Koşulları ihlal eden herhangi bir amaç için kullanamazsınız."
+            content: "Backpack  hizmetlerini dolandırıcılık, piyasa manipülasyonu, yasa dışı faaliyetler, yetkisiz erişim veya uygulanabilir yasaları veya bu Koşulları ihlal eden herhangi bir amaç için kullanamazsınız."
         },
         liability: {
             title: "Sorumluluk ve Fikri Mülkiyet",
             liability: {
                 title: "Sorumluluk",
-                content: "Backpack, kanıtlanmış ağır ihmal veya dolandırıcılık durumları dışındaki kayıplardan sorumlu değildir. Piyasa dalgalanmaları, teknik sorunlar veya üçüncü taraf eylemlerinden sorumlu değiliz."
+                content: "Backpack , kanıtlanmış ağır ihmal veya dolandırıcılık durumları dışındaki kayıplardan sorumlu değildir. Piyasa dalgalanmaları, teknik sorunlar veya üçüncü taraf eylemlerinden sorumlu değiliz."
             },
             intellectualProperty: {
                 title: "Fikri Mülkiyet",
-                content: "Backpack, platformumuz, teknolojimiz ve markalaşmamız üzerindeki tüm fikri mülkiyet haklarını saklı tutar. Kullanıcılar, bu Koşullarda belirtildiği şekilde hizmetlerimizi kullanmak için sınırlı bir lisans alır."
+                content: "Backpack , platformumuz, teknolojimiz ve markalaşmamız üzerindeki tüm fikri mülkiyet haklarını saklı tutar. Kullanıcılar, bu Koşullarda belirtildiği şekilde hizmetlerimizi kullanmak için sınırlı bir lisans alır."
             },
             indemnity: {
                 title: "Tazminat",
-                content: "Hizmetlerimizi kötüye kullanmanız veya bu Koşulları ihlal etmenizden kaynaklanan herhangi bir talep, kayıp veya zarara karşı Backpack'u tazmin etmeyi kabul edersiniz."
+                content: "Hizmetlerimizi kötüye kullanmanız veya bu Koşulları ihlal etmenizden kaynaklanan herhangi bir talep, kayıp veya zarara karşı Backpack 'u tazmin etmeyi kabul edersiniz."
             }
         },
         importantNotice: {
             title: "Önemli Bildirim",
-            content: "Backpack hizmetlerini kullanarak, bu Kullanım Koşullarını okuduğunuzu, anladığınızı ve bunlara bağlı kalacağınızı kabul etmiş olursunuz. Kabul etmiyorsanız, hizmetlerimizi kullanmayı derhal bırakmalısınız."
+            content: "Backpack  hizmetlerini kullanarak, bu Kullanım Koşullarını okuduğunuzu, anladığınızı ve bunlara bağlı kalacağınızı kabul etmiş olursunuz. Kabul etmiyorsanız, hizmetlerimizi kullanmayı derhal bırakmalısınız."
         },
         actionCards: {
             security: {
@@ -646,7 +646,7 @@ pages: {
             }
         },
         footer: {
-            copyright: "© 2025 Backpack Exchange. Tüm hakları saklıdır.",
+            copyright: "© 2025 Backpack  Exchange. Tüm hakları saklıdır.",
             lastUpdated: "Son güncelleme: 6 Mayıs 2025"
         }
     },
@@ -749,7 +749,7 @@ pages: {
     invitation: {
         title: "Arkadaşlarını Davet Et",
         earnTogether: "Birlikte Kazanın",
-        description: "Arkadaşlarınızı Backpack'a katılmaya davet edin, kaydolup işlem yapmaya başladıklarında ödüller kazanın.",
+        description: "Arkadaşlarınızı Backpack 'a katılmaya davet edin, kaydolup işlem yapmaya başladıklarında ödüller kazanın.",
         yourReferralCode: "REFERANS KODUNUZ",
         loading: "Yükleniyor...",
         copied: "KOPYALANDI!",
@@ -849,7 +849,7 @@ pages: {
             lostDevice: "Cihazınız kaybolursa veya çalınırsa, hesap ayarlarından oturum erişimini derhal iptal edin.",
             phishing: "Bir oltalama saldırısının kurbanı olduysanız, hesabınızı dondurun ve derhal destekle iletişime geçin.",
             supportTitle: "7/24 Güvenlik Desteği",
-            supportEmail: "support@Backpack-exchange.com"
+            supportEmail: "support@Backpack -exchange.com"
         },
         resources: {
             title: "Güvenlik Kaynakları",
@@ -973,7 +973,7 @@ pages: {
             },
             accountActivated: {
                 title: "KYC Doğrulama",
-                message: "Merhaba {0}, KYC belgeleriniz doğrulandı, artık Backpack Exchange'de sınırsız özelliklerin keyfini çıkarabilirsiniz"
+                message: "Merhaba {0}, KYC belgeleriniz doğrulandı, artık Backpack  Exchange'de sınırsız özelliklerin keyfini çıkarabilirsiniz"
             },
             custom: {
                 title: "Bildirim",
@@ -1309,6 +1309,10 @@ pages: {
         }
     },
     home: {
+        hero: {
+            subtitle: "100'den fazla kripto parayı gerçek zamanlı piyasalar, düşük ücretler ve banka düzeyinde güvenlikle alın, satın ve yönetin.",
+            cta: "Alım Satıma Başla"
+        },
         quickAccess: {
             title: "Hızlı Erişim",
             deposit: "Yatırma",
@@ -1340,7 +1344,7 @@ pages: {
         title: "SSS Merkezi",
         hero: {
             title: "Sıkça Sorulan Sorular",
-            subtitle: "Backpack kullanımı hakkında yaygın soruların yanıtlarını bulun"
+            subtitle: "Backpack  kullanımı hakkında yaygın soruların yanıtlarını bulun"
         },
         search: {
             placeholder: "Yanıtlar için ara..."
@@ -1362,7 +1366,7 @@ pages: {
             verificationProcess: "Resmi bir kimlik ve selfie fotoğrafı yükleyin. Doğrulama genellikle saatler içinde onaylanır."
         },
         steps: {
-            goToWebsite: "https://Backpack-exchange.com adresine gidin",
+            goToWebsite: "https://Backpack -exchange.com adresine gidin",
             clickSignUp: '"Kayıt Ol"a tıklayın',
             enterDetails: "Bilgilerinizi girin",
             verifyEmail: "E-posta adresinizi doğrulayın",
@@ -1408,7 +1412,7 @@ pages: {
             profitLossExplanation: "Fiyat farkının kaldıracınız ve pozisyon büyüklüğünüzle çarpılmasına dayanarak hesaplanır."
         },
         benefits: {
-            title: "Neden Backpack Futures'ı Seçmelisiniz?",
+            title: "Neden Backpack  Futures'ı Seçmelisiniz?",
             hedge: "Piyasa oynaklığına karşı korunun",
             multiplyProfits: "Kaldıraçla karları katlayın",
             tradeBothMarkets: "Hem yükselen hem de düşen piyasalarda işlem yapın",
@@ -1421,8 +1425,8 @@ pages: {
             joinDiscussions: "Tartışmalara katılın"
         },
         footer: {
-            copyright: "© 2025 Backpack Exchange. Tüm hakları saklıdır.",
-            needHelp: "Daha fazla yardıma mı ihtiyacınız var? support@Backpack-exchange.com adresinden iletişime geçin"
+            copyright: "© 2025 Backpack  Exchange. Tüm hakları saklıdır.",
+            needHelp: "Daha fazla yardıma mı ihtiyacınız var? support@Backpack -exchange.com adresinden iletişime geçin"
         }
     },
     tabBottomNavigator: {

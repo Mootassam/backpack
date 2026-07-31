@@ -102,8 +102,8 @@ function LiveChat() {
         }
 
         .livechat-back-btn:hover {
-          background: rgba(253, 75, 78, 0.15);
-          color: #fd4b4e;
+          background: rgba(244, 17, 18, 0.15);
+          color: #F41112;
         }
 
         .livechat-title {

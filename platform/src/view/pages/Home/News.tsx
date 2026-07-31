@@ -79,13 +79,13 @@ function News(props) {
 
         .news-see-all {
           font-size: 13px;
-          color: #fd4b4e;
+          color: #F41112;
           font-weight: 500;
           transition: color 0.2s;
           text-decoration: none;
         }
         .news-see-all:hover {
-          color: #ff6b6e;
+          color: #F64141;
         }
 
         .news-item-card {
@@ -99,7 +99,7 @@ function News(props) {
           transition: background-color 0.2s;
         }
         .news-item-card:hover {
-          background-color: rgba(253, 75, 78, 0.05);
+          background-color: rgba(244, 17, 18, 0.05);
         }
 
         .news-image-placeholder {

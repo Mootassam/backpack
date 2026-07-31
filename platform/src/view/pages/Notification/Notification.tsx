@@ -216,7 +216,7 @@ function Notification() {
         }
 
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
 
         .page-title {
@@ -266,9 +266,9 @@ function Notification() {
         }
 
         .filter-tab.active {
-          background-color: #fd4b4e;
+          background-color: #F41112;
           color: #ffffff;
-          box-shadow: 0 2px 6px rgba(253, 75, 78, 0.3);
+          box-shadow: 0 2px 6px rgba(244, 17, 18, 0.3);
         }
 
         /* Notification list area */
@@ -290,7 +290,7 @@ function Notification() {
         .spinner {
           width: 20px;
           height: 20px;
-          border: 2px solid #fd4b4e;
+          border: 2px solid #F41112;
           border-top: 2px solid transparent;
           border-radius: 50%;
           animation: spin 0.8s linear infinite;
@@ -315,7 +315,7 @@ function Notification() {
 
         .notification-item.unread {
           background-color: #1a1c22;
-          border-left: 3px solid #fd4b4e;
+          border-left: 3px solid #F41112;
         }
 
         .notification-item:hover {
@@ -330,7 +330,7 @@ function Notification() {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 16px;
           margin-right: 12px;
           flex-shrink: 0;
@@ -363,7 +363,7 @@ function Notification() {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background-color: #fd4b4e;
+          background-color: #F41112;
           margin-left: 8px;
           flex-shrink: 0;
         }
@@ -382,7 +382,7 @@ function Notification() {
         .empty-icon {
           font-size: 48px;
           margin-bottom: 16px;
-          color: #fd4b4e;
+          color: #F41112;
         }
 
         .empty-title {

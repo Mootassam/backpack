@@ -272,7 +272,7 @@ pages: {
 },
     proof: {
         title: "Identitätsverifizierung",
-        instructions: "Verifizieren Sie Ihre Identität, um auf alle Funktionen Ihrer Backpack Exchange zuzugreifen",
+        instructions: "Verifizieren Sie Ihre Identität, um auf alle Funktionen Ihrer Backpack  Exchange zuzugreifen",
         sections: {
             documentInfo: "Dokumenteninformationen",
             documentUpload: "Dokumentenupload"
@@ -404,7 +404,7 @@ pages: {
     privacy: {
         title: "Datenschutzportal",
         hero: {
-            title: "Backpack Datenschutzportal",
+            title: "Backpack  Datenschutzportal",
             subtitle: "Schutz Ihrer Daten und Privatsphäre mit strengen Richtlinien, gesetzlicher Compliance und Branchenbest Practices."
         },
         principles: {
@@ -439,7 +439,7 @@ pages: {
         personalData: {
             title: "Was sind personenbezogene Daten?",
             definition: "Personenbezogene Daten beziehen sich auf alle Informationen, die eine Person identifizieren.",
-            examples: "Beispiele sind: Name, Backpack ID, E-Mail-Adresse, Standortdaten, Transaktionsverlauf und Geräteinformationen."
+            examples: "Beispiele sind: Name, Backpack  ID, E-Mail-Adresse, Standortdaten, Transaktionsverlauf und Geräteinformationen."
         },
         dataUsage: {
             title: "Wie wir Ihre Daten verwenden",
@@ -474,7 +474,7 @@ pages: {
         },
         dataSharing: {
             title: "Datenaustausch",
-            content: "Wir können Ihre Daten mit anderen Backpack-Einheiten oder vertrauenswürdigen Dritten unter strengen vertraglichen Sicherheitsvorkehrungen teilen, nur wenn dies für die in unserer Datenschutzerklärung dargelegten Zwecke notwendig ist."
+            content: "Wir können Ihre Daten mit anderen Backpack -Einheiten oder vertrauenswürdigen Dritten unter strengen vertraglichen Sicherheitsvorkehrungen teilen, nur wenn dies für die in unserer Datenschutzerklärung dargelegten Zwecke notwendig ist."
         },
         cookies: {
             title: "Cookies & Tracking",
@@ -504,21 +504,21 @@ pages: {
     termsOfUse: {
         title: "Nutzungsbedingungen",
         hero: {
-            title: "Backpack Nutzungsbedingungen"
+            title: "Backpack  Nutzungsbedingungen"
         },
         agreement: {
             title: "Vereinbarung",
-            content: "Dies ist eine bindende Vereinbarung zwischen Ihnen (dem Nutzer) und Backpack. Sie deckt alle Backpack-Dienste ab, auf die Sie zugreifen oder die Sie nutzen."
+            content: "Dies ist eine bindende Vereinbarung zwischen Ihnen (dem Nutzer) und Backpack . Sie deckt alle Backpack -Dienste ab, auf die Sie zugreifen oder die Sie nutzen."
         },
         riskWarning: {
             title: "Risikowarnung",
-            content: "Digitale Assets sind volatil und können erheblich im Wert schwanken. Backpack ist kein Broker, Finanzberater oder Anlageberater. Sie müssen Ihre eigene Due Diligence durchführen, bevor Sie finanzielle Entscheidungen treffen."
+            content: "Digitale Assets sind volatil und können erheblich im Wert schwanken. Backpack  ist kein Broker, Finanzberater oder Anlageberater. Sie müssen Ihre eigene Due Diligence durchführen, bevor Sie finanzielle Entscheidungen treffen."
         },
         aboutServices: {
             title: "Über unsere Dienste",
-            aboutBackpack: {
-                title: "Über Backpack",
-                content: "Backpack bietet digitalen Asset-Handel, Verwahrungsdienste und verwandte Finanzdienstleistungen über unsere Plattform an."
+            aboutBackpack : {
+                title: "Über Backpack ",
+                content: "Backpack  bietet digitalen Asset-Handel, Verwahrungsdienste und verwandte Finanzdienstleistungen über unsere Plattform an."
             },
             eligibility: {
                 title: "Berechtigung",
@@ -526,14 +526,14 @@ pages: {
             },
             communication: {
                 title: "Kommunikation",
-                content: "Sie müssen Ihre Kontaktinformationen aktuell halten. Backpack wird Sie per E-Mail, SMS oder Telefon bezüglich Ihres Kontos und unserer Dienste kontaktieren."
+                content: "Sie müssen Ihre Kontaktinformationen aktuell halten. Backpack  wird Sie per E-Mail, SMS oder Telefon bezüglich Ihres Kontos und unserer Dienste kontaktieren."
             }
         },
         services: {
             title: "Unsere Dienste",
             servicesProvided: {
                 title: "Bereitgestellte Dienste",
-                content: "Backpack bietet digitalen Asset-Handel, sichere Verwahrungslösungen und Kundensupport sowohl über automatisierte Bots als auch menschliche Vertreter. Auch eine Benutzer-Chat-Funktionalität ist verfügbar."
+                content: "Backpack  bietet digitalen Asset-Handel, sichere Verwahrungslösungen und Kundensupport sowohl über automatisierte Bots als auch menschliche Vertreter. Auch eine Benutzer-Chat-Funktionalität ist verfügbar."
             },
             fees: {
                 title: "Gebühren",
@@ -563,7 +563,7 @@ pages: {
             },
             transactionCancellation: {
                 title: "Transaktionsstornierung",
-                content: "Backpack behält sich das Recht vor, Transaktionen in Fällen von mutmaßlichem Betrug, Fehlern oder Verstößen gegen diese Bedingungen zu stornieren oder zu ändern."
+                content: "Backpack  behält sich das Recht vor, Transaktionen in Fällen von mutmaßlichem Betrug, Fehlern oder Verstößen gegen diese Bedingungen zu stornieren oder zu ändern."
             },
             unauthorizedTransactions: {
                 title: "Unbefugte Transaktionen",
@@ -574,11 +574,11 @@ pages: {
             title: "Digitale Assets",
             supportedAssets: {
                 title: "Unterstützte Assets",
-                content: "Sie dürfen nur mit digitalen Assets handeln, die ausdrücklich von Backpack unterstützt werden. Der Versuch, nicht unterstützte Assets einzuzahlen, kann zu dauerhaftem Verlust führen."
+                content: "Sie dürfen nur mit digitalen Assets handeln, die ausdrücklich von Backpack  unterstützt werden. Der Versuch, nicht unterstützte Assets einzuzahlen, kann zu dauerhaftem Verlust führen."
             },
             forksAirdrops: {
                 title: "Forks & Airdrops",
-                content: "Backpack garantiert keine Unterstützung für Blockchain-Forks, Airdrops oder ähnliche Ereignisse. Unterstützungsentscheidungen werden nach unserem alleinigen Ermessen getroffen."
+                content: "Backpack  garantiert keine Unterstützung für Blockchain-Forks, Airdrops oder ähnliche Ereignisse. Unterstützungsentscheidungen werden nach unserem alleinigen Ermessen getroffen."
             }
         },
         accountSecurity: {
@@ -590,37 +590,37 @@ pages: {
         },
         privacy: {
             title: "Datenschutz",
-            content: "Ihre Privatsphäre wird durch die Backpack Datenschutzerklärung geregelt, die erklärt, wie wir Ihre persönlichen Informationen sammeln, verwenden und schützen."
+            content: "Ihre Privatsphäre wird durch die Backpack  Datenschutzerklärung geregelt, die erklärt, wie wir Ihre persönlichen Informationen sammeln, verwenden und schützen."
         },
         termination: {
             title: "Kontokündigung",
             terminationSuspension: {
                 title: "Kündigung/Sperrung",
-                content: "Backpack kann Konten wegen Betrugs, Gesetzesverstößen, verdächtiger Aktivitäten oder Verstößen gegen die Bedingungen einschränken, suspendieren oder kündigen. Nutzer können Konten schließen, sofern diese nicht eingefroren oder inaktiv sind."
+                content: "Backpack  kann Konten wegen Betrugs, Gesetzesverstößen, verdächtiger Aktivitäten oder Verstößen gegen die Bedingungen einschränken, suspendieren oder kündigen. Nutzer können Konten schließen, sofern diese nicht eingefroren oder inaktiv sind."
             }
         },
         prohibitedUse: {
             title: "Verbotene Nutzung",
-            content: "Sie dürfen Backpack-Dienste nicht für Betrug, Marktmanipulation, illegale Aktivitäten, unbefugten Zugriff oder jeden Zweck verwenden, der gegen geltende Gesetze oder diese Bedingungen verstößt."
+            content: "Sie dürfen Backpack -Dienste nicht für Betrug, Marktmanipulation, illegale Aktivitäten, unbefugten Zugriff oder jeden Zweck verwenden, der gegen geltende Gesetze oder diese Bedingungen verstößt."
         },
         liability: {
             title: "Haftung & Geistiges Eigentum",
             liability: {
                 title: "Haftung",
-                content: "Backpack ist nicht für Verluste verantwortlich, außer in Fällen von nachgewiesener grober Fahrlässigkeit oder Betrug. Wir haften nicht für Marktschwankungen, technische Probleme oder Handlungen Dritter."
+                content: "Backpack  ist nicht für Verluste verantwortlich, außer in Fällen von nachgewiesener grober Fahrlässigkeit oder Betrug. Wir haften nicht für Marktschwankungen, technische Probleme oder Handlungen Dritter."
             },
             intellectualProperty: {
                 title: "Geistiges Eigentum",
-                content: "Backpack behält sich alle geistigen Eigentumsrechte an unserer Plattform, Technologie und Marke vor. Nutzer erhalten eine beschränkte Lizenz zur Nutzung unserer Dienste, wie in diesen Bedingungen dargelegt."
+                content: "Backpack  behält sich alle geistigen Eigentumsrechte an unserer Plattform, Technologie und Marke vor. Nutzer erhalten eine beschränkte Lizenz zur Nutzung unserer Dienste, wie in diesen Bedingungen dargelegt."
             },
             indemnity: {
                 title: "Schadloshaltung",
-                content: "Sie erklären sich damit einverstanden, Backpack von allen Ansprüchen, Verlusten oder Schäden freizustellen, die sich aus Ihrer missbräuchlichen Nutzung unserer Dienste oder Verstößen gegen diese Bedingungen ergeben."
+                content: "Sie erklären sich damit einverstanden, Backpack  von allen Ansprüchen, Verlusten oder Schäden freizustellen, die sich aus Ihrer missbräuchlichen Nutzung unserer Dienste oder Verstößen gegen diese Bedingungen ergeben."
             }
         },
         importantNotice: {
             title: "Wichtiger Hinweis",
-            content: "Durch die Nutzung der Backpack-Dienste bestätigen Sie, dass Sie diese Nutzungsbedingungen gelesen, verstanden und sich damit einverstanden erklärt haben, an sie gebunden zu sein. Wenn Sie nicht einverstanden sind, müssen Sie die Nutzung unserer Dienste sofort einstellen."
+            content: "Durch die Nutzung der Backpack -Dienste bestätigen Sie, dass Sie diese Nutzungsbedingungen gelesen, verstanden und sich damit einverstanden erklärt haben, an sie gebunden zu sein. Wenn Sie nicht einverstanden sind, müssen Sie die Nutzung unserer Dienste sofort einstellen."
         },
         actionCards: {
             security: {
@@ -641,7 +641,7 @@ pages: {
             }
         },
         footer: {
-            copyright: "© 2025 Backpack Exchange. Alle Rechte vorbehalten.",
+            copyright: "© 2025 Backpack  Exchange. Alle Rechte vorbehalten.",
             lastUpdated: "Zuletzt aktualisiert: 6. Mai 2025"
         }
     },
@@ -744,7 +744,7 @@ pages: {
     invitation: {
         title: "Freunde einladen",
         earnTogether: "Gemeinsam verdienen",
-        description: "Laden Sie Freunde ein, Backpack beizutreten und verdienen Sie Belohnungen, wenn sie sich anmelden und mit dem Trading beginnen.",
+        description: "Laden Sie Freunde ein, Backpack  beizutreten und verdienen Sie Belohnungen, wenn sie sich anmelden und mit dem Trading beginnen.",
         yourReferralCode: "IHR EMPFEHLUNGSCODE",
         loading: "Lädt...",
         copied: "KOPIERT!",
@@ -844,7 +844,7 @@ pages: {
             lostDevice: "Wenn Ihr Gerät verloren geht oder gestohlen wird, widerrufen Sie sofort den Sitzungszugriff in Ihren Kontoeinstellungen.",
             phishing: "Wenn Sie Opfer eines Phishing-Angriffs geworden sind, frieren Sie Ihr Konto ein und kontaktieren Sie sofort den Support.",
             supportTitle: "24/7 Sicherheits-Support",
-            supportEmail: "support@Backpack-exchange.com"
+            supportEmail: "support@Backpack -exchange.com"
         },
         resources: {
             title: "Sicherheitsressourcen",
@@ -968,7 +968,7 @@ pages: {
             },
             accountActivated: {
                 title: "KYC-Verifizierung",
-                message: "Hallo {0}, Ihre KYC-Dokumente wurden verifiziert. Sie können jetzt unbegrenzte Funktionen auf Backpack Exchange genießen"
+                message: "Hallo {0}, Ihre KYC-Dokumente wurden verifiziert. Sie können jetzt unbegrenzte Funktionen auf Backpack  Exchange genießen"
             },
             custom: {
                 title: "Benachrichtigung",
@@ -1304,6 +1304,10 @@ pages: {
         }
     },
     home: {
+        hero: {
+            subtitle: "Kaufen, verkaufen und verwalten Sie über 100 Kryptowährungen mit Echtzeitmärkten, niedrigen Gebühren und Sicherheit auf Bankniveau.",
+            cta: "Jetzt handeln"
+        },
         quickAccess: {
             title: "Schnellzugriff",
             deposit: "Einzahlung",
@@ -1335,7 +1339,7 @@ pages: {
         title: "FAQ-Center",
         hero: {
             title: "Häufig gestellte Fragen",
-            subtitle: "Finden Sie Antworten auf häufige Fragen zur Nutzung von Backpack"
+            subtitle: "Finden Sie Antworten auf häufige Fragen zur Nutzung von Backpack "
         },
         search: {
             placeholder: "Nach Antworten suchen..."
@@ -1357,7 +1361,7 @@ pages: {
             verificationProcess: "Laden Sie einen amtlichen Ausweis und ein Selfie-Foto hoch. Die Verifizierung wird in der Regel innerhalb von Stunden genehmigt."
         },
         steps: {
-            goToWebsite: "Gehen Sie zu https://Backpack-exchange.com",
+            goToWebsite: "Gehen Sie zu https://Backpack -exchange.com",
             clickSignUp: 'Klicken Sie auf "Registrieren"',
             enterDetails: "Geben Sie Ihre Daten ein",
             verifyEmail: "Bestätigen Sie Ihre E-Mail-Adresse",
@@ -1403,7 +1407,7 @@ pages: {
             profitLossExplanation: "Berechnet basierend auf Preisdifferenz multipliziert mit Ihrem Hebel und Positionsgröße."
         },
         benefits: {
-            title: "Warum Backpack Futures wählen?",
+            title: "Warum Backpack  Futures wählen?",
             hedge: "Absichern gegen Marktvolatilität",
             multiplyProfits: "Gewinne mit Hebelwirkung multiplizieren",
             tradeBothMarkets: "Handeln Sie in steigenden und fallenden Märkten",
@@ -1416,8 +1420,8 @@ pages: {
             joinDiscussions: "An Diskussionen teilnehmen"
         },
         footer: {
-            copyright: "© 2025 Backpack Exchange. Alle Rechte vorbehalten.",
-            needHelp: "Brauchen Sie mehr Hilfe? Kontaktieren Sie support@Backpack-exchange.com"
+            copyright: "© 2025 Backpack  Exchange. Alle Rechte vorbehalten.",
+            needHelp: "Brauchen Sie mehr Hilfe? Kontaktieren Sie support@Backpack -exchange.com"
         }
     },
     tabBottomNavigator: {

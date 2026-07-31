@@ -245,7 +245,7 @@ const Faq: React.FC = () => {
       title: i18n('pages.faq.actionCards.community'),
       description: i18n('pages.faq.actionCards.joinDiscussions'),
       icon: 'fa-comments',
-      link: 'https://t.me/Backpackexchange_official',
+      link: 'https://t.me/Backpack exchange_official',
       isExternal: true
     }
   ];
@@ -462,7 +462,7 @@ const Faq: React.FC = () => {
           transition: background-color 0.2s;
         }
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
         .page-title {
           color: #ffffff;
@@ -524,7 +524,7 @@ const Faq: React.FC = () => {
           color: #888888;
         }
         .search-bar:focus {
-          border-color: #fd4b4e;
+          border-color: #F41112;
         }
 
         /* ===== SECTION TITLES ===== */
@@ -554,7 +554,7 @@ const Faq: React.FC = () => {
           margin-bottom: 10px;
         }
         .faq-icon {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 16px;
           width: 20px;
           text-align: center;
@@ -580,7 +580,7 @@ const Faq: React.FC = () => {
           font-size: 14px;
         }
         .step-arrow {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 12px;
           margin-top: 3px;
         }
@@ -601,7 +601,7 @@ const Faq: React.FC = () => {
           border-bottom: 1px solid #2a2a2e;
         }
         .futures-title i {
-          color: #fd4b4e;
+          color: #F41112;
         }
 
         /* ===== BENEFITS SECTION ===== */
@@ -620,7 +620,7 @@ const Faq: React.FC = () => {
           border-bottom: 1px solid #2a2a2e;
         }
         .benefits-title i {
-          color: #fd4b4e;
+          color: #F41112;
         }
         .benefits-list {
           list-style: none;
@@ -665,10 +665,10 @@ const Faq: React.FC = () => {
           display: block;
         }
         .action-card:hover {
-          background-color: rgba(253, 75, 78, 0.08);
+          background-color: rgba(244, 17, 18, 0.08);
         }
         .action-icon {
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 24px;
           margin-bottom: 8px;
         }
@@ -703,7 +703,7 @@ const Faq: React.FC = () => {
           bottom: 20px;
           left: 50%;
           transform: translateX(-50%);
-          background-color: #fd4b4e;
+          background-color: #F41112;
           color: #ffffff;
           padding: 10px 24px;
           border-radius: 8px;

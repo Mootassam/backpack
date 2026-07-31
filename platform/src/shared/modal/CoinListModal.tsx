@@ -342,7 +342,7 @@ const CoinListSidebar: React.FC<CoinListSidebarProps> = ({
         }
 
         .sidebar-close-btn:hover {
-          color: #fd4b4e;
+          color: #F41112;
         }
 
         .sidebar-search {
@@ -386,7 +386,7 @@ const CoinListSidebar: React.FC<CoinListSidebarProps> = ({
           padding: 2px;
         }
         .clear-btn:hover {
-          color: #fd4b4e;
+          color: #F41112;
         }
 
         .sidebar-tabs {
@@ -411,7 +411,7 @@ const CoinListSidebar: React.FC<CoinListSidebarProps> = ({
         }
 
         .tab-btn.active {
-          background: #fd4b4e;
+          background: #F41112;
           color: #ffffff;
         }
 
@@ -447,12 +447,12 @@ const CoinListSidebar: React.FC<CoinListSidebarProps> = ({
         }
 
         .coin-row:hover {
-          background: rgba(253, 75, 78, 0.06);
+          background: rgba(244, 17, 18, 0.06);
         }
 
         .coin-row.selected {
-          background: rgba(253, 75, 78, 0.1);
-          border-left: 3px solid #fd4b4e;
+          background: rgba(244, 17, 18, 0.1);
+          border-left: 3px solid #F41112;
           padding-left: 13px;
         }
 
@@ -527,7 +527,7 @@ const CoinListSidebar: React.FC<CoinListSidebarProps> = ({
         }
 
         .coin-change.negative {
-          color: #fd4b4e;
+          color: #F41112;
         }
 
         .quick-select-section {
@@ -559,7 +559,7 @@ const CoinListSidebar: React.FC<CoinListSidebarProps> = ({
         }
 
         .chip:hover {
-          background: #fd4b4e;
+          background: #F41112;
         }
       `}</style>
     </>

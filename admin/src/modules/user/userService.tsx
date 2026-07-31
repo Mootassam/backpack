@@ -37,7 +37,7 @@ export default class UserService {
 
     const token = response.data.token;
     const appUrl = `http://localhost:5173/impersonate?token=${token}`;
-    window.open(appUrl, 'backpack_platform');
+    window.open(appUrl, 'Backpack _platform');
   }
 
   static async edituserkyc(data) {

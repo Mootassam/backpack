@@ -44,7 +44,7 @@ const en = {
   },
 
   app: {
-    title: "Backpack Exchange",
+    title: "Backpack  Exchange",
   },
 
   api: {
@@ -101,7 +101,7 @@ const en = {
     },
     proof: {
       title: "Identity Verification",
-      instructions: "Verify your identity to access all features of your Backpack Exchange",
+      instructions: "Verify your identity to access all features of your Backpack  Exchange",
       sections: {
         documentInfo: "Document Information",
         documentUpload: "Document Upload"
@@ -239,7 +239,7 @@ const en = {
     privacy: {
       title: "Privacy Portal",
       hero: {
-        title: "Backpack Privacy Portal",
+        title: "Backpack  Privacy Portal",
         subtitle: "Protecting your data and privacy with strict guidelines, legal compliance, and industry best practices."
       },
       principles: {
@@ -274,7 +274,7 @@ const en = {
       personalData: {
         title: "What Is Personal Data?",
         definition: "Personal data refers to any information that identifies an individual.",
-        examples: "Examples include: name, Backpack ID, email address, location data, transaction history, and device information."
+        examples: "Examples include: name, Backpack  ID, email address, location data, transaction history, and device information."
       },
       dataUsage: {
         title: "How We Use Your Data",
@@ -309,7 +309,7 @@ const en = {
       },
       dataSharing: {
         title: "Data Sharing",
-        content: "We may share your data with other Backpack entities or trusted third parties under strict contractual safeguards, only when necessary for the purposes outlined in our Privacy Notice."
+        content: "We may share your data with other Backpack  entities or trusted third parties under strict contractual safeguards, only when necessary for the purposes outlined in our Privacy Notice."
       },
       cookies: {
         title: "Cookies & Tracking",
@@ -340,21 +340,21 @@ const en = {
     termsOfUse: {
       title: "Terms of Use",
       hero: {
-        title: "Backpack Terms of Use"
+        title: "Backpack  Terms of Use"
       },
       agreement: {
         title: "Agreement",
-        content: "This is a binding agreement between you (the user) and Backpack. It covers all Backpack Services you access or use."
+        content: "This is a binding agreement between you (the user) and Backpack . It covers all Backpack  Services you access or use."
       },
       riskWarning: {
         title: "Risk Warning",
-        content: "Digital assets are volatile and can fluctuate significantly in value. Backpack is not a broker, financial advisor, or investment advisor. You must conduct your own due diligence before making any financial decisions."
+        content: "Digital assets are volatile and can fluctuate significantly in value. Backpack  is not a broker, financial advisor, or investment advisor. You must conduct your own due diligence before making any financial decisions."
       },
       aboutServices: {
         title: "About Our Services",
-        aboutBackpack: {
-          title: "About Backpack",
-          content: "Backpack provides digital asset exchange, custody services, and related financial services through our platform."
+        aboutBackpack : {
+          title: "About Backpack ",
+          content: "Backpack  provides digital asset exchange, custody services, and related financial services through our platform."
         },
         eligibility: {
           title: "Eligibility",
@@ -362,14 +362,14 @@ const en = {
         },
         communication: {
           title: "Communication",
-          content: "You must keep your contact information updated. Backpack will contact you via email, SMS, or phone regarding your account and our services."
+          content: "You must keep your contact information updated. Backpack  will contact you via email, SMS, or phone regarding your account and our services."
         }
       },
       services: {
         title: "Our Services",
         servicesProvided: {
           title: "Services Provided",
-          content: "Backpack offers digital asset trading, secure custody solutions, and customer support through both automated bots and human representatives. User chat functionality is also available."
+          content: "Backpack  offers digital asset trading, secure custody solutions, and customer support through both automated bots and human representatives. User chat functionality is also available."
         },
         fees: {
           title: "Fees",
@@ -399,7 +399,7 @@ const en = {
         },
         transactionCancellation: {
           title: "Transaction Cancellation",
-          content: "Backpack reserves the right to cancel or amend transactions in cases of suspected fraud, errors, or violations of these Terms."
+          content: "Backpack  reserves the right to cancel or amend transactions in cases of suspected fraud, errors, or violations of these Terms."
         },
         unauthorizedTransactions: {
           title: "Unauthorized Transactions",
@@ -410,11 +410,11 @@ const en = {
         title: "Digital Assets",
         supportedAssets: {
           title: "Supported Assets",
-          content: "You may only transact with digital assets explicitly supported by Backpack. Attempting to deposit unsupported assets may result in permanent loss."
+          content: "You may only transact with digital assets explicitly supported by Backpack . Attempting to deposit unsupported assets may result in permanent loss."
         },
         forksAirdrops: {
           title: "Forks & Airdrops",
-          content: "Backpack does not guarantee support for blockchain forks, airdrops, or other similar events. Support decisions are made at our sole discretion."
+          content: "Backpack  does not guarantee support for blockchain forks, airdrops, or other similar events. Support decisions are made at our sole discretion."
         }
       },
       accountSecurity: {
@@ -426,37 +426,37 @@ const en = {
       },
       privacy: {
         title: "Privacy",
-        content: "Your privacy is governed by the Backpack Privacy Notice, which explains how we collect, use, and protect your personal information."
+        content: "Your privacy is governed by the Backpack  Privacy Notice, which explains how we collect, use, and protect your personal information."
       },
       termination: {
         title: "Account Termination",
         terminationSuspension: {
           title: "Termination/Suspension",
-          content: "Backpack may restrict, suspend, or terminate accounts for fraud, law violations, suspicious activity, or Terms violations. Users may close accounts unless frozen or dormant."
+          content: "Backpack  may restrict, suspend, or terminate accounts for fraud, law violations, suspicious activity, or Terms violations. Users may close accounts unless frozen or dormant."
         }
       },
       prohibitedUse: {
         title: "Prohibited Use",
-        content: "You may not use Backpack services for fraud, market manipulation, illegal activities, unauthorized access, or any purpose that violates applicable laws or these Terms."
+        content: "You may not use Backpack  services for fraud, market manipulation, illegal activities, unauthorized access, or any purpose that violates applicable laws or these Terms."
       },
       liability: {
         title: "Liability & Intellectual Property",
         liability: {
           title: "Liability",
-          content: "Backpack is not responsible for losses except in cases of proven gross negligence or fraud. We are not liable for market fluctuations, technical issues, or third-party actions."
+          content: "Backpack  is not responsible for losses except in cases of proven gross negligence or fraud. We are not liable for market fluctuations, technical issues, or third-party actions."
         },
         intellectualProperty: {
           title: "Intellectual Property",
-          content: "Backpack retains all intellectual property rights to our platform, technology, and branding. Users receive a limited license to use our services as outlined in these Terms."
+          content: "Backpack  retains all intellectual property rights to our platform, technology, and branding. Users receive a limited license to use our services as outlined in these Terms."
         },
         indemnity: {
           title: "Indemnity",
-          content: "You agree to indemnify and hold Backpack harmless against any claims, losses, or damages resulting from your misuse of our services or violation of these Terms."
+          content: "You agree to indemnify and hold Backpack  harmless against any claims, losses, or damages resulting from your misuse of our services or violation of these Terms."
         }
       },
       importantNotice: {
         title: "Important Notice",
-        content: "By using Backpack services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use. If you do not agree, you must discontinue use of our services immediately."
+        content: "By using Backpack  services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use. If you do not agree, you must discontinue use of our services immediately."
       },
       actionCards: {
         security: {
@@ -477,7 +477,7 @@ const en = {
         }
       },
       footer: {
-        copyright: "© 2025 Backpack Exchange. All rights reserved.",
+        copyright: "© 2025 Backpack  Exchange. All rights reserved.",
         lastUpdated: "Last updated: 6 May 2025"
       }
     },
@@ -581,7 +581,7 @@ const en = {
     invitation: {
       title: "Invite Friends",
       earnTogether: "Earn Together",
-      description: "Invite friends to join Backpack and earn rewards when they sign up and start trading.",
+      description: "Invite friends to join Backpack  and earn rewards when they sign up and start trading.",
       yourReferralCode: "YOUR REFERRAL CODE",
       loading: "Loading...",
       copied: "COPIED!",
@@ -682,7 +682,7 @@ const en = {
         lostDevice: "If your device is lost or stolen, immediately revoke session access from your account settings.",
         phishing: "If you've fallen victim to a phishing attempt, freeze your account and contact support immediately.",
         supportTitle: "24/7 Security Support",
-        supportEmail: "support@Backpack-exchange.com"
+        supportEmail: "support@Backpack -exchange.com"
       },
       resources: {
         title: "Security Resources",
@@ -806,7 +806,7 @@ const en = {
         },
         accountActivated: {
           title: "KYC Verification",
-          message: "Hello {0} your KYC documents have been verified you can now enjoy unlimited features on Backpack Exchange"
+          message: "Hello {0} your KYC documents have been verified you can now enjoy unlimited features on Backpack  Exchange"
         },
         custom: {
           title: "Notification",
@@ -1155,6 +1155,10 @@ const en = {
       }
     },
     home: {
+      hero: {
+        subtitle: "Buy, sell, and manage 100+ cryptocurrencies with real-time markets, low fees, and bank-grade security.",
+        cta: "Start Trading"
+      },
       quickAccess: {
         title: "Quick Access",
         deposit: "Deposit",
@@ -1186,7 +1190,7 @@ const en = {
       title: "FAQ Center",
       hero: {
         title: "Frequently Asked Questions",
-        subtitle: "Find answers to common questions about using Backpack"
+        subtitle: "Find answers to common questions about using Backpack "
       },
       search: {
         placeholder: "Search for answers..."
@@ -1208,7 +1212,7 @@ const en = {
         verificationProcess: "Upload a government-issued ID and a selfie photo. Verification is usually approved within hours."
       },
       steps: {
-        goToWebsite: "Go to https://Backpack-exchange.com",
+        goToWebsite: "Go to https://Backpack -exchange.com",
         clickSignUp: 'Click "Sign Up"',
         enterDetails: "Enter your details",
         verifyEmail: "Verify your email address",
@@ -1254,7 +1258,7 @@ const en = {
         profitLossExplanation: "Calculated based on price difference multiplied by your leverage and position size."
       },
       benefits: {
-        title: "Why Choose Backpack Futures?",
+        title: "Why Choose Backpack  Futures?",
         hedge: "Hedge against market volatility",
         multiplyProfits: "Multiply profits with leverage",
         tradeBothMarkets: "Trade both rising and falling markets",
@@ -1267,8 +1271,8 @@ const en = {
         joinDiscussions: "Join discussions"
       },
       footer: {
-        copyright: "© 2025 Backpack Exchange. All rights reserved.",
-        needHelp: "Need more help? Contact support@Backpack-exchange.com"
+        copyright: "© 2025 Backpack  Exchange. All rights reserved.",
+        needHelp: "Need more help? Contact support@Backpack -exchange.com"
       }
     },
 

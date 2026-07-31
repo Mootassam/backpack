@@ -97,7 +97,7 @@ function Typepassword() {
         }
 
         .back-button:hover {
-          background-color: rgba(253, 75, 78, 0.15);
+          background-color: rgba(244, 17, 18, 0.15);
         }
 
         .page-title {
@@ -159,7 +159,7 @@ function Typepassword() {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 16px;
           margin-right: 12px;
           flex-shrink: 0;

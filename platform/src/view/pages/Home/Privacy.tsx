@@ -289,7 +289,7 @@ function Privacy() {
                 }
 
                 .back-button:hover {
-                    background-color: rgba(253, 75, 78, 0.15);
+                    background-color: rgba(244, 17, 18, 0.15);
                 }
 
                 .page-title {
@@ -354,7 +354,7 @@ function Privacy() {
                 }
 
                 .section-title i {
-                    color: #fd4b4e;
+                    color: #F41112;
                     font-size: 18px;
                 }
 
@@ -367,7 +367,7 @@ function Privacy() {
                 }
 
                 .note-text {
-                    color: #fd4b4e;
+                    color: #F41112;
                     font-size: 13px;
                     font-style: italic;
                     margin-top: 8px;
@@ -378,7 +378,7 @@ function Privacy() {
                     font-size: 13px;
                     margin-top: 10px;
                     padding-left: 12px;
-                    border-left: 2px solid #fd4b4e;
+                    border-left: 2px solid #F41112;
                 }
 
                 /* Principles */
@@ -397,7 +397,7 @@ function Privacy() {
                 }
 
                 .category-icon {
-                    color: #fd4b4e;
+                    color: #F41112;
                     font-size: 16px;
                 }
 
@@ -411,7 +411,7 @@ function Privacy() {
                 }
 
                 .principle-icon {
-                    color: #fd4b4e;
+                    color: #F41112;
                     font-size: 16px;
                     width: 24px;
                     text-align: center;
@@ -441,7 +441,7 @@ function Privacy() {
                 }
 
                 .usage-icon {
-                    color: #fd4b4e;
+                    color: #F41112;
                     font-size: 18px;
                     width: 24px;
                     text-align: center;
@@ -463,7 +463,7 @@ function Privacy() {
                 /* Cookies link */
                 .cookies-link {
                     display: inline-block;
-                    color: #fd4b4e;
+                    color: #F41112;
                     text-decoration: none;
                     font-size: 14px;
                     margin-top: 8px;
@@ -487,7 +487,7 @@ function Privacy() {
 
                 .action-icon {
                     font-size: 24px;
-                    color: #fd4b4e;
+                    color: #F41112;
                     margin-bottom: 8px;
                 }
 

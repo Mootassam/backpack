@@ -55,7 +55,7 @@ function SingleItem(props) {
           transition: background-color 0.2s;
         }
         .news-item:hover {
-          background-color: rgba(253, 75, 78, 0.05);
+          background-color: rgba(244, 17, 18, 0.05);
         }
 
         .news-header {
@@ -73,7 +73,7 @@ function SingleItem(props) {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 14px;
           flex-shrink: 0;
         }

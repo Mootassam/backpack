@@ -42,7 +42,7 @@ const el = {
     logout: "Αποσύνδεση",
   },
 
-  app: { title: "Backpack Exchange" },
+  app: { title: "Backpack  Exchange" },
   api: { menu: "API" },
 
   stake: {
@@ -130,7 +130,7 @@ const el = {
     },
     privacy: {
       title: "Πύλη Απορρήτου",
-      hero: { title: "Πύλη Απορρήτου Backpack", subtitle: "Προστασία των δεδομένων και του απορρήτου σας." },
+      hero: { title: "Πύλη Απορρήτου Backpack ", subtitle: "Προστασία των δεδομένων και του απορρήτου σας." },
       principles: {
         title: "Οι Αρχές Απορρήτου μας", corePrinciples: "Βασικές Αρχές",
         transparency: { title: "Διαφάνεια", description: "Τακτικές ενημερώσεις για τον τρόπο διαχείρισης των δεδομένων σας." },
@@ -163,18 +163,18 @@ const el = {
     },
     termsOfUse: {
       title: "Όροι Χρήσης",
-      hero: { title: "Όροι Χρήσης Backpack" },
-      agreement: { title: "Συμφωνία", content: "Αυτή είναι μια δεσμευτική συμφωνία μεταξύ εσάς και του Backpack." },
+      hero: { title: "Όροι Χρήσης Backpack " },
+      agreement: { title: "Συμφωνία", content: "Αυτή είναι μια δεσμευτική συμφωνία μεταξύ εσάς και του Backpack ." },
       riskWarning: { title: "Προειδοποίηση Κινδύνου", content: "Τα ψηφιακά περιουσιακά στοιχεία είναι ευμετάβλητα." },
       aboutServices: {
         title: "Σχετικά με τις Υπηρεσίες μας",
-        aboutBackpack: { title: "Σχετικά με το Backpack", content: "Το Backpack παρέχει ανταλλαγή ψηφιακών περιουσιακών στοιχείων." },
+        aboutBackpack : { title: "Σχετικά με το Backpack ", content: "Το Backpack  παρέχει ανταλλαγή ψηφιακών περιουσιακών στοιχείων." },
         eligibility: { title: "Επιλεξιμότητα", content: "Πρέπει να είστε τουλάχιστον 18 ετών." },
         communication: { title: "Επικοινωνία", content: "Πρέπει να διατηρείτε ενημερωμένα τα στοιχεία επικοινωνίας σας." }
       },
       services: {
         title: "Οι Υπηρεσίες μας",
-        servicesProvided: { title: "Παρεχόμενες Υπηρεσίες", content: "Το Backpack προσφέρει διαπραγμάτευση ψηφιακών περιουσιακών στοιχείων." },
+        servicesProvided: { title: "Παρεχόμενες Υπηρεσίες", content: "Το Backpack  προσφέρει διαπραγμάτευση ψηφιακών περιουσιακών στοιχείων." },
         fees: { title: "Τέλη", content: "Όλα τα εφαρμοστέα τέλη αναφέρονται στη σελίδα Δομής Τελών." }
       },
       accountManagement: {
@@ -186,38 +186,38 @@ const el = {
       transactions: {
         title: "Συναλλαγές",
         sufficientBalance: { title: "Επαρκές Υπόλοιπο", content: "Πρέπει να διατηρείτε επαρκές υπόλοιπο." },
-        transactionCancellation: { title: "Ακύρωση Συναλλαγής", content: "Το Backpack διατηρεί το δικαίωμα ακύρωσης συναλλαγών." },
+        transactionCancellation: { title: "Ακύρωση Συναλλαγής", content: "Το Backpack  διατηρεί το δικαίωμα ακύρωσης συναλλαγών." },
         unauthorizedTransactions: { title: "Μη Εξουσιοδοτημένες Συναλλαγές", content: "Είστε υπεύθυνοι για μη εξουσιοδοτημένες συναλλαγές." }
       },
       digitalAssets: {
         title: "Ψηφιακά Περιουσιακά Στοιχεία",
-        supportedAssets: { title: "Υποστηριζόμενα Στοιχεία", content: "Μπορείτε να πραγματοποιείτε συναλλαγές μόνο με στοιχεία που υποστηρίζει το Backpack." },
-        forksAirdrops: { title: "Forks & Airdrops", content: "Το Backpack δεν εγγυάται υποστήριξη για forks ή airdrops." }
+        supportedAssets: { title: "Υποστηριζόμενα Στοιχεία", content: "Μπορείτε να πραγματοποιείτε συναλλαγές μόνο με στοιχεία που υποστηρίζει το Backpack ." },
+        forksAirdrops: { title: "Forks & Airdrops", content: "Το Backpack  δεν εγγυάται υποστήριξη για forks ή airdrops." }
       },
       accountSecurity: {
         title: "Ασφάλεια Λογαριασμού",
         securityRequirements: { title: "Απαιτήσεις Ασφαλείας", content: "Χρησιμοποιήστε ισχυρό κωδικό και ενεργοποιήστε το MFA." }
       },
-      privacy: { title: "Απόρρητο", content: "Το απόρρητό σας διέπεται από την Ανακοίνωση Απορρήτου Backpack." },
+      privacy: { title: "Απόρρητο", content: "Το απόρρητό σας διέπεται από την Ανακοίνωση Απορρήτου Backpack ." },
       termination: {
         title: "Λήξη Λογαριασμού",
-        terminationSuspension: { title: "Λήξη/Αναστολή", content: "Το Backpack μπορεί να περιορίσει ή να λήξει λογαριασμούς." }
+        terminationSuspension: { title: "Λήξη/Αναστολή", content: "Το Backpack  μπορεί να περιορίσει ή να λήξει λογαριασμούς." }
       },
       prohibitedUse: { title: "Απαγορευμένη Χρήση", content: "Δεν επιτρέπεται η χρήση για απάτη ή παράνομες δραστηριότητες." },
       liability: {
         title: "Ευθύνη & Πνευματική Ιδιοκτησία",
-        liability: { title: "Ευθύνη", content: "Το Backpack δεν ευθύνεται για ζημίες εκτός από αποδεδειγμένη αμέλεια." },
-        intellectualProperty: { title: "Πνευματική Ιδιοκτησία", content: "Το Backpack διατηρεί όλα τα δικαιώματα πνευματικής ιδιοκτησίας." },
-        indemnity: { title: "Αποζημίωση", content: "Συμφωνείτε να αποζημιώσετε το Backpack για αξιώσεις από κακή χρήση." }
+        liability: { title: "Ευθύνη", content: "Το Backpack  δεν ευθύνεται για ζημίες εκτός από αποδεδειγμένη αμέλεια." },
+        intellectualProperty: { title: "Πνευματική Ιδιοκτησία", content: "Το Backpack  διατηρεί όλα τα δικαιώματα πνευματικής ιδιοκτησίας." },
+        indemnity: { title: "Αποζημίωση", content: "Συμφωνείτε να αποζημιώσετε το Backpack  για αξιώσεις από κακή χρήση." }
       },
-      importantNotice: { title: "Σημαντική Ειδοποίηση", content: "Χρησιμοποιώντας τις υπηρεσίες Backpack, αποδέχεστε τους Όρους Χρήσης." },
+      importantNotice: { title: "Σημαντική Ειδοποίηση", content: "Χρησιμοποιώντας τις υπηρεσίες Backpack , αποδέχεστε τους Όρους Χρήσης." },
       actionCards: {
         security: { title: "Ασφάλεια", description: "Προστατέψτε τον λογαριασμό σας." },
         helpCenter: { title: "Κέντρο Βοήθειας", description: "Λάβετε απαντήσεις" },
         privacyPolicy: { title: "Πολιτική Απορρήτου", description: "Ελέγξτε τις πρακτικές απορρήτου μας" },
         legal: { title: "Νομικά", description: "Δείτε όλα τα νομικά έγγραφα" }
       },
-      footer: { copyright: "© 2025 Backpack Exchange. Όλα τα δικαιώματα διατηρούνται.", lastUpdated: "Τελευταία ενημέρωση: 6 Μαΐου 2025" }
+      footer: { copyright: "© 2025 Backpack  Exchange. Όλα τα δικαιώματα διατηρούνται.", lastUpdated: "Τελευταία ενημέρωση: 6 Μαΐου 2025" }
     },
     marketDetail: {
       stats: { high: "24ω Υψηλό", low: "24ω Χαμηλό", volume: "24ω Όγκος" },
@@ -258,7 +258,7 @@ const el = {
     },
     invitation: {
       title: "Προσκαλέστε Φίλους", earnTogether: "Κερδίστε Μαζί",
-      description: "Προσκαλέστε φίλους στο Backpack και κερδίστε ανταμοιβές.",
+      description: "Προσκαλέστε φίλους στο Backpack  και κερδίστε ανταμοιβές.",
       yourReferralCode: "Ο ΚΩΔΙΚΟΣ ΠΑΡΑΠΟΜΠΗΣ ΣΑΣ", loading: "Φόρτωση...",
       copied: "ΑΝΤΙΓΡΑΦΗΚΕ!", copyCode: "ΑΝΤΙΓΡΑΦΗ ΚΩΔΙΚΟΥ",
       totalEarned: "Συνολικά Κερδισμένα", allTimeCommission: "Συνολική Προμήθεια",
@@ -303,7 +303,7 @@ const el = {
         unauthorizedAccess: "Εάν υποπτεύεστε μη εξουσιοδοτημένη πρόσβαση, αλλάξτε αμέσως κωδικό.",
         lostDevice: "Εάν η συσκευή σας χαθεί, ακυρώστε αμέσως την πρόσβαση.",
         phishing: "Εάν πέσατε θύμα phishing, παγώστε τον λογαριασμό.",
-        supportTitle: "Υποστήριξη Ασφαλείας 24/7", supportEmail: "support@Backpack-exchange.com"
+        supportTitle: "Υποστήριξη Ασφαλείας 24/7", supportEmail: "support@Backpack -exchange.com"
       },
       resources: {
         title: "Πόροι Ασφαλείας",
@@ -511,6 +511,7 @@ const el = {
       }
     },
     home: {
+      hero: { subtitle: "Αγοράστε, πουλήστε και διαχειριστείτε πάνω από 100 κρυπτονομίσματα με αγορές σε πραγματικό χρόνο, χαμηλές χρεώσεις και ασφάλεια τραπεζικού επιπέδου.", cta: "Ξεκινήστε τις συναλλαγές" },
       quickAccess: { title: "Γρήγορη Πρόσβαση", deposit: "Κατάθεση", security: "Ασφάλεια", faqCenter: "Κέντρο FAQ", invitation: "Πρόσκληση", staking: "Staking" },
       popularCryptos: "Δημοφιλή Κρυπτονομίσματα", seeAll: "Δείτε όλα", volume: "Όγκ", loading: "Φόρτωση...",
       notifications: {
@@ -525,7 +526,7 @@ const el = {
     },
     faq: {
       title: "Κέντρο FAQ",
-      hero: { title: "Συχνές Ερωτήσεις", subtitle: "Βρείτε απαντήσεις για το Backpack" },
+      hero: { title: "Συχνές Ερωτήσεις", subtitle: "Βρείτε απαντήσεις για το Backpack " },
       search: { placeholder: "Αναζήτηση απαντήσεων..." },
       categories: { gettingStarted: "Ξεκινώντας", managingAccount: "Διαχείριση Λογαριασμού" },
       questions: {
@@ -539,7 +540,7 @@ const el = {
       },
       answers: { verificationProcess: "Ανεβάστε ταυτότητα και selfie. Επαλήθευση σε λίγες ώρες." },
       steps: {
-        goToWebsite: "Επισκεφθείτε https://Backpack-exchange.com",
+        goToWebsite: "Επισκεφθείτε https://Backpack -exchange.com",
         clickSignUp: 'Κάντε κλικ στο "Εγγραφή"',
         enterDetails: "Εισάγετε τα στοιχεία σας",
         verifyEmail: "Επαληθεύστε email",
@@ -580,7 +581,7 @@ const el = {
         profitLossExplanation: "Βάσει διαφοράς τιμής × μόχλευση."
       },
       benefits: {
-        title: "Γιατί Backpack Futures;",
+        title: "Γιατί Backpack  Futures;",
         hedge: "Αντισταθμίστε έναντι αστάθειας",
         multiplyProfits: "Πολλαπλασιάστε κέρδη",
         tradeBothMarkets: "Συναλλαγές σε ανοδικές/καθοδικές αγορές",
@@ -590,7 +591,7 @@ const el = {
         contactSupport: "Επικοινωνία Υποστήριξη", getHelp: "Βοήθεια από την ομάδα",
         community: "Κοινότητα", joinDiscussions: "Συμμετοχή σε συζητήσεις"
       },
-      footer: { copyright: "© 2025 Backpack Exchange. Όλα τα δικαιώματα.", needHelp: "Χρειάζεστε βοήθεια; support@Backpack-exchange.com" }
+      footer: { copyright: "© 2025 Backpack  Exchange. Όλα τα δικαιώματα.", needHelp: "Χρειάζεστε βοήθεια; support@Backpack -exchange.com" }
     },
     tabBottomNavigator: { home: "αρχική", grap: "γράφημα", records: "αρχεία", starting: "έναρξη" },
     language: {

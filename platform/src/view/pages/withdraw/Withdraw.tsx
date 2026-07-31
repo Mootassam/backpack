@@ -986,7 +986,7 @@ function Withdraw() {
           transition: background 0.2s, border-color 0.2s, color 0.2s;
           flex-shrink: 0;
         }
-        .withdraw-container .back-arrow:hover { background: #2a2a2e; border-color: #fd4b4e; color: #fd4b4e; }
+        .withdraw-container .back-arrow:hover { background: #2a2a2e; border-color: #F41112; color: #F41112; }
         .withdraw-container .page-title {
           color: #fff;
           font-size: 15px;
@@ -1009,7 +1009,7 @@ function Withdraw() {
           text-decoration: none;
           transition: border-color 0.2s, color 0.2s;
         }
-        .withdraw-container .header-icon:hover { border-color: #fd4b4e; color: #fd4b4e !important; }
+        .withdraw-container .header-icon:hover { border-color: #F41112; color: #F41112 !important; }
 
         /* ── Content card ── */
         .withdraw-container .content-card {
@@ -1125,8 +1125,8 @@ function Withdraw() {
         .withdraw-container .network-option:hover { background: #22232e; }
         .withdraw-container .currency-rate-small { font-size: 11px; color: #555; margin-left: auto; }
         .withdraw-container .rate-loading-small { font-size: 11px; color: #555; margin-left: auto; }
-        .withdraw-container .network-icon { font-size: 14px; color: #fd4b4e; flex-shrink: 0; }
-        .withdraw-container .network-icon-small { font-size: 12px; color: #fd4b4e; flex-shrink: 0; }
+        .withdraw-container .network-icon { font-size: 14px; color: #F41112; flex-shrink: 0; }
+        .withdraw-container .network-icon-small { font-size: 12px; color: #F41112; flex-shrink: 0; }
         .withdraw-container .network-text { font-size: 14px; font-weight: 600; color: #e8e8e8; }
         .withdraw-container .no-options { padding: 16px; text-align: center; color: #555; font-size: 13px; }
 
@@ -1170,7 +1170,7 @@ function Withdraw() {
         .withdraw-container .input-wrapper textarea::placeholder { color: #444; }
         .withdraw-container .input-wrapper input:focus,
         .withdraw-container .input-wrapper textarea:focus {
-          border-color: #fd4b4e !important;
+          border-color: #F41112 !important;
           background: #1a1b24 !important;
         }
         /* FieldFormItem wraps with its own divs — target any input inside input-field */
@@ -1193,17 +1193,17 @@ function Withdraw() {
         .withdraw-container .input-field textarea::placeholder { color: #444 !important; }
         .withdraw-container .input-field input:focus,
         .withdraw-container .input-field textarea:focus {
-          border-color: #fd4b4e !important;
+          border-color: #F41112 !important;
           background: #1a1b24 !important;
         }
         /* Remove default form error red border from FieldFormItem */
         .withdraw-container .input-field .is-invalid,
         .withdraw-container .input-field input.is-invalid {
-          border-color: #fd4b4e !important;
+          border-color: #F41112 !important;
         }
         .withdraw-container .input-field .invalid-feedback {
           font-size: 11px !important;
-          color: #fd4b4e !important;
+          color: #F41112 !important;
           margin-top: 5px;
         }
 
@@ -1245,8 +1245,8 @@ function Withdraw() {
 
         /* ── Notice section ── */
         .withdraw-container .notice-section {
-          background: rgba(253,75,78,0.05);
-          border: 1px solid rgba(253,75,78,0.12);
+          background: rgba(244, 17, 18,0.05);
+          border: 1px solid rgba(244, 17, 18,0.12);
           border-radius: 14px;
           padding: 16px;
           margin-bottom: 16px;
@@ -1254,7 +1254,7 @@ function Withdraw() {
         .withdraw-container .notice-title {
           font-size: 13px;
           font-weight: 700;
-          color: #fd4b4e;
+          color: #F41112;
           margin-bottom: 10px;
           display: flex;
           align-items: center;
@@ -1282,7 +1282,7 @@ function Withdraw() {
           font-weight: 700;
           cursor: pointer;
           transition: opacity 0.2s, transform 0.15s;
-          background: #fd4b4e;
+          background: #F41112;
           color: #fff;
           letter-spacing: 0.2px;
           display: flex;
@@ -1357,12 +1357,12 @@ function Withdraw() {
           width: 42px;
           height: 42px;
           border-radius: 12px;
-          background: rgba(253,75,78,0.12);
-          border: 1px solid rgba(253,75,78,0.2);
+          background: rgba(244, 17, 18,0.12);
+          border: 1px solid rgba(244, 17, 18,0.2);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #fd4b4e;
+          color: #F41112;
           font-size: 18px;
           flex-shrink: 0;
         }
@@ -1392,7 +1392,7 @@ function Withdraw() {
           transition: background 0.2s, color 0.2s;
           flex-shrink: 0;
         }
-        .wp-close-btn:hover { background: #2a2a2e; color: #fd4b4e; }
+        .wp-close-btn:hover { background: #2a2a2e; color: #F41112; }
 
         /* ── No-password state ── */
         .wp-no-password {
@@ -1449,9 +1449,9 @@ function Withdraw() {
           width: 24px;
           height: 24px;
           border-radius: 50%;
-          background: rgba(253,75,78,0.15);
-          border: 1px solid rgba(253,75,78,0.3);
-          color: #fd4b4e;
+          background: rgba(244, 17, 18,0.15);
+          border: 1px solid rgba(244, 17, 18,0.3);
+          color: #F41112;
           font-size: 12px;
           font-weight: 700;
           display: flex;
@@ -1540,7 +1540,7 @@ function Withdraw() {
           letter-spacing: 0.5px;
           margin-bottom: 8px;
         }
-        .wp-label-icon { color: #fd4b4e; font-size: 11px; }
+        .wp-label-icon { color: #F41112; font-size: 11px; }
         .wp-input-wrapper {
           position: relative;
         }
@@ -1560,12 +1560,12 @@ function Withdraw() {
         }
         .wp-input::placeholder { letter-spacing: 0; color: #444; }
         .wp-input:focus {
-          border-color: #fd4b4e;
+          border-color: #F41112;
           background: #1a1b24;
         }
         .wp-input-error {
-          border-color: #fd4b4e !important;
-          background: rgba(253,75,78,0.05) !important;
+          border-color: #F41112 !important;
+          background: rgba(244, 17, 18,0.05) !important;
         }
         .wp-eye-btn {
           position: absolute;
@@ -1592,11 +1592,11 @@ function Withdraw() {
           gap: 6px;
           margin-top: 8px;
           padding: 10px 12px;
-          background: rgba(253,75,78,0.08);
-          border: 1px solid rgba(253,75,78,0.2);
+          background: rgba(244, 17, 18,0.08);
+          border: 1px solid rgba(244, 17, 18,0.2);
           border-radius: 10px;
           font-size: 12.5px;
-          color: #fd4b4e;
+          color: #F41112;
           font-weight: 500;
           animation: wpShake 0.35s ease;
         }
@@ -1626,13 +1626,13 @@ function Withdraw() {
           cursor: pointer;
           transition: border-color 0.2s, color 0.2s;
         }
-        .wp-cancel-btn:hover:not(:disabled) { border-color: #fd4b4e; color: #fd4b4e; }
+        .wp-cancel-btn:hover:not(:disabled) { border-color: #F41112; color: #F41112; }
         .wp-cancel-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
         .wp-confirm-btn {
           flex: 2;
           padding: 14px;
-          background: #fd4b4e;
+          background: #F41112;
           border: none;
           border-radius: 14px;
           color: #fff;
@@ -1645,7 +1645,7 @@ function Withdraw() {
           gap: 8px;
           transition: background 0.2s, transform 0.15s;
         }
-        .wp-confirm-btn:hover:not(:disabled) { background: #e8393c; }
+        .wp-confirm-btn:hover:not(:disabled) { background: #AD1111; }
         .wp-confirm-btn:active:not(:disabled) { transform: scale(0.98); }
         .wp-confirm-btn:disabled { background: #2a2a2e; color: #555; cursor: not-allowed; }
       `}</style>

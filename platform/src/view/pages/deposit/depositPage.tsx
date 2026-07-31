@@ -127,7 +127,7 @@ function DepositPage() {
                     transition: background 0.2s, border-color 0.2s, color 0.2s;
                     flex-shrink: 0;
                 }
-                .back-arrow:hover { background: #2a2a2e; border-color: #fd4b4e; color: #fd4b4e; }
+                .back-arrow:hover { background: #2a2a2e; border-color: #F41112; color: #F41112; }
                 .page-title {
                     color: #fff;
                     font-size: 15px;
@@ -150,7 +150,7 @@ function DepositPage() {
                     text-decoration: none;
                     transition: border-color 0.2s, color 0.2s;
                 }
-                .header-icon:hover { border-color: #fd4b4e; color: #fd4b4e !important; }
+                .header-icon:hover { border-color: #F41112; color: #F41112 !important; }
 
                 /* ── Content ── */
                 .content-card {
@@ -192,7 +192,7 @@ function DepositPage() {
                 }
                 .crypto-item:hover {
                     background: #1a1b24;
-                    border-color: #fd4b4e;
+                    border-color: #F41112;
                     transform: translateY(-2px);
                 }
                 .crypto-icon {
@@ -258,17 +258,17 @@ function DepositPage() {
                     color: inherit;
                     transition: background 0.2s, border-color 0.2s;
                 }
-                .otc-item:hover { background: #1a1b24; border-color: #fd4b4e33; }
+                .otc-item:hover { background: #1a1b24; border-color: #F4111233; }
                 .otc-icon {
                     width: 42px;
                     height: 42px;
                     border-radius: 12px;
-                    background: rgba(253,75,78,0.12);
-                    border: 1px solid rgba(253,75,78,0.2);
+                    background: rgba(244, 17, 18,0.12);
+                    border: 1px solid rgba(244, 17, 18,0.2);
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    color: #fd4b4e;
+                    color: #F41112;
                     font-size: 17px;
                     flex-shrink: 0;
                 }

@@ -25,13 +25,13 @@ const ImagesUploaderWrapper = styled.div`
   }
 
   .upload-card:hover .upload-area {
-    border-color: #fd4b4e;
-    background-color: rgba(253, 75, 78, 0.03);
+    border-color: #F41112;
+    background-color: rgba(244, 17, 18, 0.03);
   }
 
   .upload-icon i {
     font-size: 36px;
-    color: #fd4b4e;
+    color: #F41112;
   }
 
   .upload-text {
@@ -90,7 +90,7 @@ const ImagesUploaderWrapper = styled.div`
   }
 
   .img-buttons button:hover {
-    color: #fd4b4e;
+    color: #F41112;
   }
 
   /* Hide file input */

@@ -18,7 +18,7 @@ COPY . .
 ENV BACKEND_URL="http://162.0.233.249:8088/api"
 
 # Expose your app port
-EXPOSE 8084
+EXPOSE 8088
 
 # Remove Redis installation and just start your app
 CMD ["npm", "start"]

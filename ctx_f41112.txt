@@ -1,0 +1,5 @@
+ #F9F9F9;--background-disabled: #CCDCFF;--background-brand: #F41112;--background-brand-hover: #AD1111;--background-cards: #F4F4
+-accent-color: var(--background-accent);--background-error: #F41112;--background-error-weak: #FFEFF0;--background-warning: #f8c
+color-success: #00C11F;--color-warning: #F90;--color-error: #F41112;--color-disabled: rgb(255 255 255 / 38%);--color-button-dis
+on:relative;display:inline-block;width:2em;height:2em;color:#f41112;vertical-align:middle;pointer-events:none}.ui-square-loader
+e;display:inline-block;inline-size:2em;block-size:2em;color:#f41112;vertical-align:middle;pointer-events:none}.new-ui-loader__l

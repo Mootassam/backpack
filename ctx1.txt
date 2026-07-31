@@ -1,0 +1,4 @@
+27237" stop-color="#f98d1c"></stop><stop offset="0.513700008392334" stop-color="#f1423b"></stop><stop offset="0.832899987697601" stop-color="#b93088"></stop><stop offs
+27237" stop-color="#f98d1c"></stop><stop offset="0.513700008392334" stop-color="#f1423b"></stop><stop offset="0.832899987697601" stop-color="#b93088"></stop><stop offs
+27237" stop-color="#f98d1c"></stop><stop offset="0.513700008392334" stop-color="#f1423b"></stop><stop offset="0.832899987697601" stop-color="#b93088"></stop><stop offs
+27237" stop-color="#f98d1c"></stop><stop offset="0.513700008392334" stop-color="#f1423b"></stop><stop offset="0.832899987697601" stop-color="#b93088"></stop><stop offs

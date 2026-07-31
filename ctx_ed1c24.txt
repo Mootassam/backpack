@@ -1,0 +1,2 @@
+round:var(--background-error-weak);color:var(--error-color, #ed1c24);font-size:var(--font-size-xs);text-align:center}@keyframes
+ .otp-input__cell{border-block-end-color:var(--error-color, #ed1c24)}.otp-input_disabled{opacity:.5}.otp-input_disabled .otp-in

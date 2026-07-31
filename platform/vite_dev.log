@@ -1,0 +1,29 @@
+
+> start@0.0.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v4.5.3[39m  [2mready in [0m[1m561[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[2m5:13:18 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Home/Home.tsx[22m
+[2m5:13:37 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Home/Home.tsx[22m
+[2m5:17:19 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Home/Home.tsx[22m
+[2m5:17:19 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/i18n/en.tsx[22m
+[2m5:17:19 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Home/Home.tsx[22m
+[2m5:17:19 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/i18n/en.tsx[22m
+[2m5:17:55 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Auth/Signin.tsx[22m
+[2m5:17:56 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Auth/Signin.tsx[22m
+[2m5:17:56 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Home/Home.tsx[22m
+[2m5:17:56 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/i18n/en.tsx[22m
+[2m5:17:56 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Home/Home.tsx[22m
+[2m5:17:56 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/i18n/en.tsx[22m
+[2m5:17:56 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/i18n/en.tsx[22m
+[2m5:19:29 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Home/Home.tsx[22m
+[2m5:19:47 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Home/Home.tsx[22m
+[2m5:29:16 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/pages/Home/Home.tsx[22m
+[2m5:34:34 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/shared/routes/RoutesComponent.tsx[22m
+[2m5:34:40 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/shared/routes/RoutesComponent.tsx[22m
+[2m5:34:43 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/view/shared/routes/RoutesComponent.tsx[22m
